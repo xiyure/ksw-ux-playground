@@ -1,7 +1,7 @@
 
 <template>
   <h1>{{ msg }}</h1>
-  <k-input v-model="msg" />
+  <el-input v-model="text"></el-input>
 </template>
 
 <script setup lang="ts">

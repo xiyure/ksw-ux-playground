@@ -58,7 +58,7 @@ export const useStore = (initial: Initial) => {
 
   const [nightly, toggleNightly] = useToggle(false)
   const builtinImportMap = computed<ImportMap>(() => {
-    let importMap = genImportMap(versions, nightly.value)
+    let importMap = genImportMap(versions)
     return importMap
   })
 
@@ -100,11 +100,8 @@ export const useStore = (initial: Initial) => {
     { deep: true },
   )
 
-  function generatekswUxCode(styleSource?: string) {
-    console.log(styleSource)
-    const style = styleSource
-      ? styleSource
-      : '@ksware/ksw-ux/kingware-ui/style.css'
+  function generatekswUxCode() {
+    const style =  '@ksware/ksw-ux/kingware-ui/style.css'
     return kswUxCode.replace('#STYLE#', style)
   }
   function init() {
@@ -158,7 +155,7 @@ export const useStore = (initial: Initial) => {
     if (!files[KSW_UX_FILE]) {
       files[KSW_UX_FILE] = new File(
         KSW_UX_FILE,
-        generatekswUxCode(versions.elementPlus, userOptions.styleSource),
+        generatekswUxCode()
       )
     }
     if (!files[TSCONFIG]) {
@@ -177,10 +174,6 @@ export const useStore = (initial: Initial) => {
       case 'vue':
         userOptions.vueVersion = version
         await setVueVersion(version)
-        break
-      case 'elementPlus':
-        versions.elementPlus = version
-        userOptions.epVersion = version
         break
       case 'typescript':
         store.typescriptVersion = version
