@@ -1,17 +1,14 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import W from "./resize_observer.mjs";
-import { useMergeState as j } from "../../hooks/use_merge_state.mjs";
-import q from "../../node_modules/ksw-vue-icon/es/icons/base/grip-vertical.mjs";
-import A from "../../node_modules/ksw-vue-icon/es/icons/base/grip-horizontal.mjs";
-import G from "../../node_modules/lodash-es/isString.mjs";
-import J from "../../node_modules/lodash-es/isNumber.mjs";
-import { defineComponent as Q, onMounted as U, computed as m, nextTick as Z, createBlock as E, openBlock as S, withCtx as $, createElementVNode as g, createVNode as ee, renderSlot as f, createElementBlock as te, resolveDynamicComponent as V } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { toRefs as ie, reactive as ne, ref as M, unref as oe } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeStyle as L, normalizeClass as v } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const ae = { class: "k-split-trigger-icon-wrapper" }, se = {
+import { defineComponent as W, onMounted as j, toRefs as q, reactive as A, ref as E, computed as g, nextTick as G, createBlock as $, openBlock as S, resolveDynamicComponent as M, normalizeClass as m, withCtx as V, createElementVNode as f, createVNode as J, normalizeStyle as L, renderSlot as v, unref as Q, createElementBlock as U } from "vue";
+import Z from "./resize_observer.mjs";
+import { useMergeState as ee } from "../../hooks/use_merge_state.mjs";
+import te from "../../node_modules/ksw-vue-icon/es/icons/base/grip-vertical.mjs";
+import ie from "../../node_modules/ksw-vue-icon/es/icons/base/grip-horizontal.mjs";
+import ne from "../../node_modules/lodash-es/isString.mjs";
+import se from "../../node_modules/lodash-es/isNumber.mjs";
+const ae = { class: "k-split-trigger-icon-wrapper" }, oe = {
   key: 1,
   class: "k-split-trigger-line"
-}, ze = /* @__PURE__ */ Q({
+}, me = /* @__PURE__ */ W({
   name: "KSplit",
   __name: "split",
   props: {
@@ -32,7 +29,7 @@ const ae = { class: "k-split-trigger-icon-wrapper" }, se = {
   emits: ["moveStart", "moving", "moveEnd", "update:modelValue"],
   setup(R, { emit: B }) {
     const r = R, l = B;
-    U(async () => {
+    j(async () => {
       const e = await P(), t = y(u.value, e);
       k(t, e);
     });
@@ -41,23 +38,23 @@ const ae = { class: "k-split-trigger-icon-wrapper" }, se = {
       startPageY: 0,
       startContainerSize: 0,
       startSize: 0
-    }, { direction: N, modelValue: T, defaultSize: X, min: Y, max: I } = ie(r), [u, F] = j(
-      X.value,
-      ne({
-        value: T
+    }, { direction: T, modelValue: X, defaultSize: Y, min: I, max: N } = q(r), [u, F] = ee(
+      Y.value,
+      A({
+        value: X
       })
-    ), w = M(0), c = M(), x = m(() => C(u.value)), o = m(() => N.value !== "vertical"), D = m(() => {
+    ), w = E(0), c = E(), x = g(() => C(u.value)), s = g(() => T.value !== "vertical"), D = g(() => {
       const { size: e, unit: t, isPx: i } = x.value;
       return {
         flex: `0 0 calc(${i ? e : e * 100}${t} - ${w.value / 2}px)`
       };
-    }), H = m(() => r.triggerIcon ? r.triggerIcon : o.value ? q : A);
+    }), H = g(() => r.triggerIcon ? r.triggerIcon : s.value ? te : ie);
     async function P() {
       const e = () => {
         var t, i;
-        return o.value ? (t = c.value) == null ? void 0 : t.clientWidth : ((i = c.value) == null ? void 0 : i.clientHeight) || 0;
+        return s.value ? (t = c.value) == null ? void 0 : t.clientWidth : ((i = c.value) == null ? void 0 : i.clientHeight) || 0;
       };
-      return (!c.value || e()) && await Z(), e();
+      return (!c.value || e()) && await G(), e();
     }
     function k(e, t) {
       if (!t)
@@ -70,35 +67,35 @@ const ae = { class: "k-split-trigger-icon-wrapper" }, se = {
         size: e,
         containerSize: t
       }), a = d({
-        size: Y.value,
+        size: I.value,
         defaultSize: "0px",
         containerSize: t
       }), z = d({
-        size: I.value,
+        size: N.value,
         defaultSize: `${t}px`,
         containerSize: t
       });
-      let s = i;
-      return s = Math.max(s, a), s = Math.min(s, z), s;
+      let o = i;
+      return o = Math.max(o, a), o = Math.min(o, z), o;
     }
     function _(e, t) {
       return parseFloat(e) / parseFloat(t);
     }
     function C(e) {
-      const t = G(e) ? parseFloat(e) : e;
+      const t = ne(e) ? parseFloat(e) : e;
       let i = "";
-      return J(e) || String(t) === e ? i = t > 1 ? "px" : "%" : i = "px", {
+      return se(e) || String(t) === e ? i = t > 1 ? "px" : "%" : i = "px", {
         size: t,
         unit: i,
         isPx: i === "px"
       };
     }
     async function K(e) {
-      r.disabled || (l("moveStart", e), n.startPageX = e.pageX, n.startPageY = e.pageY, n.startContainerSize = await P(), n.startSize = u.value, window.addEventListener("mousemove", h), window.addEventListener("mouseup", p), window.addEventListener("contextmenu", p), document.body.style.cursor = o.value ? "col-resize" : "row-resize", e.preventDefault());
+      r.disabled || (l("moveStart", e), n.startPageX = e.pageX, n.startPageY = e.pageY, n.startContainerSize = await P(), n.startSize = u.value, window.addEventListener("mousemove", h), window.addEventListener("mouseup", p), window.addEventListener("contextmenu", p), document.body.style.cursor = s.value ? "col-resize" : "row-resize", e.preventDefault());
     }
     function h(e) {
       l("moving", e);
-      const t = o.value ? b({
+      const t = s.value ? b({
         startContainerSize: n.startContainerSize,
         startSize: n.startSize,
         startPosition: n.startPageX,
@@ -116,7 +113,7 @@ const ae = { class: "k-split-trigger-icon-wrapper" }, se = {
     }
     function O(e) {
       const { width: t, height: i } = e.contentRect;
-      w.value = o.value ? t : i;
+      w.value = s.value ? t : i;
     }
     function b({
       startContainerSize: e,
@@ -138,58 +135,58 @@ const ae = { class: "k-split-trigger-icon-wrapper" }, se = {
       const a = C(e ?? t ?? 0.5);
       return a.isPx ? a.size : a.size * i;
     }
-    return (e, t) => (S(), E(V(e.component), {
+    return (e, t) => (S(), $(M(e.component), {
       ref_key: "splitRef",
       ref: c,
-      class: v([
+      class: m([
         "k-split",
         {
-          "k-split-horizontal": o.value,
-          "k-split-vertical": !o.value
+          "k-split-horizontal": s.value,
+          "k-split-vertical": !s.value
         }
       ])
     }, {
-      default: $(() => [
-        g("div", {
-          class: v(["k-split-pane", "k-split-pane-first", e.pane1Class]),
+      default: V(() => [
+        f("div", {
+          class: m(["k-split-pane", "k-split-pane-first", e.pane1Class]),
           style: L({
             ...D.value,
             ...e.pane1Style
           })
         }, [
-          f(e.$slots, "first")
+          v(e.$slots, "first")
         ], 6),
-        ee(oe(W), {
+        J(Q(Z), {
           onMousedown: K,
           onResize: O
         }, {
-          default: $(() => [
-            g("div", {
-              class: v([
+          default: V(() => [
+            f("div", {
+              class: m([
                 "k-split-trigger",
                 {
-                  "k-split-trigger-horizontal": o.value,
-                  "k-split-trigger-vertical": !o.value,
+                  "k-split-trigger-horizontal": s.value,
+                  "k-split-trigger-vertical": !s.value,
                   "k-split-trigger-disabled": e.disabled
                 }
               ])
             }, [
-              e.showTrigger ? f(e.$slots, "trigger", { key: 0 }, () => [
-                g("div", ae, [
-                  f(e.$slots, "trigger-icon", {}, () => [
-                    (S(), E(V(H.value), { class: "k-split-trigger-icon" }))
+              e.showTrigger ? v(e.$slots, "trigger", { key: 0 }, () => [
+                f("div", ae, [
+                  v(e.$slots, "trigger-icon", {}, () => [
+                    (S(), $(M(H.value), { class: "k-split-trigger-icon" }))
                   ])
                 ])
-              ]) : (S(), te("div", se))
+              ]) : (S(), U("div", oe))
             ], 2)
           ]),
           _: 3
         }),
-        g("div", {
-          class: v(["k-split-pane", "k-split-pane-second", e.pane2Class]),
+        f("div", {
+          class: m(["k-split-pane", "k-split-pane-second", e.pane2Class]),
           style: L(e.pane2Style)
         }, [
-          f(e.$slots, "second")
+          v(e.$slots, "second")
         ], 6)
       ]),
       _: 3
@@ -197,5 +194,5 @@ const ae = { class: "k-split-trigger-icon-wrapper" }, se = {
   }
 });
 export {
-  ze as default
+  me as default
 };

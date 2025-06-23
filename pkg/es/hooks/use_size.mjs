@@ -1,8 +1,6 @@
-import "../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
+import { inject as r, computed as _, unref as m } from "vue";
 import s from "../node_modules/lodash-es/toString.mjs";
-import { inject as r, computed as m } from "../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { unref as _ } from "../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-const f = Symbol("__size__"), S = /* @__PURE__ */ new Map([
+const S = Symbol("__size__"), f = /* @__PURE__ */ new Map([
   ["default", "base"],
   ["small", "sm"],
   ["large", "lg"],
@@ -17,23 +15,23 @@ const f = Symbol("__size__"), S = /* @__PURE__ */ new Map([
   ["small", "small"],
   ["large", "large"]
 ]);
-function b(o) {
-  const a = r(f, "base");
-  return m(() => {
-    const e = o.size || _(a);
-    let t, l;
+function c(a) {
+  const o = r(S, "base");
+  return _(() => {
+    const e = a.size || m(o);
+    let l, t;
     if (typeof e == "object") {
-      const { ownSize: i, elSize: n } = e;
-      t = i, l = n;
+      const { ownSize: n, elSize: i } = e;
+      l = n, t = i;
     } else
-      t = e, l = e;
+      l = e, t = e;
     return {
-      ownSize: S.get(s(t)) ?? "base",
-      elSize: g.get(s(l)) ?? "default"
+      ownSize: f.get(s(l)) ?? "base",
+      elSize: g.get(s(t)) ?? "default"
     };
   });
 }
 export {
-  f as SIZE_KEY,
-  b as useSize
+  S as SIZE_KEY,
+  c as useSize
 };

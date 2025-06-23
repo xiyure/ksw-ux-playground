@@ -1,39 +1,36 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import i from "../../assets/svg/empty.svg.mjs";
-import { getExposeProxy as a } from "../../utils/utils.mjs";
+import { defineComponent as i, ref as a, createBlock as c, openBlock as l, unref as o, mergeProps as f, createSlots as u, withCtx as s, renderSlot as m, createElementVNode as y, renderList as _, normalizeProps as d, guardReactiveProps as E } from "vue";
+import g from "../../assets/svg/empty.svg.mjs";
+import { getExposeProxy as k } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { ElEmpty as c } from "../../node_modules/element-plus/es/components/empty/index.mjs";
-import { defineComponent as f, createBlock as l, openBlock as u, createSlots as y, renderList as _, withCtx as o, renderSlot as m, guardReactiveProps as d, createElementVNode as E, mergeProps as g } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as k, unref as s } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeProps as P } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const $ = ["src"], j = /* @__PURE__ */ f({
+import { ElEmpty as P } from "../../node_modules/element-plus/es/components/empty/index.mjs";
+const $ = ["src"], N = /* @__PURE__ */ i({
   name: "KEmpty",
   __name: "empty",
-  setup(h, { expose: p }) {
-    const r = k(null);
-    return p(a({}, r)), (e, K) => (u(), l(s(c), g({
+  setup(h, { expose: n }) {
+    const t = a(null);
+    return n(k({}, t)), (e, R) => (l(), c(o(P), f({
       ref_key: "KEmptyRef",
-      ref: r,
+      ref: t,
       class: "k-empty"
-    }, e.$attrs), y({
-      image: o(() => [
+    }, e.$attrs), u({
+      image: s(() => [
         m(e.$slots, "icon", {}, () => [
-          E("img", { src: s(i) }, null, 8, $)
+          y("img", { src: o(g) }, null, 8, $)
         ])
       ]),
       _: 2
     }, [
-      _(e.$slots, (R, t) => ({
-        name: t,
-        fn: o((n) => [
-          m(e.$slots, t, P(d(n)))
+      _(e.$slots, (x, r) => ({
+        name: r,
+        fn: s((p) => [
+          m(e.$slots, r, d(E(p)))
         ])
       }))
     ]), 1040));
   }
 });
 export {
-  j as default
+  N as default
 };

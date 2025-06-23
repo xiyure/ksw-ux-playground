@@ -1,16 +1,13 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { OverlayScrollbarsComponent as y } from "../../node_modules/overlayscrollbars-vue/overlayscrollbars-vue.mjs";
-import A from "./subMenu.vue.mjs";
-import { transformTreeData as E } from "../../utils/utils.mjs";
+import { defineComponent as A, ref as y, computed as E, watch as z, provide as N, createElementBlock as w, openBlock as m, createElementVNode as a, normalizeClass as v, createCommentVNode as C, createVNode as i, renderSlot as r, unref as c, withCtx as p, mergeProps as O, createSlots as j, renderList as H, normalizeProps as D, guardReactiveProps as F, createBlock as K } from "vue";
+import { OverlayScrollbarsComponent as _ } from "../../node_modules/overlayscrollbars-vue/overlayscrollbars-vue.mjs";
+import L from "./subMenu.vue.mjs";
+import { transformTreeData as R } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { ElMenu as N } from "../../node_modules/element-plus/es/components/menu/index.mjs";
-import z from "../../node_modules/ksw-vue-icon/es/icons/base/left-menu-display.mjs";
-import { defineComponent as O, computed as j, watch as H, provide as D, createElementBlock as w, openBlock as m, createElementVNode as a, createCommentVNode as C, createVNode as n, renderSlot as r, withCtx as c, mergeProps as F, createSlots as K, renderList as L, guardReactiveProps as R, createBlock as T } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as _, unref as p } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeClass as v, normalizeProps as q } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const G = { class: "k-layout-container h-screen flex overflow-hidden" }, J = { class: "k-layout-content h-screen overflow-hidden flex flex-col flex-1" }, Q = { class: "k-layout-header bg-white h-12 px-4 flex w-full justify-between items-center border-b" }, U = { class: "k-layout-main" }, W = { class: "k-layout-footer" }, ne = /* @__PURE__ */ O({
+import { ElMenu as T } from "../../node_modules/element-plus/es/components/menu/index.mjs";
+import q from "../../node_modules/ksw-vue-icon/es/icons/base/left-menu-display.mjs";
+const G = { class: "k-layout-container h-screen flex overflow-hidden" }, J = { class: "k-layout-content h-screen overflow-hidden flex flex-col flex-1" }, Q = { class: "k-layout-header bg-white h-12 px-4 flex w-full justify-between items-center border-b" }, U = { class: "k-layout-main" }, W = { class: "k-layout-footer" }, ae = /* @__PURE__ */ A({
   name: "KMenuView",
   __name: "MenuView",
   props: {
@@ -22,9 +19,9 @@ const G = { class: "k-layout-container h-screen flex overflow-hidden" }, J = { c
   },
   emits: ["click", "select"],
   setup(b, { expose: g, emit: S }) {
-    const o = b, h = S, t = _(!1), d = _(/* @__PURE__ */ new Set([])), u = [], f = j(() => o.collapse !== void 0 ? o.collapse : t.value);
-    H(() => o.options, () => {
-      const e = E(
+    const o = b, h = S, t = y(!1), d = y(/* @__PURE__ */ new Set([])), u = [], f = E(() => o.collapse !== void 0 ? o.collapse : t.value);
+    z(() => o.options, () => {
+      const e = R(
         o.options,
         { parentField: "index", children: "children", addPid: !0, deleteChildren: !0 }
       );
@@ -36,23 +33,23 @@ const G = { class: "k-layout-container h-screen flex overflow-hidden" }, J = { c
       o.collapse === void 0 && (t.value = !0);
     }, B = () => {
       o.collapse === void 0 && (t.value = !1);
-    }, V = () => {
+    }, M = () => {
       o.collapse === void 0 && (t.value = !t.value);
-    }, M = (e) => {
+    }, P = (e) => {
       k(e), h("select", e);
     };
     function k(e) {
       if (!e)
         return;
       d.value.clear();
-      const i = new Map(u.map((l) => [l.index, l]));
+      const n = new Map(u.map((l) => [l.index, l]));
       let s = e;
       for (; s; ) {
-        const l = i.get(s);
+        const l = n.get(s);
         l && (d.value.add(l.index), s = l.pid);
       }
     }
-    return k(o.defaultActive), D("__activeSet__", d), g({ collapse: x, expand: B, toggleExpand: V }), (e, i) => (m(), w("div", G, [
+    return k(o.defaultActive), N("__activeSet__", d), g({ collapse: x, expand: B, toggleExpand: M }), (e, n) => (m(), w("div", G, [
       a("div", {
         class: v(["k-layout-aside flex flex-col", { "is-collapse": f.value }])
       }, [
@@ -62,26 +59,26 @@ const G = { class: "k-layout-container h-screen flex overflow-hidden" }, J = { c
         }, [
           r(e.$slots, "app-logo")
         ], 2)) : C("", !0),
-        n(p(y), {
+        i(c(_), {
           defer: "",
           class: "OverlayScrollbarsComponent flex-1",
           options: { scrollbars: { autoHide: "scroll", theme: "os-theme-light" } }
         }, {
-          default: c(() => [
-            n(p(N), F({
+          default: p(() => [
+            i(c(T), O({
               collapse: f.value,
               "default-active": e.defaultActive
-            }, e.$attrs, { onSelect: M }), {
-              default: c(() => [
-                n(A, {
+            }, e.$attrs, { onSelect: P }), {
+              default: p(() => [
+                i(L, {
                   options: e.options,
                   link: e.link,
                   onClick: $
-                }, K({ _: 2 }, [
-                  L(e.$slots, (s, l) => ({
+                }, j({ _: 2 }, [
+                  H(e.$slots, (s, l) => ({
                     name: l,
-                    fn: c((P) => [
-                      r(e.$slots, l, q(R(P)))
+                    fn: p((V) => [
+                      r(e.$slots, l, D(F(V)))
                     ])
                   }))
                 ]), 1032, ["options", "link"])
@@ -94,21 +91,21 @@ const G = { class: "k-layout-container h-screen flex overflow-hidden" }, J = { c
       ], 2),
       a("div", J, [
         a("div", Q, [
-          o.showCollapse && o.collapse === void 0 ? (m(), T(p(z), {
+          o.showCollapse && o.collapse === void 0 ? (m(), K(c(q), {
             key: 0,
             class: v([{ "rotate-180": !t.value }, "collapse-btn cursor-pointer"]),
             color: "black",
             size: "20",
-            onClick: i[0] || (i[0] = (s) => t.value = !t.value)
+            onClick: n[0] || (n[0] = (s) => t.value = !t.value)
           }, null, 8, ["class"])) : C("", !0),
           r(e.$slots, "header")
         ]),
-        n(p(y), {
+        i(c(_), {
           defer: "",
           options: { scrollbars: { autoHide: "scroll" } },
           class: "flex-1"
         }, {
-          default: c(() => [
+          default: p(() => [
             a("div", U, [
               r(e.$slots, "main")
             ]),
@@ -123,5 +120,5 @@ const G = { class: "k-layout-container h-screen flex overflow-hidden" }, J = { c
   }
 });
 export {
-  ne as default
+  ae as default
 };

@@ -1,20 +1,17 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { getRestAttrs as d, getExposeProxy as h } from "../../utils/utils.mjs";
+import { defineComponent as d, ref as h, computed as g, createBlock as a, openBlock as m, unref as _, mergeProps as k, createSlots as S, withCtx as u, createCommentVNode as b, createElementVNode as w, resolveDynamicComponent as v, normalizeStyle as x, renderSlot as y, createTextVNode as C, toDisplayString as I } from "vue";
+import { getRestAttrs as M, getExposeProxy as T } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { isVueComponent as g } from "../../utils/dom.mjs";
-import { ElTree as _ } from "../../node_modules/element-plus/es/components/tree/index.mjs";
-import { defineComponent as k, computed as S, createBlock as a, openBlock as m, createSlots as b, withCtx as u, renderSlot as y, createCommentVNode as w, createElementVNode as v, resolveDynamicComponent as x, createTextVNode as C, mergeProps as I } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as M, unref as T } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeStyle as V, toDisplayString as B } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const F = { class: "k-tree-node-label" }, q = /* @__PURE__ */ k({
+import { isVueComponent as F } from "../../utils/dom.mjs";
+import { ElTree as R } from "../../node_modules/element-plus/es/components/tree/index.mjs";
+const V = { class: "k-tree-node-label" }, z = /* @__PURE__ */ d({
   name: "KTree",
   __name: "tree",
   props: {
-    filterMethod: { type: Function, default: (s, i) => {
+    filterMethod: { type: Function, default: (l, s) => {
       var e;
-      return (e = i.label) == null ? void 0 : e.includes(s);
+      return (e = s.label) == null ? void 0 : e.includes(l);
     } },
     icon: { type: [Function, String], default: "" },
     expandIcon: { type: [Function, String], default: "" },
@@ -23,35 +20,35 @@ const F = { class: "k-tree-node-label" }, q = /* @__PURE__ */ k({
     props: {},
     iconMethod: {}
   },
-  setup(s, { expose: i }) {
-    const e = s, c = M(), l = S(() => (r, p) => {
+  setup(l, { expose: s }) {
+    const e = l, c = h(), i = g(() => (r, p) => {
       if (typeof e.iconMethod == "function") {
-        const o = e.iconMethod(p, r), n = (o == null ? void 0 : o.icon) ?? String(o);
-        return typeof n == "string" || g(n) ? { _icon: n, ...d(o, ["icon"]) } : {};
+        const t = e.iconMethod(p, r), n = (t == null ? void 0 : t.icon) ?? String(t);
+        return typeof n == "string" || F(n) ? { _icon: n, ...M(t, ["icon"]) } : {};
       }
-      let t = "";
-      return r.isLeaf ? t = e.icon : r.expanded ? t = e.expandIcon : t = e.collapseIcon, typeof t == "function" ? { _icon: t(r, p) } : { _icon: t };
+      let o = "";
+      return r.isLeaf ? o = e.icon : r.expanded ? o = e.expandIcon : o = e.collapseIcon, typeof o == "function" ? { _icon: o(r, p) } : { _icon: o };
     });
-    return i(h({}, c)), (r, p) => (m(), a(T(_), I({
+    return s(T({}, c)), (r, p) => (m(), a(_(R), k({
       ref_key: "KTreeRef",
       ref: c,
       class: ["k-tree", { "k-tree-show-arrow": e.showArrow }],
       "filter-method": r.filterMethod,
       props: e.props
-    }, r.$attrs), b({
-      default: u(({ node: t, data: o }) => [
-        l.value(t, o)._icon ? (m(), a(x(l.value(t, o)._icon), {
+    }, r.$attrs), S({
+      default: u(({ node: o, data: t }) => [
+        i.value(o, t)._icon ? (m(), a(v(i.value(o, t)._icon), {
           key: 0,
-          style: V({ marginRight: "0.25rem", ...l.value(t, o) })
-        }, null, 8, ["style"])) : w("", !0),
-        v("span", F, [
+          style: x({ marginRight: "0.25rem", ...i.value(o, t) })
+        }, null, 8, ["style"])) : b("", !0),
+        w("span", V, [
           y(r.$slots, "default", {
-            node: t,
-            data: o
+            node: o,
+            data: t
           }, () => {
             var n, f;
             return [
-              C(B(typeof ((n = e.props) == null ? void 0 : n.label) == "function" ? o[e.props.label(o, t) ?? "label"] : o[((f = e.props) == null ? void 0 : f.label) ?? "label"]), 1)
+              C(I(typeof ((n = e.props) == null ? void 0 : n.label) == "function" ? t[e.props.label(t, o) ?? "label"] : t[((f = e.props) == null ? void 0 : f.label) ?? "label"]), 1)
             ];
           })
         ])
@@ -69,5 +66,5 @@ const F = { class: "k-tree-node-label" }, q = /* @__PURE__ */ k({
   }
 });
 export {
-  q as default
+  z as default
 };

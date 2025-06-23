@@ -1,9 +1,8 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { KColumnGroup as $, KTableColumn as h } from "../table/index.mjs";
-import b from "./table_column_content.vue.mjs";
-import { SLOT_NAMES as A } from "./const.mjs";
-import { defineComponent as G, createVNode as m, mergeProps as S } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-const L = /* @__PURE__ */ G({
+import { defineComponent as $, createVNode as m, mergeProps as S } from "vue";
+import { KColumnGroup as h, KTableColumn as b } from "../table/index.mjs";
+import A from "./table_column_content.vue.mjs";
+import { SLOT_NAMES as G } from "./const.mjs";
+const k = /* @__PURE__ */ $({
   name: "ColumnGroup",
   props: {
     data: Array,
@@ -26,7 +25,7 @@ const L = /* @__PURE__ */ G({
     return () => Array.isArray(f.column.group) && f.column.group.length ? p(f.column) : l(a, f.column);
     function p(e) {
       const r = e.group || [], n = g(a, e.field);
-      return m($, S(e, {
+      return m(h, S(e, {
         key: e.field,
         resizable: !0
       }), {
@@ -50,7 +49,7 @@ const L = /* @__PURE__ */ G({
           return e[o] && (c[o] = (C) => {
             var y;
             return (y = e[o]) == null ? void 0 : y.call(e, C);
-          }), m(b, {
+          }), m(A, {
             key: r.field,
             col: r,
             row: t,
@@ -61,7 +60,7 @@ const L = /* @__PURE__ */ G({
       }), (r.renderEdit || e[`${n}-edit`]) && (i.edit = (u) => {
         var t;
         return typeof r.renderEdit == "function" ? r.renderEdit(u) : (t = e[`${n}-edit`]) == null ? void 0 : t.call(e, u);
-      }), m(h, S({
+      }), m(b, S({
         key: r.field
       }, r), i);
     }
@@ -69,7 +68,7 @@ const L = /* @__PURE__ */ G({
       if (!r)
         return {};
       const n = {};
-      for (const i of A) {
+      for (const i of G) {
         const u = `${r}-${i}`;
         e[u] && (n[i] = (t) => {
           var d;
@@ -81,5 +80,5 @@ const L = /* @__PURE__ */ G({
   }
 });
 export {
-  L as default
+  k as default
 };

@@ -1,8 +1,6 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { ElCard as l } from "../../node_modules/element-plus/es/components/card/index.mjs";
-import { defineComponent as c, createElementBlock as s, openBlock as a, createElementVNode as i, Fragment as f, renderList as m, createBlock as p, mergeProps as k, createSlots as u, withCtx as o, renderSlot as d } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { unref as y } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-const _ = { class: "k-tree-table__card" }, h = { class: "k-tree-table__card-wrapper" }, C = /* @__PURE__ */ c({
+import { defineComponent as l, createElementBlock as n, openBlock as a, createElementVNode as c, Fragment as f, renderList as i, createBlock as m, unref as k, mergeProps as p, createSlots as u, withCtx as o, renderSlot as d } from "vue";
+import { ElCard as y } from "../../node_modules/element-plus/es/components/card/index.mjs";
+const _ = { class: "k-tree-table__card" }, h = { class: "k-tree-table__card-wrapper" }, w = /* @__PURE__ */ l({
   name: "TableCard",
   __name: "table_card",
   props: {
@@ -19,10 +17,10 @@ const _ = { class: "k-tree-table__card" }, h = { class: "k-tree-table__card-wrap
     }
   },
   setup(t) {
-    const n = t;
-    return (e, b) => (a(), s("div", _, [
-      i("div", h, [
-        (a(!0), s(f, null, m(n.data, (r) => (a(), p(y(l), k({
+    const s = t;
+    return (e, b) => (a(), n("div", _, [
+      c("div", h, [
+        (a(!0), n(f, null, i(s.data, (r) => (a(), m(k(y), p({
           key: r[t.keyField],
           class: "k-tree-table__card-item"
         }, t.cardAttrs), u({ _: 2 }, [
@@ -53,5 +51,5 @@ const _ = { class: "k-tree-table__card" }, h = { class: "k-tree-table__card-wrap
   }
 });
 export {
-  C as default
+  w as default
 };

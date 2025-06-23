@@ -1,16 +1,13 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
+import { defineComponent as M, computed as a, inject as B, onMounted as D, ref as y, onUnmounted as G, provide as i, createBlock as H, openBlock as K, unref as U, mergeProps as V, createSlots as Y, renderList as Z, withCtx as $, renderSlot as j, normalizeProps as z, guardReactiveProps as W } from "vue";
 import "../../node_modules/vxe-table/es/components.mjs";
 import u from "../../node_modules/dom-zindex/es/index.esm.mjs";
-import { genRandomStr as M, getExposeProxy as B } from "../../utils/utils.mjs";
+import { genRandomStr as q, getExposeProxy as J } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { CLEAR_SORT as D, SORT_CHANGE as y, FILTER_VISIBLE as G, FILTER_CHANGE as H, CLEAR_FILTER as K, HIDE_COLUMN as E, DESC_CHANGE as _, SORT_CONFIG_KEY as U, FILTER_CONFIG_KEY as V, SHOW_COLUMN_MENU_KEY as Y, SET_FILTER as Z, CLEAR_FILTER_OUTSIDE as $, OPEN_FILTER_PANEL as j, RESET_FILTER_PANEL as z, SAVE_FILTER_PANEL as W, CLOSE_FILTER_PANEL as q, TABLE_KEY as J, TABLE_ID as Q } from "./const.mjs";
-import { VxeTable as X } from "../../node_modules/vxe-table/es/table/index.mjs";
-import { defineComponent as ee, computed as a, inject as te, onMounted as ne, onUnmounted as re, provide as i, createBlock as oe, openBlock as ie, createSlots as le, renderList as ce, withCtx as se, renderSlot as ae, guardReactiveProps as me, mergeProps as fe } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as ue, unref as Ee } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeProps as _e } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const Se = /* @__PURE__ */ ee({
+import { CLEAR_SORT as Q, SORT_CHANGE as X, FILTER_VISIBLE as ee, FILTER_CHANGE as te, CLEAR_FILTER as ne, HIDE_COLUMN as E, DESC_CHANGE as _, TABLE_KEY as re, TABLE_ID as oe, SORT_CONFIG_KEY as ie, FILTER_CONFIG_KEY as le, SHOW_COLUMN_MENU_KEY as ce, SET_FILTER as se, CLEAR_FILTER_OUTSIDE as ae, OPEN_FILTER_PANEL as me, RESET_FILTER_PANEL as fe, SAVE_FILTER_PANEL as ue, CLOSE_FILTER_PANEL as Ee } from "./const.mjs";
+import { VxeTable as _e } from "../../node_modules/vxe-table/es/table/index.mjs";
+const Re = /* @__PURE__ */ M({
   name: "KTable",
   __name: "table",
   props: {
@@ -27,7 +24,7 @@ const Se = /* @__PURE__ */ ee({
     "filter-visible",
     "clear-filter"
   ],
-  setup(p, { expose: C, emit: d }) {
+  setup(C, { expose: p, emit: d }) {
     const l = {
       descChange: {
         name: _,
@@ -38,39 +35,39 @@ const Se = /* @__PURE__ */ ee({
         callback: F.bind(this)
       },
       clearFilter: {
-        name: K,
+        name: ne,
         callback: O.bind(this)
       },
       filterChange: {
-        name: H,
+        name: te,
         callback: v.bind(this)
       },
       filterVisible: {
-        name: G,
+        name: ee,
         callback: x.bind(this)
       },
       sortChange: {
-        name: y,
+        name: X,
         callback: A.bind(this)
       },
       clearSort: {
-        name: D,
+        name: Q,
         callback: N.bind(this)
       }
-    }, c = p, g = a(() => {
+    }, c = C, g = a(() => {
       const { chronological: e, multiple: t } = c.sortConfig ?? {};
       return { chronological: e, multiple: t, remote: !0 };
-    }), b = a(() => ({ remote: !0 })), n = M(8), r = te("_emitter");
+    }), b = a(() => ({ remote: !0 })), n = q(8), r = B("_emitter");
     for (const e in l) {
       const { name: t, callback: s } = l[e];
       r.on(t, n, s);
     }
     const o = d;
-    ne(() => {
+    D(() => {
       h();
     });
-    const m = ue();
-    re(() => {
+    const m = y();
+    G(() => {
       for (const e in l) {
         const { name: t } = l[e];
         r.remove(t, n);
@@ -88,32 +85,32 @@ const Se = /* @__PURE__ */ ee({
     }
     function T(e, t = []) {
       return new Promise((s) => {
-        r.emit(Z, n, e, t), s(!0);
+        r.emit(se, n, e, t), s(!0);
       });
     }
     function R(e) {
       return new Promise((t) => {
-        r.emit($, n, e), t(!0);
+        r.emit(ae, n, e), t(!0);
       });
     }
     function I(e) {
       return new Promise((t) => {
-        r.emit(j, n, e), t(!0);
+        r.emit(me, n, e), t(!0);
       });
     }
     function P() {
       return new Promise((e) => {
-        r.emit(z, n), e(!0);
+        r.emit(fe, n), e(!0);
       });
     }
     function S() {
       return new Promise((e) => {
-        r.emit(W, n), e(!0);
+        r.emit(ue, n), e(!0);
       });
     }
     function k() {
       return new Promise((e) => {
-        r.emit(q, n), e(!0);
+        r.emit(Ee, n), e(!0);
       });
     }
     function A(e) {
@@ -131,35 +128,35 @@ const Se = /* @__PURE__ */ ee({
     function O(e) {
       o("clear-filter", e);
     }
-    return i(J, m), i(Q, n), i(
-      U,
+    return i(re, m), i(oe, n), i(
+      ie,
       a(() => c.sortConfig)
     ), i(
-      V,
+      le,
       a(() => c.filterConfig ?? {})
-    ), i(Y, c.showColumnMenu), C(B({
+    ), i(ce, c.showColumnMenu), p(J({
       setFilter: T,
       clearFilter: R,
       openFilter: I,
       closeFilter: k,
       resetFilterPanel: P,
       saveFilterPanel: S
-    }, m)), (e, t) => (ie(), oe(Ee(X), fe({
+    }, m)), (e, t) => (K(), H(U(_e), V({
       ref_key: "vxeTableRef",
       ref: m,
       class: "k-table",
       "sort-config": g.value,
       "filter-config": b.value
-    }, e.$attrs), le({ _: 2 }, [
-      ce(e.$slots, (s, f) => ({
+    }, e.$attrs), Y({ _: 2 }, [
+      Z(e.$slots, (s, f) => ({
         name: f,
-        fn: se((w) => [
-          ae(e.$slots, f, _e(me(w)))
+        fn: $((w) => [
+          j(e.$slots, f, z(W(w)))
         ])
       }))
     ]), 1040, ["sort-config", "filter-config"]));
   }
 });
 export {
-  Se as default
+  Re as default
 };

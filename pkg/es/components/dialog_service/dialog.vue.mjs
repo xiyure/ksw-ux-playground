@@ -1,30 +1,28 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { KDialog as A } from "../dialog/index.mjs";
-import { KForm as ee, KFormItem as oe } from "../form/index.mjs";
-import { KCheckbox as D, KCheckboxGroup as te } from "../checkbox/index.mjs";
-import { KRadio as M, KRadioGroup as re } from "../radio/index.mjs";
-import { KTreeSelect as ne } from "../tree_select/index.mjs";
-import { KInput as le } from "../input/index.mjs";
-import { KButton as N } from "../button/index.mjs";
-import { KSelect as ae } from "../select/index.mjs";
-import { genRandomStr as ue } from "../../utils/utils.mjs";
+import { defineComponent as A, reactive as g, ref as D, createElementBlock as M, openBlock as w, Fragment as ee, renderList as N, createBlock as O, unref as oe, mergeProps as s, createSlots as te, withCtx as re, resolveDynamicComponent as ne, nextTick as le, createVNode as a, isVNode as ae, resolveComponent as ue } from "vue";
+import { KDialog as ie } from "../dialog/index.mjs";
+import { KForm as ce, KFormItem as de } from "../form/index.mjs";
+import { KCheckboxGroup as fe, KCheckbox as W } from "../checkbox/index.mjs";
+import { KRadioGroup as se, KRadio as q } from "../radio/index.mjs";
+import { KTreeSelect as pe } from "../tree_select/index.mjs";
+import { KInput as me } from "../input/index.mjs";
+import { KButton as T } from "../button/index.mjs";
+import { KSelect as ve } from "../select/index.mjs";
+import { genRandomStr as ge } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { useLocale as ie } from "../../hooks/use_locale.mjs";
-import { defineComponent as ce, createElementBlock as O, openBlock as w, Fragment as de, renderList as W, createBlock as q, createSlots as fe, withCtx as se, resolveDynamicComponent as pe, mergeProps as s, nextTick as me, createVNode as a, resolveComponent as ve, isVNode as ge } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { reactive as g, ref as T, unref as he } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
+import { useLocale as he } from "../../hooks/use_locale.mjs";
 function y(b) {
-  return typeof b == "function" || Object.prototype.toString.call(b) === "[object Object]" && !ge(b);
+  return typeof b == "function" || Object.prototype.toString.call(b) === "[object Object]" && !ae(b);
 }
-const Le = /* @__PURE__ */ ce({
+const Ge = /* @__PURE__ */ A({
   __name: "dialog",
   setup(b, {
     expose: z
   }) {
     const {
       t: E
-    } = ie(), V = g([]), C = /* @__PURE__ */ new Map(), R = T();
+    } = he(), V = g([]), C = /* @__PURE__ */ new Map(), R = D();
     function B(t, r) {
       const e = r.reduce((c, n) => {
         const {
@@ -39,7 +37,7 @@ const Le = /* @__PURE__ */ ce({
         ...t
       }), d = r.map((c) => {
         const n = g(c ?? {}), o = H(i, n);
-        return c.noFormItemWrap && typeof o == "function" ? o() : a(oe, n, y(o) ? o : {
+        return c.noFormItemWrap && typeof o == "function" ? o() : a(de, n, y(o) ? o : {
           default: () => [o]
         });
       });
@@ -62,10 +60,10 @@ const Le = /* @__PURE__ */ ce({
           }
           return () => {
             let o;
-            return a(ae, s({
+            return a(ve, s({
               modelValue: t.model[n],
               "onUpdate:modelValue": (l) => t.model[n] = l
-            }, e), y(o = g(r.options).map((l) => a(ve("k-option"), {
+            }, e), y(o = g(r.options).map((l) => a(ue("k-option"), {
               label: l.label,
               value: l.value
             }, null))) ? o : {
@@ -73,7 +71,7 @@ const Le = /* @__PURE__ */ ce({
             });
           };
         case "checkbox":
-          return () => a(D, s({
+          return () => a(W, s({
             modelValue: t.model[n],
             "onUpdate:modelValue": (o) => t.model[n] = o
           }, e), null);
@@ -84,10 +82,10 @@ const Le = /* @__PURE__ */ ce({
           }
           return () => {
             let o;
-            return a(te, s({
+            return a(fe, s({
               modelValue: t.model[n],
               "onUpdate:modelValue": (l) => t.model[n] = l
-            }, e), y(o = g(r.options).map((l) => a(D, {
+            }, e), y(o = g(r.options).map((l) => a(W, {
               label: l.label,
               value: l.value
             }, null))) ? o : {
@@ -95,7 +93,7 @@ const Le = /* @__PURE__ */ ce({
             });
           };
         case "radio":
-          return () => a(M, s({
+          return () => a(q, s({
             modelValue: t.model[n],
             "onUpdate:modelValue": (o) => t.model[n] = o
           }, e), null);
@@ -106,10 +104,10 @@ const Le = /* @__PURE__ */ ce({
           }
           return () => {
             let o;
-            return a(re, s({
+            return a(se, s({
               modelValue: t.model[n],
               "onUpdate:modelValue": (l) => t.model[n] = l
-            }, e), y(o = g(r.options).map((l) => a(M, {
+            }, e), y(o = g(r.options).map((l) => a(q, {
               label: l.label,
               value: l.value
             }, null))) ? o : {
@@ -117,19 +115,19 @@ const Le = /* @__PURE__ */ ce({
             });
           };
         case "treeSelect":
-          return () => a(ne, s({
+          return () => a(pe, s({
             modelValue: t.model[n],
             "onUpdate:modelValue": (o) => t.model[n] = o
           }, e), null);
         default:
-          return () => a(le, s({
+          return () => a(me, s({
             modelValue: t.model[n],
             "onUpdate:modelValue": (o) => t.model[n] = o
           }, e), null);
       }
     }
     function J({
-      id: t = `dialog_${ue(8)}`,
+      id: t = `dialog_${ge(8)}`,
       attrs: r,
       slots: e = {},
       formItems: i,
@@ -159,7 +157,7 @@ const Le = /* @__PURE__ */ ce({
         ...r
       }), _ = () => {
         m.modelValue = !1;
-      }, h = T(null);
+      }, h = D(null);
       let p, F;
       const f = {
         ref: h,
@@ -173,7 +171,7 @@ const Le = /* @__PURE__ */ ce({
         header: () => e.header ? e.header(f) : a("div", {
           class: "el-dialog__title"
         }, [m.title]),
-        default: () => e.default ? e.default(f) : ([p, F] = B(d, i), a(ee, s({
+        default: () => e.default ? e.default(f) : ([p, F] = B(d, i), a(ce, s({
           ref: h
         }, p), {
           default: () => F
@@ -208,12 +206,12 @@ const Le = /* @__PURE__ */ ce({
             class: `k-dialog-service-footer${v ? " k-dialog-service-footer-has-left" : ""}`
           }, [v ? a("div", {
             class: "k-dialog-service-footer-left"
-          }, [(k = e.footerLeft) == null ? void 0 : k.call(e, f)]) : "", X !== !1 && a(N, {
+          }, [(k = e.footerLeft) == null ? void 0 : k.call(e, f)]) : "", X !== !1 && a(T, {
             class: "k-dialog-service-cancel-button__default",
             onClick: f.cancel
           }, y(K) ? K : {
             default: () => [K]
-          }), Y !== !1 && a(N, {
+          }), Y !== !1 && a(T, {
             onClick: f.confirm,
             main: !0
           }, y(S) ? S : {
@@ -225,7 +223,7 @@ const Le = /* @__PURE__ */ ce({
         id: t,
         attrs: m,
         slots: I
-      }), o && me().then(() => {
+      }), o && le().then(() => {
         const v = m.appendTo ?? R.value, k = v.querySelector(`#${t}`);
         k && (k.style.pointerEvents = "auto");
         let u = k.parentElement;
@@ -248,22 +246,22 @@ const Le = /* @__PURE__ */ ce({
     }
     return z({
       showDialog: J
-    }), (t, r) => (w(), O("div", {
+    }), (t, r) => (w(), M("div", {
       ref_key: "root",
       ref: R,
       class: "k-dialogs"
-    }, [(w(!0), O(de, null, W(V, (e) => (w(), q(he(A), s(e.attrs, {
+    }, [(w(!0), M(ee, null, N(V, (e) => (w(), O(oe(ie), s(e.attrs, {
       id: e.id,
       key: e.id,
       onClosed: (i) => Q(e.id)
-    }), fe({
+    }), te({
       _: 2
-    }, [W(e.slots, (i, d) => ({
+    }, [N(e.slots, (i, d) => ({
       name: d,
-      fn: se(() => [(w(), q(pe(e.slots[d])))])
+      fn: re(() => [(w(), O(ne(e.slots[d])))])
     }))]), 1040, ["id", "onClosed"]))), 128))], 512));
   }
 });
 export {
-  Le as default
+  Ge as default
 };

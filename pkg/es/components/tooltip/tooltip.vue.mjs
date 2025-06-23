@@ -1,14 +1,11 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { isValidColor as f, getExposeProxy as d } from "../../utils/utils.mjs";
+import { defineComponent as m, ref as p, computed as d, watch as u, createBlock as y, openBlock as v, unref as n, mergeProps as C, createSlots as _, withCtx as s, renderSlot as i, createElementVNode as h, createVNode as k, normalizeStyle as S } from "vue";
+import { isValidColor as g, getExposeProxy as x } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import u from "../../node_modules/ksw-vue-icon/es/icons/base/tips.mjs";
-import { ElTooltip as y } from "../../node_modules/element-plus/es/components/tooltip/index.mjs";
-import { defineComponent as v, computed as C, watch as _, createBlock as h, openBlock as k, createSlots as S, withCtx as p, renderSlot as n, createElementVNode as g, createVNode as x, mergeProps as E } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as i, unref as s } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeStyle as N } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const w = { class: "k-tooltip-icon" }, L = /* @__PURE__ */ v({
+import { ElTooltip as E } from "../../node_modules/element-plus/es/components/tooltip/index.mjs";
+import w from "../../node_modules/ksw-vue-icon/es/icons/base/tips.mjs";
+const N = { class: "k-tooltip-icon" }, z = /* @__PURE__ */ m({
   name: "KTooltip",
   __name: "tooltip",
   props: {
@@ -23,7 +20,7 @@ const w = { class: "k-tooltip-icon" }, L = /* @__PURE__ */ v({
       danger: "#ef4444",
       warning: "#f97316",
       primary: "#2882ff"
-    }, o = a, l = i(), e = i(void 0), m = C(() => {
+    }, o = a, l = p(), e = p(void 0), f = d(() => {
       const t = o.popperStyle || {};
       return {
         color: o.textColor,
@@ -32,22 +29,22 @@ const w = { class: "k-tooltip-icon" }, L = /* @__PURE__ */ v({
         ...t
       };
     });
-    return _(
+    return u(
       () => [o.type, o.color],
       () => {
-        o.color && f(o.color) ? e.value = o.color : !o.color && o.type && r[o.type] ? e.value = r[o.type] : e.value = void 0;
+        o.color && g(o.color) ? e.value = o.color : !o.color && o.type && r[o.type] ? e.value = r[o.type] : e.value = void 0;
       },
       { immediate: !0 }
-    ), c(d({}, l)), (t, V) => (k(), h(s(y), E({
+    ), c(x({}, l)), (t, $) => (v(), y(n(E), C({
       ref_key: "tooltipRef",
       ref: l,
       class: "k-tooltip"
-    }, t.$attrs, { "popper-style": m.value }), S({
-      default: p(() => [
-        n(t.$slots, "default", {}, () => [
-          g("i", w, [
-            x(s(u), {
-              style: N({
+    }, t.$attrs, { "popper-style": f.value }), _({
+      default: s(() => [
+        i(t.$slots, "default", {}, () => [
+          h("i", N, [
+            k(n(w), {
+              style: S({
                 color: e.value,
                 width: "15px",
                 height: "15px"
@@ -60,8 +57,8 @@ const w = { class: "k-tooltip-icon" }, L = /* @__PURE__ */ v({
     }, [
       t.$slots.content ? {
         name: "content",
-        fn: p(() => [
-          n(t.$slots, "content")
+        fn: s(() => [
+          i(t.$slots, "content")
         ]),
         key: "0"
       } : void 0
@@ -69,5 +66,5 @@ const w = { class: "k-tooltip-icon" }, L = /* @__PURE__ */ v({
   }
 });
 export {
-  L as default
+  z as default
 };

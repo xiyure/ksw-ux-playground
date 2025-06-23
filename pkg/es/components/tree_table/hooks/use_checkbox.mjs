@@ -1,14 +1,12 @@
-import "../../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { isObject as q } from "../../../node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-import E from "../../../node_modules/lodash-es/cloneDeep.mjs";
-import { ref as G } from "../../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { computed as b, onMounted as H, watch as J, nextTick as N } from "../../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-function Y(c, r, C, m, R) {
-  const O = {}, d = G(/* @__PURE__ */ new Set()), k = /* @__PURE__ */ new Set(), P = b(() => d.value.size);
+import { ref as q, computed as b, onMounted as E, watch as G, nextTick as H } from "vue";
+import { isObject as J } from "../../../node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
+import N from "../../../node_modules/lodash-es/cloneDeep.mjs";
+function W(c, r, C, m, R) {
+  const O = {}, d = q(/* @__PURE__ */ new Set()), k = /* @__PURE__ */ new Set(), P = b(() => d.value.size);
   let M = !1;
   const g = b(() => Object.assign(O, r.checkboxConfig || {})), F = b(() => {
     const e = () => z(!0);
-    if (q(r.batchOperateConfig)) {
+    if (J(r.batchOperateConfig)) {
       const {
         showTotal: t = !0,
         total: n = d.value.size,
@@ -22,16 +20,16 @@ function Y(c, r, C, m, R) {
     var e;
     return ((e = r.rowConfig) == null ? void 0 : e.keyField) ?? "id";
   });
-  H(() => {
-    p();
-  }), J(() => C.value.length, () => {
+  E(() => {
+    D();
+  }), G(() => C.value.length, () => {
     _();
   });
-  async function p() {
+  async function D() {
     var s;
     if (!((s = C.value) != null && s.length) || M)
       return;
-    await N(), M = !0;
+    await H(), M = !0;
     const { checkRowKeys: e, checkAll: t } = g.value, n = Array.isArray(e) ? e : [], i = t ? C.value.filter((a) => a == null ? void 0 : a[l.value]) : n.map((a) => {
       var o;
       return (o = R.tableDataMap.get(a)) == null ? void 0 : o.node;
@@ -67,8 +65,8 @@ function Y(c, r, C, m, R) {
   }), x = (e, t) => {
     const n = Array.isArray(e) ? e : [e];
     for (const i of n)
-      D(i, t);
-  }, D = (e, t) => {
+      p(i, t);
+  }, p = (e, t) => {
     if (!e || !(e != null && e[l.value]))
       return;
     y(e) || (t ? d.value.add(e[l.value]) : d.value.delete(e[l.value]));
@@ -80,7 +78,7 @@ function Y(c, r, C, m, R) {
     }
     if (g.value.checkStrictly !== !0)
       for (const i of n.children)
-        D(i, t);
+        p(i, t);
   };
   async function S() {
     var t, n, i, s;
@@ -146,7 +144,7 @@ function Y(c, r, C, m, R) {
       return console.error("table instance not exists"), [];
     if (!e)
       return (i = c.value) == null ? void 0 : i.getCheckboxRecords(!t);
-    const n = E(k);
+    const n = N(k);
     if (r.useTree) {
       const o = /* @__PURE__ */ new Map(), u = ((s = r.treeConfig) == null ? void 0 : s.rowField) ?? "id", f = ((a = r.treeConfig) == null ? void 0 : a.parentField) ?? "pid";
       for (const h of C.value)
@@ -177,7 +175,7 @@ function Y(c, r, C, m, R) {
     closeBatchOperation: L,
     isCheckboxDisabled: y,
     clearCheckedData: w,
-    initCheckedData: p,
+    initCheckedData: D,
     resetCheckboxStatus: S,
     checkedDataSize: P,
     checkboxConfig: g,
@@ -185,5 +183,5 @@ function Y(c, r, C, m, R) {
   };
 }
 export {
-  Y as useCheckbox
+  W as useCheckbox
 };

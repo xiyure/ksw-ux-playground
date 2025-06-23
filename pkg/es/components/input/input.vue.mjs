@@ -1,22 +1,18 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { KPopover as q } from "../popover/index.mjs";
-import { getExposeProxy as G } from "../../utils/utils.mjs";
+import { defineComponent as q, ref as a, onMounted as G, onBeforeUnmount as J, computed as h, watch as D, provide as Q, createBlock as S, openBlock as d, unref as r, mergeProps as X, createSlots as _, withCtx as u, renderSlot as m, createElementVNode as E, normalizeClass as y, createVNode as K, createCommentVNode as $, withModifiers as ee, createElementBlock as b, Fragment as oe, renderList as te, toDisplayString as M, resolveDynamicComponent as le } from "vue";
+import { KPopover as ne } from "../popover/index.mjs";
+import { getExposeProxy as se } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { useSize as J, SIZE_KEY as Q } from "../../hooks/use_size.mjs";
-import { useLocale as X } from "../../hooks/use_locale.mjs";
-import { useCursor as _ } from "../../hooks/use_cursor.mjs";
-import ee from "../../node_modules/ksw-vue-icon/es/icons/base/down.mjs";
-import oe from "../../node_modules/ksw-vue-icon/es/icons/base/eye-off.mjs";
-import te from "../../node_modules/ksw-vue-icon/es/icons/base/eye.mjs";
-import { ElScrollbar as le } from "../../node_modules/element-plus/es/components/scrollbar/index.mjs";
-import { ElInput as ne } from "../../node_modules/element-plus/es/components/input/index.mjs";
-import { defineComponent as re, onMounted as se, onBeforeUnmount as pe, computed as h, watch as D, provide as ie, createBlock as S, createSlots as ae, withCtx as u, mergeProps as ue, openBlock as d, createElementVNode as E, renderSlot as m, createVNode as K, createCommentVNode as $, createElementBlock as b, Fragment as de, renderList as fe, resolveDynamicComponent as ve } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as a, unref as s } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeClass as y, toDisplayString as M } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-import { withModifiers as me } from "../../node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.mjs";
-const ce = ["onClick"], we = { class: "k-input-options-empty" }, De = /* @__PURE__ */ re({
+import { useSize as re, SIZE_KEY as pe } from "../../hooks/use_size.mjs";
+import { useLocale as ie } from "../../hooks/use_locale.mjs";
+import { useCursor as ae } from "../../hooks/use_cursor.mjs";
+import { ElInput as ue } from "../../node_modules/element-plus/es/components/input/index.mjs";
+import de from "../../node_modules/ksw-vue-icon/es/icons/base/down.mjs";
+import fe from "../../node_modules/ksw-vue-icon/es/icons/base/eye-off.mjs";
+import ve from "../../node_modules/ksw-vue-icon/es/icons/base/eye.mjs";
+import { ElScrollbar as me } from "../../node_modules/element-plus/es/components/scrollbar/index.mjs";
+const ce = ["onClick"], we = { class: "k-input-options-empty" }, Te = /* @__PURE__ */ q({
   name: "KInput",
   __name: "input",
   props: {
@@ -38,11 +34,11 @@ const ce = ["onClick"], we = { class: "k-input-options-empty" }, De = /* @__PURE
   },
   emits: ["update:modelValue", "input", "change", "popper-show", "popper-hide"],
   setup(U, { expose: W, emit: A }) {
-    const l = U, f = a(), V = J(l), { recordCursor: H, setCursor: O } = _(f), { t: L } = X(), p = A, v = a(!1), n = a(""), B = a(0), r = a(!1), k = a(""), g = a(!1), i = a(-1);
-    se(() => {
-      window.addEventListener("click", x), window.addEventListener("resize", C), window.addEventListener("keydown", N), C();
-    }), pe(() => {
-      window.removeEventListener("click", x), window.removeEventListener("resize", C), window.removeEventListener("keydown", N);
+    const l = U, f = a(), L = re(l), { recordCursor: H, setCursor: O } = ae(f), { t: V } = ie(), p = A, v = a(!1), n = a(""), B = a(0), s = a(!1), k = a(""), g = a(!1), i = a(-1);
+    G(() => {
+      window.addEventListener("click", N), window.addEventListener("resize", C), window.addEventListener("keydown", x), C();
+    }), J(() => {
+      window.removeEventListener("click", N), window.removeEventListener("resize", C), window.removeEventListener("keydown", x);
     });
     const I = h(() => l.type !== "password" && (!l.showPassword || v.value) ? l.type : v.value ? "text" : "password"), P = h(() => l.selectable && I.value === "text" && !l.showPassword), c = h(() => {
       var e;
@@ -54,7 +50,7 @@ const ce = ["onClick"], we = { class: "k-input-options-empty" }, De = /* @__PURE
         e !== n.value && (n.value = e);
       },
       { immediate: !0 }
-    ), D(() => r.value, (e) => {
+    ), D(() => s.value, (e) => {
       e || (g.value = !1);
     });
     const z = h(() => (e) => {
@@ -79,21 +75,21 @@ const ce = ["onClick"], we = { class: "k-input-options-empty" }, De = /* @__PURE
       n.value !== e && (n.value = e, p("update:modelValue", e), p("input", e), p("change", e));
     }
     function F() {
-      r.value || (g.value = !0), r.value = !r.value;
+      s.value || (g.value = !0), s.value = !s.value;
     }
     function Y(e) {
       var o;
-      l.filterable && n.value && ((o = c.value) != null && o.length) ? r.value = !0 : r.value = !1, p("update:modelValue", e), p("input", e);
+      l.filterable && n.value && ((o = c.value) != null && o.length) ? s.value = !0 : s.value = !1, p("update:modelValue", e), p("input", e);
     }
-    function N(e) {
+    function x(e) {
       var t;
-      if (!r.value)
+      if (!s.value)
         return;
       const o = ((t = c.value) == null ? void 0 : t.length) ?? 0;
-      e.code === "ArrowUp" ? i.value = (i.value - 1 + o) % o : e.code === "ArrowDown" ? i.value = (i.value + 1) % o : e.code === "Enter" && i.value >= 0 && i.value < o && (T(c.value[i.value]), r.value = !1);
+      e.code === "ArrowUp" ? i.value = (i.value - 1 + o) % o : e.code === "ArrowDown" ? i.value = (i.value + 1) % o : e.code === "Enter" && i.value >= 0 && i.value < o && (T(c.value[i.value]), s.value = !1);
     }
-    function x() {
-      r.value = !1;
+    function N() {
+      s.value = !1;
     }
     function C() {
       setTimeout(() => {
@@ -101,7 +97,7 @@ const ce = ["onClick"], we = { class: "k-input-options-empty" }, De = /* @__PURE
         return B.value = (o = (e = f.value) == null ? void 0 : e.$el) == null ? void 0 : o.offsetWidth;
       });
     }
-    return ie(Q, V), W(G({}, f)), (e, o) => (d(), S(s(ne), ue({
+    return Q(pe, L), W(se({}, f)), (e, o) => (d(), S(r(ue), X({
       ref_key: "inputRef",
       ref: f
     }, e.$attrs, {
@@ -117,13 +113,13 @@ const ce = ["onClick"], we = { class: "k-input-options-empty" }, De = /* @__PURE
       "prefix-icon": e.iconLeft ?? e.prefixIcon,
       "suffix-icon": e.iconRight ?? e.suffixIcon,
       type: I.value,
-      size: s(V).elSize,
-      placeholder: e.placeholder ?? s(L)("input.placeholder"),
+      size: r(L).elSize,
+      placeholder: e.placeholder ?? r(V)("input.placeholder"),
       onInput: Y,
       onChange: o[5] || (o[5] = (t) => {
         p("change", t);
       })
-    }), ae({
+    }), _({
       prefix: u(() => [
         m(e.$slots, "prefix")
       ]),
@@ -154,13 +150,13 @@ const ce = ["onClick"], we = { class: "k-input-options-empty" }, De = /* @__PURE
       P.value ? {
         name: "suffix",
         fn: u(() => [
-          K(s(ee), {
-            class: y(["k-input__arrow", { "is-rotate": r.value }]),
-            onClick: me(F, ["prevent", "stop"])
+          K(r(de), {
+            class: y(["k-input__arrow", { "is-rotate": s.value }]),
+            onClick: ee(F, ["prevent", "stop"])
           }, null, 8, ["class"]),
-          P.value ? (d(), S(s(q), {
+          P.value ? (d(), S(r(ne), {
             key: 0,
-            visible: r.value,
+            visible: s.value,
             "show-arrow": !1,
             width: B.value,
             "virtual-triggering": "",
@@ -188,14 +184,14 @@ const ce = ["onClick"], we = { class: "k-input-options-empty" }, De = /* @__PURE
             default: u(() => {
               var t;
               return [
-                K(s(le), {
+                K(r(me), {
                   class: "k-input-scrollbar",
                   "max-height": ((t = e.popperStyle) == null ? void 0 : t.maxHeight) ?? 200
                 }, {
                   default: u(() => {
                     var R;
                     return [
-                      (d(!0), b(de, null, fe(c.value, (w, Z) => (d(), b("li", {
+                      (d(!0), b(oe, null, te(c.value, (w, Z) => (d(), b("li", {
                         key: w,
                         class: y([
                           "k-input-option",
@@ -209,7 +205,7 @@ const ce = ["onClick"], we = { class: "k-input-options-empty" }, De = /* @__PURE
                         }
                       }, M(w), 11, ce))), 128)),
                       (R = e.options) != null && R.length ? $("", !0) : m(e.$slots, "empty", { key: 0 }, () => [
-                        E("div", we, M(s(L)("input.empty")), 1)
+                        E("div", we, M(r(V)("input.empty")), 1)
                       ])
                     ];
                   }),
@@ -229,7 +225,7 @@ const ce = ["onClick"], we = { class: "k-input-options-empty" }, De = /* @__PURE
             key: 0,
             onClick: j
           }, [
-            (d(), S(ve(v.value ? s(te) : s(oe))))
+            (d(), S(le(v.value ? r(ve) : r(fe))))
           ])) : $("", !0)
         ]),
         key: "3"
@@ -238,5 +234,5 @@ const ce = ["onClick"], we = { class: "k-input-options-empty" }, De = /* @__PURE
   }
 });
 export {
-  De as default
+  Te as default
 };

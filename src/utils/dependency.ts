@@ -67,30 +67,24 @@ export const genImportMap = (
       version: '2',
       path: '/dist/index.min.js',
     },
-    'vxe-table': {
+    '@ksware/ksw-ux': {
       pkg: 'vxe-table',
       version: '4.10.6',
-      path: '/lib/index.umd.min.js'
-    },
-    'vxe-pc-ui': {
-      pkg: 'vxe-pc-ui',
-      version: '4.3.93',
-      path: '/lib/index.umd.min.js'
-    },
-    "xe-utils": {
-      pkg: "xe-utils",
-      version: "3.7.5",
-      path: "/dist/xe-utils.umd.min.js"
+      path: 'https://cdn.jsdelivr.net/gh/xiyure/code-run@main/pkg/kingsware-ui/index.mjs'
     }
   }
 
+  const map = Object.fromEntries(
+    Object.entries(deps).map(([key, dep]) => [
+      key,
+      genCdnLink(dep.pkg ?? key, dep.version, dep.path),
+    ]),
+  )
+
+  map['@ksware/ksw-ux'] = 'https://cdn.jsdelivr.net/gh/xiyure/code-run@main/pkg/kingsware-ui/index.mjs'
+
   return {
-    imports: Object.fromEntries(
-      Object.entries(deps).map(([key, dep]) => [
-        key,
-        genCdnLink(dep.pkg ?? key, dep.version, dep.path),
-      ]),
-    ),
+    imports: map,
   }
 }
 

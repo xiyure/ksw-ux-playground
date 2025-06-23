@@ -1,31 +1,28 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { getExposeProxy as n } from "../../utils/utils.mjs";
+import { defineComponent as n, ref as a, createBlock as p, openBlock as i, unref as m, mergeProps as f, createSlots as c, renderList as l, withCtx as d, renderSlot as g, normalizeProps as u, guardReactiveProps as _ } from "vue";
+import { getExposeProxy as b } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { ElBadge as a } from "../../node_modules/element-plus/es/components/badge/index.mjs";
-import { defineComponent as p, createBlock as m, openBlock as i, createSlots as f, renderList as c, withCtx as l, renderSlot as d, guardReactiveProps as g, mergeProps as u } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as _, unref as b } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeProps as k } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const K = /* @__PURE__ */ p({
+import { ElBadge as k } from "../../node_modules/element-plus/es/components/badge/index.mjs";
+const v = /* @__PURE__ */ n({
   name: "KBadge",
   __name: "badge",
   setup(B, { expose: t }) {
-    const r = _(null);
-    return t(n({}, r)), (e, x) => (i(), m(b(a), u({
+    const r = a(null);
+    return t(b({}, r)), (e, x) => (i(), p(m(k), f({
       ref_key: "badgeRef",
       ref: r,
       class: "k-badge"
-    }, e.$attrs), f({ _: 2 }, [
-      c(e.$slots, (R, o) => ({
+    }, e.$attrs), c({ _: 2 }, [
+      l(e.$slots, (R, o) => ({
         name: o,
-        fn: l((s) => [
-          d(e.$slots, o, k(g(s)))
+        fn: d((s) => [
+          g(e.$slots, o, u(_(s)))
         ])
       }))
     ]), 1040));
   }
 });
 export {
-  K as default
+  v as default
 };

@@ -1,14 +1,11 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { getExposeProxy as h } from "../../utils/utils.mjs";
+import { defineComponent as h, ref as p, useSlots as _, computed as g, createBlock as P, openBlock as k, unref as b, mergeProps as x, withCtx as r, renderSlot as m, createVNode as y, createElementVNode as B, normalizeClass as C, createTextVNode as E, toDisplayString as K } from "vue";
+import { getExposeProxy as S } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { KTooltip as _ } from "../tooltip/index.mjs";
-import { ElTabPane as g } from "../../node_modules/element-plus/es/components/tabs/index.mjs";
-import { defineComponent as P, useSlots as k, computed as x, createBlock as y, openBlock as B, withCtx as r, renderSlot as m, createVNode as C, createElementVNode as E, createTextVNode as K, mergeProps as N } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as p, unref as b } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeClass as S, toDisplayString as V } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const F = /* @__PURE__ */ P({
+import { KTooltip as M } from "../tooltip/index.mjs";
+import { ElTabPane as N } from "../../node_modules/element-plus/es/components/tabs/index.mjs";
+const j = /* @__PURE__ */ h({
   name: "KTabPane",
   __name: "tab_pane",
   props: {
@@ -16,13 +13,13 @@ const F = /* @__PURE__ */ P({
     label: { default: "" }
   },
   setup(d, { expose: T }) {
-    const o = d, s = p(null), l = k(), a = p(!1), i = x(() => {
+    const l = d, s = p(null), o = _(), a = p(!1), i = g(() => {
       var e, t, u;
-      if (l.label) {
-        const f = ((u = (t = (e = l.label) == null ? void 0 : e.call(l)) == null ? void 0 : t[0]) == null ? void 0 : u.children) ?? "";
+      if (o.label) {
+        const f = ((u = (t = (e = o.label) == null ? void 0 : e.call(o)) == null ? void 0 : t[0]) == null ? void 0 : u.children) ?? "";
         return typeof f == "string" ? f : "";
       }
-      return o.label;
+      return l.label;
     });
     let n = null;
     function v(e) {
@@ -38,26 +35,26 @@ const F = /* @__PURE__ */ P({
     function c() {
       n && clearTimeout(n), a.value = !1;
     }
-    return T(h({}, s)), (e, t) => (B(), y(b(g), N({
+    return T(S({}, s)), (e, t) => (k(), P(b(N), x({
       ref_key: "KTabPaneRef",
       ref: s,
       class: "k-tab-item"
     }, e.$attrs, {
-      closable: o.closable
+      closable: l.closable
     }), {
       label: r(() => [
-        C(b(_), {
+        y(b(M), {
           content: i.value,
           visible: a.value && !!i.value
         }, {
           default: r(() => [
-            E("span", {
-              class: S(o.closable ? "k-tab-item-closeable" : ""),
+            B("span", {
+              class: C(l.closable ? "k-tab-item-closeable" : ""),
               onMouseenter: v,
               onMouseleave: c
             }, [
               m(e.$slots, "label", {}, () => [
-                K(V(o.label), 1)
+                E(K(l.label), 1)
               ])
             ], 34)
           ]),
@@ -72,5 +69,5 @@ const F = /* @__PURE__ */ P({
   }
 });
 export {
-  F as default
+  j as default
 };

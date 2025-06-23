@@ -1,6 +1,5 @@
-import "../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { computed as i } from "../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-function S(o) {
+import { computed as i } from "vue";
+function u(o) {
   const r = new Set(o);
   return i(() => (e) => {
     const n = {};
@@ -10,5 +9,5 @@ function S(o) {
   });
 }
 export {
-  S as useInheritSlot
+  u as useInheritSlot
 };

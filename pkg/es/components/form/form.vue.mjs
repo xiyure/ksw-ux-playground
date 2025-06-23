@@ -1,16 +1,13 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { getExposeProxy as E } from "../../utils/utils.mjs";
+import { defineComponent as E, onMounted as v, onUnmounted as A, ref as S, computed as c, provide as p, createBlock as b, openBlock as z, unref as d, mergeProps as q, createSlots as P, renderList as x, withCtx as L, renderSlot as R, normalizeProps as _, guardReactiveProps as $ } from "vue";
+import { getExposeProxy as g } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { getElement as a, isInputElement as v } from "../../utils/dom.mjs";
-import { useSize as A, SIZE_KEY as S } from "../../hooks/use_size.mjs";
-import { FORM_PARAMS_KEY as b } from "./const.mjs";
-import { ElForm as z } from "../../node_modules/element-plus/es/components/form/index.mjs";
-import { defineComponent as q, onMounted as P, onUnmounted as x, computed as p, provide as c, createBlock as L, openBlock as R, createSlots as _, renderList as $, withCtx as g, renderSlot as B, guardReactiveProps as T, mergeProps as C } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as K, unref as d } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeProps as I } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const V = /* @__PURE__ */ q({
+import { getElement as a, isInputElement as B } from "../../utils/dom.mjs";
+import { useSize as T, SIZE_KEY as C } from "../../hooks/use_size.mjs";
+import { FORM_PARAMS_KEY as K } from "./const.mjs";
+import { ElForm as I } from "../../node_modules/element-plus/es/components/form/index.mjs";
+const J = /* @__PURE__ */ E({
   name: "KForm",
   __name: "form",
   props: {
@@ -25,16 +22,16 @@ const V = /* @__PURE__ */ q({
   emits: ["submit"],
   setup(F, { expose: k, emit: w }) {
     const o = F;
-    P(() => {
-      window.addEventListener("keydown", l), setTimeout(() => {
+    v(() => {
+      window.addEventListener("keydown", m), setTimeout(() => {
         (o.autoFocusFirst || o.autoFocusTo) && h();
       });
-    }), x(() => {
-      window.removeEventListener("keydown", l);
+    }), A(() => {
+      window.removeEventListener("keydown", m);
     });
-    const m = w, u = A(o), n = K();
+    const l = w, u = T(o), n = S();
     function h() {
-      var r, i;
+      var s, i;
       let e = null;
       if (typeof o.autoFocusTo == "string")
         e = a(o.autoFocusTo);
@@ -42,50 +39,50 @@ const V = /* @__PURE__ */ q({
         const t = o.autoFocusTo;
         e = (t == null ? void 0 : t.$el) ?? t;
       }
-      if (e && v(e)) {
-        (r = e.focus) == null || r.call(e);
+      if (e && B(e)) {
+        (s = e.focus) == null || s.call(e);
         return;
       }
       e = e ? a("input, textarea", e) : null, !e && ((i = n.value) != null && i.$el) && o.autoFocusFirst && (e = a("input, textarea", n.value.$el)), typeof (e == null ? void 0 : e.focus) == "function" && e.focus();
     }
-    function l(e) {
+    function m(e) {
       var f;
       if (e.key !== "Enter")
         return;
-      const r = Array.from(document.querySelectorAll("button, input, a[href], area[href]")), i = document.activeElement;
+      const s = Array.from(document.querySelectorAll("button, input, a[href], area[href]")), i = document.activeElement;
       if (!i)
         return;
-      const t = r.indexOf(i), s = (f = n.value) == null ? void 0 : f.$el;
-      s != null && s.contains(r[t]) && (t === r.length - 1 || !(s != null && s.contains(r[t + 1]))) && m("submit");
+      const t = s.indexOf(i), r = (f = n.value) == null ? void 0 : f.$el;
+      r != null && r.contains(s[t]) && (t === s.length - 1 || !(r != null && r.contains(s[t + 1]))) && l("submit");
     }
     const y = {
-      size: p(() => u.value.ownSize)
+      size: c(() => u.value.ownSize)
     };
-    return k(E(y, n)), c(S, u), c(b, p(() => ({
+    return k(g(y, n)), p(C, u), p(K, c(() => ({
       showColon: o.showColon,
       showLabel: o.showLabel,
       hideRequiredAsterisk: o.hideRequiredAsterisk,
       requireAsteriskPosition: o.requireAsteriskPosition
-    }))), (e, r) => (R(), L(d(z), C({
+    }))), (e, s) => (z(), b(d(I), q({
       ref_key: "KFormRef",
       ref: n,
       class: "k-form"
     }, e.$attrs, {
       size: d(u).elSize,
       "hide-required-asterisk": !0,
-      onSubmit: r[0] || (r[0] = () => {
-        m("submit");
+      onSubmit: s[0] || (s[0] = () => {
+        l("submit");
       })
-    }), _({ _: 2 }, [
-      $(e.$slots, (i, t) => ({
+    }), P({ _: 2 }, [
+      x(e.$slots, (i, t) => ({
         name: t,
-        fn: g((s) => [
-          B(e.$slots, t, I(T(s)))
+        fn: L((r) => [
+          R(e.$slots, t, _($(r)))
         ])
       }))
     ]), 1040, ["size"]));
   }
 });
 export {
-  V as default
+  J as default
 };

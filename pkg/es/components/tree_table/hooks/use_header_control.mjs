@@ -1,18 +1,16 @@
-import "../../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { sortBySmallerList as J, treeDataToArray as _, genRandomStr as N } from "../../../utils/utils.mjs";
+import { ref as p, onMounted as J, computed as N } from "vue";
+import { sortBySmallerList as O, treeDataToArray as _, genRandomStr as V } from "../../../utils/utils.mjs";
 import "../../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../../node_modules/culori/src/index.mjs";
-import O from "../../../node_modules/lodash-es/cloneDeep.mjs";
-import { ref as p } from "../../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { onMounted as V, computed as W } from "../../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-function K(m, M, l, v) {
-  const o = p([]), y = p([]), h = p([]), k = p([]);
+import W from "../../../node_modules/lodash-es/cloneDeep.mjs";
+function F(k, M, l, v) {
+  const o = p([]), y = p([]), h = p([]), C = p([]);
   let T = "";
-  V(() => {
+  J(() => {
     H();
   });
-  const u = W(() => {
+  const u = N(() => {
     const { excludes: e = [] } = l.transferConfig ?? {};
     return new Set(e);
   });
@@ -25,20 +23,20 @@ function K(m, M, l, v) {
     ), i = e.map((t) => t.key), a = l.column.map((t) => {
       var f, w;
       const d = t.field ?? `_table_column_${t.type ?? ""}`, s = ((f = n.get(d)) == null ? void 0 : f.visible) ?? t.visible !== !1, c = (w = n.get(d)) == null ? void 0 : w.width, b = t.editRender ?? (typeof t.renderEdit == "function" ? {} : void 0);
-      return { ...O(t), visible: s, field: d, __width__: c, editRender: b };
+      return { ...W(t), visible: s, field: d, __width__: c, editRender: b };
     });
-    v.value = J(a, i, "field"), C(), D(e), setTimeout(() => {
+    v.value = O(a, i, "field"), S(), D(e), setTimeout(() => {
       T = JSON.stringify(g());
     });
   }
-  function C() {
+  function S() {
     o.value = _(v.value, "group"), h.value = o.value.map((e) => e.field && !u.value.has(e.field) && !u.value.has(e.type ?? "") ? {
       label: e.title || e.type || "undefined",
       key: e.field,
       disabled: e.allowChangeVisible === !1
-    } : null).filter((e) => e !== null), y.value = o.value.filter((e) => e.visible !== !1 && !u.value.has(e.field) && !u.value.has(e.type ?? "")).map((e) => e.field).filter((e) => e !== void 0), k.value = [...y.value];
+    } : null).filter((e) => e !== null), y.value = o.value.filter((e) => e.visible !== !1 && !u.value.has(e.field) && !u.value.has(e.type ?? "")).map((e) => e.field).filter((e) => e !== void 0), C.value = [...y.value];
   }
-  function S(e) {
+  function m(e) {
     if (!Array.isArray(e))
       return;
     let n = 0;
@@ -73,11 +71,11 @@ function K(m, M, l, v) {
   }
   function g() {
     var d, s, c, b;
-    const e = /* @__PURE__ */ new Map(), n = (d = m.value) == null ? void 0 : d.getColumns();
+    const e = /* @__PURE__ */ new Map(), n = (d = k.value) == null ? void 0 : d.getColumns();
     if (!n)
       return [];
     for (const f of n) {
-      const w = (s = m.value) == null ? void 0 : s.getColumnWidth(f);
+      const w = (s = k.value) == null ? void 0 : s.getColumnWidth(f);
       e.set(f.field, String(w));
     }
     const i = new Set(y.value), a = (b = (c = M.value) == null ? void 0 : c.transferRef) == null ? void 0 : b[0];
@@ -96,10 +94,10 @@ function K(m, M, l, v) {
       r && (a.visible ? r.visible = !0 : r.visible = !1);
     }), h.value = ((i = e.map) == null ? void 0 : i.call(e, (a) => ({
       label: a.label ?? "",
-      key: a.key ?? `_${N(8)}`,
+      key: a.key ?? `_${V(8)}`,
       disabled: a.disabled ?? !1,
       visible: a.visible !== !1
-    }))) ?? [], y.value = h.value.filter((a) => a.visible !== !1).map((a) => a.key), S(e), D(e);
+    }))) ?? [], y.value = h.value.filter((a) => a.visible !== !1).map((a) => a.key), m(e), D(e);
   }
   function D(e) {
     const n = new Map(
@@ -119,12 +117,12 @@ function K(m, M, l, v) {
     flatColumns: o,
     selectData: y,
     originData: h,
-    defaultHeader: k,
-    updateTransfer: C,
+    defaultHeader: C,
+    updateTransfer: S,
     transferChange: x,
     transferHide: R,
     transferShow: A,
-    sortTableHeader: S,
+    sortTableHeader: m,
     updateColVisible: I,
     _transferMethods: {
       getHeaderControllerData: g,
@@ -133,5 +131,5 @@ function K(m, M, l, v) {
   };
 }
 export {
-  K as useHeaderControl
+  F as useHeaderControl
 };

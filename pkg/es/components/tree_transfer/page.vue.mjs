@@ -1,10 +1,8 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { defineComponent as x, resolveComponent as s, createElementBlock as b, createCommentVNode as y, openBlock as S, createVNode as p, mergeProps as z, withCtx as N, renderSlot as V } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as l } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
+import { defineComponent as x, ref as l, resolveComponent as s, createElementBlock as b, createCommentVNode as y, openBlock as S, createVNode as p, mergeProps as z, withCtx as N, renderSlot as V } from "vue";
 const _ = {
   key: 0,
   class: "pagination-box bg-white pt-3"
-}, F = /* @__PURE__ */ x({
+}, B = /* @__PURE__ */ x({
   name: "Pagination",
   __name: "page",
   props: {
@@ -47,10 +45,10 @@ const _ = {
     function r(t) {
       e.pageConfig.pageSize = t, e.emits("page-size-change", t, e.position);
     }
-    function m(t) {
+    function C(t) {
       e.emits("page-prev-click", t, e.position);
     }
-    function C(t) {
+    function m(t) {
       e.emits("page-next-click", t, e.position);
     }
     const n = l(1), u = l(1), d = l(e.dataLength), v = l(e.pageConfig.pageSize), c = Math.ceil(d.value / v.value);
@@ -66,8 +64,8 @@ const _ = {
           onCurrentChange: g,
           onSizeChange: r,
           onChange: f,
-          onPrevClick: m,
-          onNextClick: C
+          onPrevClick: C,
+          onNextClick: m
         }), {
           default: N(() => [
             V(t.$slots, "default", { pageConfig: a.pageConfig }, () => [
@@ -86,5 +84,5 @@ const _ = {
   }
 });
 export {
-  F as default
+  B as default
 };

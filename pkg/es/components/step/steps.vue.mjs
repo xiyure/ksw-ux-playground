@@ -1,13 +1,10 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { genRandomStr as k, getExposeProxy as v } from "../../utils/utils.mjs";
+import { defineComponent as k, watch as v, nextTick as B, provide as o, ref as P, createElementBlock as f, openBlock as i, createBlock as _, unref as d, mergeProps as $, createSlots as w, renderList as E, withCtx as R, renderSlot as l, normalizeProps as K, guardReactiveProps as x } from "vue";
+import { genRandomStr as A, getExposeProxy as C } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { ElSteps as B } from "../../node_modules/element-plus/es/components/steps/index.mjs";
-import { defineComponent as P, watch as _, nextTick as $, provide as o, createElementBlock as f, openBlock as i, createBlock as w, createSlots as E, renderList as R, withCtx as K, renderSlot as d, guardReactiveProps as x, mergeProps as A } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as C, unref as l } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeProps as b } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const z = { class: "k-steps" }, H = ["id"], J = /* @__PURE__ */ P({
+import { ElSteps as b } from "../../node_modules/element-plus/es/components/steps/index.mjs";
+const z = { class: "k-steps" }, H = ["id"], D = /* @__PURE__ */ k({
   name: "KSteps",
   __name: "steps",
   props: {
@@ -18,14 +15,14 @@ const z = { class: "k-steps" }, H = ["id"], J = /* @__PURE__ */ P({
     active: {},
     useAntStyle: { type: Boolean, default: !1 }
   },
-  setup(m, { expose: h }) {
-    const n = m, s = [], p = k(8);
-    _(
+  setup(h, { expose: m }) {
+    const n = h, t = [], p = A(8);
+    v(
       () => n.height,
       (e) => {
-        e && typeof window < "u" && $(() => {
-          const r = typeof e == "number" ? `${e}px` : e, t = document.getElementById(p);
-          t == null || t.style.setProperty("--height", r);
+        e && typeof window < "u" && B(() => {
+          const r = typeof e == "number" ? `${e}px` : e, s = document.getElementById(p);
+          s == null || s.style.setProperty("--height", r);
         });
       },
       { immediate: !0 }
@@ -45,25 +42,25 @@ const z = { class: "k-steps" }, H = ["id"], J = /* @__PURE__ */ P({
       }
     }
     function S(e) {
-      s.push(e);
+      t.push(e);
     }
     function y(e, r) {
-      const t = s.indexOf(r);
-      t !== -1 && s.splice(t, 1, e);
+      const s = t.indexOf(r);
+      s !== -1 && t.splice(s, 1, e);
     }
-    o("stepProps", n), o("steps", s), o("stepMethods", {
+    o("stepProps", n), o("steps", t), o("stepMethods", {
       registerStep: S,
       updateStep: y
     });
-    const c = C();
-    return h(v({}, c)), (e, r) => (i(), f("div", z, [
+    const c = P();
+    return m(C({}, c)), (e, r) => (i(), f("div", z, [
       e.capsule ? (i(), f("div", {
         key: 1,
-        id: l(p),
+        id: d(p),
         class: "k-step__capsule"
       }, [
-        d(e.$slots, "default")
-      ], 8, H)) : (i(), w(l(B), A({
+        l(e.$slots, "default")
+      ], 8, H)) : (i(), _(d(b), $({
         key: 0,
         ref_key: "KStepsRef",
         ref: c
@@ -72,11 +69,11 @@ const z = { class: "k-steps" }, H = ["id"], J = /* @__PURE__ */ P({
         "finish-status": a(e.finishStatus),
         active: e.active,
         class: [{ "k-steps--ant": e.useAntStyle }]
-      }), E({ _: 2 }, [
-        R(e.$slots, (t, u) => ({
+      }), w({ _: 2 }, [
+        E(e.$slots, (s, u) => ({
           name: u,
-          fn: K((g) => [
-            d(e.$slots, u, b(x(g)))
+          fn: R((g) => [
+            l(e.$slots, u, K(x(g)))
           ])
         }))
       ]), 1040, ["process-status", "finish-status", "active", "class"]))
@@ -84,5 +81,5 @@ const z = { class: "k-steps" }, H = ["id"], J = /* @__PURE__ */ P({
   }
 });
 export {
-  J as default
+  D as default
 };

@@ -1,15 +1,14 @@
-import "../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { createI18n as m } from "../node_modules/vue-i18n/dist/vue-i18n.mjs";
-import { localeContextKey as l } from "../hooks/use_locale.mjs";
-import p from "../locale/zh.mjs";
-import s from "../locale/en.mjs";
-import { computed as a } from "../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
+import { computed as m } from "vue";
+import { createI18n as l } from "../node_modules/vue-i18n/dist/vue-i18n.mjs";
+import { localeContextKey as p } from "../hooks/use_locale.mjs";
+import s from "../locale/zh.mjs";
+import a from "../locale/en.mjs";
 function v(r, e = {}) {
-  const o = { zh: p, en: s }, t = m({
+  const o = { zh: s, en: a }, t = l({
     locale: (e == null ? void 0 : e.locale) === "en" ? "en" : "zh",
     messages: o
   });
-  r.provide("$i18n", t), r.provide(l, a(() => (e == null ? void 0 : e.locale) === "en" ? "en" : "zh"));
+  r.provide("$i18n", t), r.provide(p, m(() => (e == null ? void 0 : e.locale) === "en" ? "en" : "zh"));
 }
 export {
   v as useI18n

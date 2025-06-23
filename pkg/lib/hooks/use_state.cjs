@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});require("../node_modules/vue/dist/vue.runtime.esm-bundler.cjs");const r=require("../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.cjs");function s(t){const e=r.ref(t);return[e,u=>{e.value=u}]}exports.useState=s;
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const r=require("vue");function s(t){const e=r.ref(t);return[e,u=>{e.value=u}]}exports.useState=s;

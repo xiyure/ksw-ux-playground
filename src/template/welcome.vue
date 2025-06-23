@@ -9,6 +9,7 @@ const msg = ref('Hello World!')
 <template>
   <h1>{{ msg }}</h1>
   <el-input v-model="msg" />
+  <k-input v-model="msg" />
 
   <p>
     <el-icon color="var(--el-color-primary)"><ElementPlus /></el-icon>

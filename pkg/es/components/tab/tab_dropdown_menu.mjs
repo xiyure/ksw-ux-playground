@@ -1,11 +1,10 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { KDropdown as x, KDropdownItem as g } from "../dropdown/index.mjs";
+import { defineComponent as x, createVNode as i, Fragment as g } from "vue";
+import { KDropdown as h, KDropdownItem as y } from "../dropdown/index.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
-import { flattenChildren as h, isValidElement as y, camelize as I } from "../../utils/props.mjs";
+import { flattenChildren as I, isValidElement as L, camelize as T } from "../../utils/props.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { defineComponent as L, createVNode as i, Fragment as T } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-const O = /* @__PURE__ */ L({
+const K = /* @__PURE__ */ x({
   name: "TabLabel",
   props: {
     tabIndexList: {
@@ -24,14 +23,14 @@ const O = /* @__PURE__ */ L({
   }) {
     return () => {
       var n, a;
-      const l = new Map(r.tabIndexList.map((e, o) => [e, o])), t = u(h((a = (n = r.tabSlots) == null ? void 0 : n.default) == null ? void 0 : a.call(n))).filter((e, o) => l.has(o));
-      return i(T, null, [i(x, {
+      const l = new Map(r.tabIndexList.map((e, o) => [e, o])), t = u(I((a = (n = r.tabSlots) == null ? void 0 : n.default) == null ? void 0 : a.call(n))).filter((e, o) => l.has(o));
+      return i(g, null, [i(h, {
         trigger: "click",
         disabled: r.tabIndexList.length === 0,
         maxHeight: "300px",
         onCommand: f
       }, {
-        default: () => [t.map((e) => i(g, {
+        default: () => [t.map((e) => i(y, {
           key: e.name,
           command: e,
           disabled: e.disabled
@@ -47,12 +46,12 @@ const O = /* @__PURE__ */ L({
     function u(l) {
       return l.map((t) => {
         var n;
-        if (y(t)) {
+        if (L(t)) {
           const a = {
             ...t.props || {}
           };
           for (const [d, b] of Object.entries(a))
-            delete a[d], a[I(d)] = b;
+            delete a[d], a[T(d)] = b;
           const e = t.children || {}, o = ((n = t.props) == null ? void 0 : n.name) !== void 0 ? t.props.name : void 0, {
             label: c = e.label,
             disabled: m
@@ -69,5 +68,5 @@ const O = /* @__PURE__ */ L({
   }
 });
 export {
-  O as default
+  K as default
 };

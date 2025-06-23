@@ -1,9 +1,7 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import c from "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
-import { isComponentInstance as p, getFirstComponent as a } from "../../utils/dom.mjs";
-import { defineComponent as d, computed as l, watch as v, onMounted as z, onUnmounted as b, cloneVNode as O } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as R } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-const I = /* @__PURE__ */ d({
+import { defineComponent as m, ref as p, computed as a, watch as d, onMounted as l, onUnmounted as v, cloneVNode as z } from "vue";
+import b from "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
+import { isComponentInstance as O, getFirstComponent as R } from "../../utils/dom.mjs";
+const y = /* @__PURE__ */ m({
   name: "ResizeObserver",
   emits: ["resize"],
   setup(C, {
@@ -11,29 +9,29 @@ const I = /* @__PURE__ */ d({
     slots: o
   }) {
     let r;
-    const n = R(), i = l(() => p(n.value) ? n.value.$el : n.value), s = (e) => {
-      e && (r = new c((t) => {
-        const m = t[0];
-        f("resize", m);
+    const n = p(), i = a(() => O(n.value) ? n.value.$el : n.value), s = (e) => {
+      e && (r = new b((t) => {
+        const c = t[0];
+        f("resize", c);
       }), r.observe(e));
     }, u = () => {
       r && (r.disconnect(), r = null);
     };
-    return v(i, (e) => {
+    return d(i, (e) => {
       r && u(), e && s(e);
-    }), z(() => {
+    }), l(() => {
       i.value && s(i.value);
-    }), b(() => {
+    }), v(() => {
       u();
     }), () => {
       var t;
-      const e = a(((t = o.default) == null ? void 0 : t.call(o)) ?? []);
-      return e ? O(e, {
+      const e = R(((t = o.default) == null ? void 0 : t.call(o)) ?? []);
+      return e ? z(e, {
         ref: n
       }, !0) : null;
     };
   }
 });
 export {
-  I as default
+  y as default
 };

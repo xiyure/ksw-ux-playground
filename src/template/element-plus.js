@@ -1,4 +1,5 @@
 import ElementPlus from 'element-plus'
+import KUI from '@ksware/ksw-ux'
 import { getCurrentInstance } from 'vue'
 
 let installed = false
@@ -8,6 +9,7 @@ export function setupElementPlus() {
   if (installed) return
   const instance = getCurrentInstance()
   instance.appContext.app.use(ElementPlus)
+  instance.appContext.app.use(KUI)
   installed = true
 }
 

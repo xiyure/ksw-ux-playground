@@ -1,21 +1,19 @@
-import "../../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
+import { ref as de, computed as ve, onMounted as me } from "vue";
 import { isObject as U } from "../../../node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-import de from "../model/tree_store.mjs";
-import { multiFieldSort as ve, transformTreeData as me, sortBySmallerList as pe } from "../../../utils/utils.mjs";
+import he from "../model/tree_store.mjs";
+import { multiFieldSort as pe, transformTreeData as ge, sortBySmallerList as ye } from "../../../utils/utils.mjs";
 import "../../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../../node_modules/culori/src/index.mjs";
-import { logicOptions as he } from "../../../constant/filter_data.mjs";
-import { ref as ge } from "../../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { computed as ye, onMounted as Te } from "../../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-function be(f, u) {
+import { logicOptions as Te } from "../../../constant/filter_data.mjs";
+function Ee(f, u) {
   const A = {
     data: []
-  }, k = new de(f), l = ge([]), y = /* @__PURE__ */ new Map(), E = /* @__PURE__ */ new Map(), P = /* @__PURE__ */ new Map(), C = [], d = ye(() => {
+  }, k = new he(f), l = de([]), y = /* @__PURE__ */ new Map(), E = /* @__PURE__ */ new Map(), P = /* @__PURE__ */ new Map(), C = [], d = ve(() => {
     var e;
     return ((e = f.rowConfig) == null ? void 0 : e.keyField) ?? "id";
   });
-  Te(() => {
+  me(() => {
     setTimeout(() => {
       var t;
       let e = ((t = f.sortConfig) == null ? void 0 : t.defaultSort) ?? [];
@@ -92,11 +90,11 @@ function be(f, u) {
       if (r.has(c)) {
         const v = /* @__PURE__ */ new Set();
         v.add(c);
-        let h = s + 1;
+        let p = s + 1;
         const m = l.value.length;
-        for (; m > h && v.has((i = l.value[h]) == null ? void 0 : i[a]); )
-          v.add(l.value[h][d.value]), h++;
-        o.push(...l.value.splice(s, h - s)), r.delete(c), s--;
+        for (; m > p && v.has((i = l.value[p]) == null ? void 0 : i[a]); )
+          v.add(l.value[p][d.value]), p++;
+        o.push(...l.value.splice(s, p - s)), r.delete(c), s--;
       }
     }
     x(), j(o, E), t({ rows: e, row: e });
@@ -126,26 +124,26 @@ function be(f, u) {
     var n;
     await ((n = u.value) == null ? void 0 : n.clearFilter(e)), D(), t(!0);
   }), D = () => {
-    var c, v, h;
+    var c, v, p;
     F();
     const e = [...A.data], t = (c = u.value) == null ? void 0 : c.getSortColumns(), { sortMethod: n, remote: r } = f.sortConfig ?? {};
     if (r !== !1 && (t == null ? void 0 : t.length) > 0)
       if (t.forEach((m) => {
-        const { dataType: g, sortBy: p, sortType: w } = f.column.find((T) => T.field === m.field) ?? {};
-        m.sortBy = typeof p == "function" ? p({ column: m.column, row: null }).toString() : p, m.sortType = w ?? (g === "number" ? "number" : "string");
+        const { dataType: g, sortBy: h, sortType: w } = f.column.find((T) => T.field === m.field) ?? {};
+        m.sortBy = typeof h == "function" ? h({ column: m.column, row: null }).toString() : h, m.sortType = w ?? (g === "number" ? "number" : "string");
       }), typeof n == "function") {
         const m = t != null && t.length ? n({ $table: u.value, data: [...A.data], sortList: t }) : [...A.data];
         e.push(...m);
       } else
-        ve(e, t);
+        pe(e, t);
     const { remote: o, filterMethod: a, isEvery: i = !1 } = f.filterConfig ?? {}, s = O();
     if (o !== !1) {
       k.initTableData([...A.data]), k.initTableMap();
       const m = [];
       for (const g of s) {
-        const { filters: p = [], field: w = "" } = g, { dataType: T = "string" } = f.column.find((R) => R.field === w) ?? {}, S = ((v = he.find((R) => R.type === T)) == null ? void 0 : v.logicList) ?? [], z = p.filter((R) => !!R.checked);
+        const { filters: h = [], field: w = "" } = g, { dataType: T = "string" } = f.column.find((R) => R.field === w) ?? {}, S = ((v = Te.find((R) => R.type === T)) == null ? void 0 : v.logicList) ?? [], z = h.filter((R) => !!R.checked);
         for (const R of z) {
-          const { label: I, value: L, logic: M = "equal", ignoreCase: ce = !1 } = R, ue = ((h = S.find((_) => _.logic === M)) == null ? void 0 : h.handler) ?? ((_, fe, Re = !1) => _ === fe);
+          const { label: I, value: L, logic: M = "equal", ignoreCase: ce = !1 } = R, ue = ((p = S.find((_) => _.logic === M)) == null ? void 0 : p.handler) ?? ((_, fe, Re = !1) => _ === fe);
           m.push({
             label: I,
             value: L,
@@ -159,9 +157,9 @@ function be(f, u) {
         }
       }
       if (m.length > 0) {
-        let g = e.filter((p) => m.some((w) => {
+        let g = e.filter((h) => m.some((w) => {
           const { field: T, value: S, _handler: z, ignoreCase: R = !1, column: I, filterItem: L } = w, M = I.filterMethod;
-          return typeof M == "function" ? M({ $table: u.value, cellValue: p[T], row: p, value: S, column: I, option: L }) : typeof a == "function" ? a({ $table: u.value, cellValue: p[T], row: p, value: S, column: I, options: s }) : z(p[T], S, R);
+          return typeof M == "function" ? M({ $table: u.value, cellValue: h[T], row: h, value: S, column: I, option: L }) : typeof a == "function" ? a({ $table: u.value, cellValue: h[T], row: h, value: S, column: I, options: s }) : z(h[T], S, R);
         }));
         f.useTree && (g = k.handleTreeData(g, i)), e.length = 0, e.push(...g);
       }
@@ -172,11 +170,11 @@ function be(f, u) {
     var t;
     return (((t = u.value) == null ? void 0 : t.getCheckedFilters()) ?? []).map((n) => {
       const { field: r = "", column: { filters: o = [] } } = n, { filters: a = [], dataType: i = "string" } = f.column.find((c) => c.field === r) ?? {}, s = o.map((c) => {
-        const { logic: v = "equal", ignoreCase: h = !1 } = a.find((m) => m.value === c.value) ?? {};
+        const { logic: v = "equal", ignoreCase: p = !1 } = a.find((m) => m.value === c.value) ?? {};
         return {
           ...c,
           logic: v,
-          ignoreCase: h
+          ignoreCase: p
         };
       });
       return {
@@ -213,14 +211,14 @@ function be(f, u) {
     if (f.useTree && ((i = f.treeConfig) != null && i.lazy))
       return;
     F();
-    const { rowField: e, parentField: t } = b(), { fullData: n = [] } = ((s = u.value) == null ? void 0 : s.getTableData()) ?? {}, o = (f.useTree ? me(n, { idField: e, parentField: t }) : n).map((c) => c[e]), a = pe(l.value, o, e);
+    const { rowField: e, parentField: t } = b(), { fullData: n = [] } = ((s = u.value) == null ? void 0 : s.getTableData()) ?? {}, o = (f.useTree ? ge(n, { idField: e, parentField: t }) : n).map((c) => c[e]), a = ye(l.value, o, e);
     l.value.length = 0, l.value.push(...a), setTimeout(() => {
       x();
     });
   }
   async function oe(e, t, n = 100) {
     return new Promise(async (r, o) => {
-      var s, c, v, h, m;
+      var s, c, v, p, m;
       u.value || o("table instance is not exist");
       const a = Array.isArray(e) ? e : [e];
       if (!(((s = f.treeConfig) == null ? void 0 : s.lazy) ?? !1))
@@ -228,10 +226,10 @@ function be(f, u) {
       else {
         try {
           const g = new Event("click", { bubbles: !0 });
-          for (const p of a) {
-            if (await ((v = u.value) == null ? void 0 : v.clearTreeExpandLoaded(p)), ((h = u.value) == null ? void 0 : h.isTreeExpandByRow(p)) === t)
+          for (const h of a) {
+            if (await ((v = u.value) == null ? void 0 : v.clearTreeExpandLoaded(h)), ((p = u.value) == null ? void 0 : p.isTreeExpandByRow(h)) === t)
               continue;
-            const T = (m = u.value) == null ? void 0 : m.$el.querySelector(`[rowid='${p.id}'] .vxe-tree--btn-wrapper`);
+            const T = (m = u.value) == null ? void 0 : m.$el.querySelector(`[rowid='${h.id}'] .vxe-tree--btn-wrapper`);
             T && T.dispatchEvent(g);
           }
         } catch (g) {
@@ -297,5 +295,5 @@ function be(f, u) {
   };
 }
 export {
-  be as useMethods
+  Ee as useMethods
 };

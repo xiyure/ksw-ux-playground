@@ -1,17 +1,13 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { useLocale as H } from "../../hooks/use_locale.mjs";
-import { Sortable as P } from "../../utils/constructor/sortable.mjs";
-import { KInput as R } from "../input/index.mjs";
-import { getExposeProxy as $, sortBySmallerList as O } from "../../utils/utils.mjs";
+import { defineComponent as H, inject as P, ref as m, onMounted as R, onUnmounted as $, computed as _, watch as k, createElementBlock as L, openBlock as v, normalizeClass as O, unref as g, createElementVNode as C, createVNode as U, createBlock as A, createCommentVNode as S, mergeProps as J, withCtx as j, toDisplayString as F, withModifiers as G, resolveDynamicComponent as Q } from "vue";
+import { useLocale as W } from "../../hooks/use_locale.mjs";
+import { Sortable as X } from "../../utils/constructor/sortable.mjs";
+import { KInput as Y } from "../input/index.mjs";
+import { getExposeProxy as Z, sortBySmallerList as ee } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import U from "../../node_modules/ksw-vue-icon/es/icons/base/search.mjs";
-import { ElTransfer as J } from "../../node_modules/element-plus/es/components/transfer/index.mjs";
-import { defineComponent as j, inject as F, onMounted as G, onUnmounted as Q, computed as _, watch as k, createElementBlock as L, openBlock as h, createElementVNode as C, createVNode as W, createBlock as A, createCommentVNode as S, withCtx as X, resolveDynamicComponent as Y, mergeProps as Z } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as v, unref as g } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { toDisplayString as ee, normalizeClass as te } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-import { withModifiers as ae } from "../../node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.mjs";
-const re = { class: "k-transfer_searcher" }, le = { class: "k-transfer-item" }, ne = { class: "k-transfer-label" }, Ce = /* @__PURE__ */ j({
+import te from "../../node_modules/ksw-vue-icon/es/icons/base/search.mjs";
+import { ElTransfer as ae } from "../../node_modules/element-plus/es/components/transfer/index.mjs";
+const re = { class: "k-transfer_searcher" }, le = { class: "k-transfer-item" }, ne = { class: "k-transfer-label" }, ve = /* @__PURE__ */ H({
   name: "KTransfer",
   __name: "transfer",
   props: {
@@ -35,12 +31,12 @@ const re = { class: "k-transfer_searcher" }, le = { class: "k-transfer-item" }, 
     "drag"
   ],
   setup(V, { expose: x, emit: B }) {
-    const n = V, o = B, E = F("_styleModule", ""), { t: c } = H(), r = v([]), y = v(""), s = v([]), u = v();
+    const n = V, o = B, E = P("_styleModule", ""), { t: c } = W(), r = m([]), y = m(""), s = m([]), u = m();
     let f = [];
-    G(() => {
-      I(), q();
-    }), Q(() => {
-      m == null || m.destroy();
+    R(() => {
+      N(), q();
+    }), $(() => {
+      h == null || h.destroy();
     });
     const p = _(() => ({
       label: "label",
@@ -91,13 +87,13 @@ const re = { class: "k-transfer_searcher" }, le = { class: "k-transfer-item" }, 
           d[i].tagName.toLocaleUpperCase() === "LABEL" && (l.removeChild(d[i]), i--);
       }
     }
-    function N(e, t) {
+    function D(e, t) {
       o("left-check-change", e, t);
     }
-    function D(e, t) {
+    function I(e, t) {
       o("right-check-change", e, t);
     }
-    function I() {
+    function N() {
       if (!u.value)
         return;
       const e = u.value.$el, t = e.querySelectorAll(".el-transfer-panel__header")[1];
@@ -119,7 +115,7 @@ const re = { class: "k-transfer_searcher" }, le = { class: "k-transfer-item" }, 
         (t, a) => f.indexOf(t[e]) - f.indexOf(a[e])
       ), o("update:modelValue", [...n.defaultKeys]), o("reset", [...n.defaultKeys]);
     }
-    let m = null;
+    let h = null;
     function q() {
       var t, a;
       if (!n.drag)
@@ -127,7 +123,7 @@ const re = { class: "k-transfer_searcher" }, le = { class: "k-transfer-item" }, 
       const e = (a = (t = u.value.$el) == null ? void 0 : t.querySelectorAll(
         ".el-transfer-panel__list"
       )) == null ? void 0 : a[1];
-      e && (m = P(e, {
+      e && (h = X(e, {
         handle: ".k-transfer-sort",
         animation: 150,
         onEnd: (l) => {
@@ -136,7 +132,7 @@ const re = { class: "k-transfer_searcher" }, le = { class: "k-transfer-item" }, 
           if (d === i || d === void 0 || i === void 0)
             return;
           const b = r.value.splice(i, 1)[0];
-          b && (r.value.splice(d, 0, b), r.value = [...r.value], s.value = O(
+          b && (r.value.splice(d, 0, b), r.value = [...r.value], s.value = ee(
             s.value,
             r.value,
             ((w = n.props) == null ? void 0 : w.key) ?? "key"
@@ -150,19 +146,19 @@ const re = { class: "k-transfer_searcher" }, le = { class: "k-transfer-item" }, 
         selectData: r.value
       };
     }
-    return x($({ getTransferData: z }, u)), (e, t) => (h(), L("div", {
-      class: te(["k-transfer", g(E)])
+    return x(Z({ getTransferData: z }, u)), (e, t) => (v(), L("div", {
+      class: O(["k-transfer", g(E)])
     }, [
       C("div", re, [
-        e.filterable && !e.searchStrictly ? (h(), A(g(R), {
+        e.filterable && !e.searchStrictly ? (v(), A(g(Y), {
           key: 0,
           modelValue: y.value,
           "onUpdate:modelValue": t[0] || (t[0] = (a) => y.value = a),
           placeholder: T.value,
-          "prefix-icon": g(U)
+          "prefix-icon": g(te)
         }, null, 8, ["modelValue", "placeholder", "prefix-icon"])) : S("", !0)
       ]),
-      W(g(J), Z({
+      U(g(ae), J({
         ref_key: "KTransferRef",
         ref: u,
         modelValue: r.value,
@@ -173,19 +169,19 @@ const re = { class: "k-transfer_searcher" }, le = { class: "k-transfer-item" }, 
         class: { "k-transfer_search-strictly": !e.searchStrictly },
         filterable: "",
         onChange: K,
-        onLeftCheckChange: N,
-        onRightCheckChange: D
+        onLeftCheckChange: D,
+        onRightCheckChange: I
       }), {
-        default: X(({ option: a }) => [
+        default: j(({ option: a }) => [
           C("div", le, [
-            C("span", ne, ee(a[p.value.label]), 1),
-            e.drag && r.value.includes(a[p.value.key]) ? (h(), L("span", {
+            C("span", ne, F(a[p.value.label]), 1),
+            e.drag && r.value.includes(a[p.value.key]) ? (v(), L("span", {
               key: 0,
               class: "k-transfer-sort",
-              onClick: t[1] || (t[1] = ae(() => {
+              onClick: t[1] || (t[1] = G(() => {
               }, ["prevent"]))
             }, [
-              (h(), A(Y(e.dragIcon ?? "IconDrag")))
+              (v(), A(Q(e.dragIcon ?? "IconDrag")))
             ])) : S("", !0)
           ])
         ]),
@@ -195,5 +191,5 @@ const re = { class: "k-transfer_searcher" }, le = { class: "k-transfer-item" }, 
   }
 });
 export {
-  Ce as default
+  ve as default
 };

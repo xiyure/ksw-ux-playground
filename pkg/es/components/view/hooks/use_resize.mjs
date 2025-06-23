@@ -1,29 +1,27 @@
-import "../../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { ref as r } from "../../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { watch as W } from "../../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-function E(u, c) {
+import { ref as r, watch as W } from "vue";
+function D(i, d) {
   let l = 0;
-  const e = r(Number(u.defaultWidth)), n = r(!1);
+  const e = r(Number(i.defaultWidth)), n = r(!1);
   let s = 0;
-  const i = r(0);
-  W(() => c.value, (t) => {
+  const u = r(0);
+  W(() => d.value, (t) => {
     if (t) {
       o();
       return;
     }
     a();
   }, { immediate: !0 });
-  function d(t) {
-    n.value = !0, s = t.clientX, i.value = e.value, document.addEventListener("mousemove", v), document.addEventListener("mouseup", m);
+  function m(t) {
+    n.value = !0, s = t.clientX, u.value = e.value, document.addEventListener("mousemove", v), document.addEventListener("mouseup", c);
   }
   function v(t) {
     if (n.value) {
       const h = t.clientX - s, g = e.value + h;
-      i.value = Math.min(Math.max(g, u.minWidth), u.maxWidth);
+      u.value = Math.min(Math.max(g, i.minWidth), i.maxWidth);
     }
   }
-  function m() {
-    e.value = i.value, n.value = !1, document.removeEventListener("mousemove", v), document.removeEventListener("mouseup", m);
+  function c() {
+    e.value = u.value, n.value = !1, document.removeEventListener("mousemove", v), document.removeEventListener("mouseup", c);
   }
   function f() {
     e.value === 0 ? a() : o();
@@ -37,13 +35,13 @@ function E(u, c) {
   return {
     containerWidth: e,
     isDragging: n,
-    previewPosition: i,
-    startDrag: d,
+    previewPosition: u,
+    startDrag: m,
     toggleAsidePanel: f,
     showAsidePanel: a,
     hideAsidePanel: o
   };
 }
 export {
-  E as useResize
+  D as useResize
 };

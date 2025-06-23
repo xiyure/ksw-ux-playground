@@ -4,7 +4,7 @@ var l = (n, t, e) => g(n, typeof t != "symbol" ? t + "" : t, e);
 import { convertToMap as M, sortFunc as c } from "../../../utils/utils.mjs";
 import "../../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../../node_modules/sortablejs/modular/sortable.esm.mjs";
-import "../../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
+import "vue";
 import "../../../node_modules/culori/src/index.mjs";
 class y {
   constructor(t) {

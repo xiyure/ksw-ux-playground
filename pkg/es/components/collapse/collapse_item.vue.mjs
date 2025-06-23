@@ -1,13 +1,10 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { getExposeProxy as p } from "../../utils/utils.mjs";
+import { defineComponent as p, inject as f, computed as c, ref as m, createBlock as u, openBlock as d, unref as r, mergeProps as k, createSlots as B, renderList as y, withCtx as w, renderSlot as g, normalizeProps as C, guardReactiveProps as _ } from "vue";
+import { getExposeProxy as h } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { ElCollapseItem as f } from "../../node_modules/element-plus/es/components/collapse/index.mjs";
-import { defineComponent as m, inject as c, computed as u, createBlock as d, openBlock as k, createSlots as B, renderList as y, withCtx as w, renderSlot as g, guardReactiveProps as C, mergeProps as _ } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as h, unref as r } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeProps as I } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const A = /* @__PURE__ */ m({
+import { ElCollapseItem as I } from "../../node_modules/element-plus/es/components/collapse/index.mjs";
+const K = /* @__PURE__ */ p({
   name: "KCollapseItem",
   __name: "collapse_item",
   props: {
@@ -19,11 +16,11 @@ const A = /* @__PURE__ */ m({
     warning: { type: Boolean, default: !1 }
   },
   setup(t, { expose: l }) {
-    const a = t, n = c(
+    const a = t, n = f(
       "__isBlock__",
-      u(() => a.block)
-    ), o = h(null);
-    return l(p({}, o)), (e, b) => (k(), d(r(f), _({
+      c(() => a.block)
+    ), o = m(null);
+    return l(h({}, o)), (e, b) => (d(), u(r(I), k({
       ref_key: "kCollapseItemRef",
       ref: o,
       class: [
@@ -41,12 +38,12 @@ const A = /* @__PURE__ */ m({
       y(e.$slots, (R, s) => ({
         name: s,
         fn: w((i) => [
-          g(e.$slots, s, I(C(i)))
+          g(e.$slots, s, C(_(i)))
         ])
       }))
     ]), 1040, ["class"]));
   }
 });
 export {
-  A as default
+  K as default
 };

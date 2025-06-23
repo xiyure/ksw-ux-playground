@@ -1,31 +1,28 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { Sortable as Y } from "../../utils/constructor/sortable.mjs";
+import { defineComponent as fe, computed as h, ref as Y, onMounted as he, onBeforeUnmount as ge, watch as we, provide as q, createElementBlock as u, openBlock as i, normalizeStyle as A, createElementVNode as p, createCommentVNode as g, normalizeClass as K, unref as n, createVNode as P, renderSlot as v, createTextVNode as ke, toDisplayString as G, withCtx as k, createBlock as N, Fragment as H, renderList as J, mergeProps as D, createSlots as L } from "vue";
+import { Sortable as Q } from "../../utils/constructor/sortable.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { getElement as q } from "../../utils/dom.mjs";
-import G from "./view_item.vue.mjs";
+import { getElement as X } from "../../utils/dom.mjs";
+import Z from "./view_item.vue.mjs";
 /* empty css                */
-import { useLocale as fe } from "../../hooks/use_locale.mjs";
-import { useDeprecated as he } from "../../hooks/use_deprecated.mjs";
-import { useResize as ge } from "./hooks/use_resize.mjs";
-import { KTree as H } from "../tree/index.mjs";
-import { ACTIVE_VIEW_KEY as we, P_PROPS_KEY as ke } from "./const.mjs";
-import be from "../../node_modules/ksw-vue-icon/es/icons/base/left.mjs";
-import ye from "../../node_modules/ksw-vue-icon/es/icons/base/reload.mjs";
-import { ElScrollbar as Ce } from "../../node_modules/element-plus/es/components/scrollbar/index.mjs";
-import { defineComponent as Ee, computed as h, onMounted as Ve, onBeforeUnmount as Ne, watch as $e, provide as J, createElementBlock as u, openBlock as i, createElementVNode as p, createCommentVNode as g, createVNode as K, renderSlot as v, createTextVNode as Ae, withCtx as k, createBlock as $, Fragment as Q, renderList as X, mergeProps as A, createSlots as B } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as Z, unref as s } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { toDisplayString as x, normalizeStyle as D, normalizeClass as P } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const Be = { class: "k-view-aside" }, De = {
+import { useLocale as be } from "../../hooks/use_locale.mjs";
+import { useDeprecated as ye } from "../../hooks/use_deprecated.mjs";
+import { useResize as Ce } from "./hooks/use_resize.mjs";
+import { KTree as x } from "../tree/index.mjs";
+import { ACTIVE_VIEW_KEY as Ee, P_PROPS_KEY as Ve } from "./const.mjs";
+import $e from "../../node_modules/ksw-vue-icon/es/icons/base/left.mjs";
+import Ae from "../../node_modules/ksw-vue-icon/es/icons/base/reload.mjs";
+import { ElScrollbar as Ne } from "../../node_modules/element-plus/es/components/scrollbar/index.mjs";
+const De = { class: "k-view-aside" }, Le = {
   key: 0,
   class: "k-view__header"
-}, Le = { class: "k-view-title text-base font-bold" }, Se = { class: "k-view__special-data" }, Te = {
+}, Se = { class: "k-view-title text-base font-bold" }, Be = { class: "k-view__special-data" }, Te = {
   key: 0,
   class: "k-view__custom text-base"
 }, Ke = { class: "k-view__custom-default-title" }, Pe = { class: "k-view__custom-data" }, _e = {
   key: 0,
   class: "k-view-content"
-}, eo = /* @__PURE__ */ Ee({
+}, Xe = /* @__PURE__ */ fe({
   name: "KView",
   __name: "view",
   props: {
@@ -62,7 +59,7 @@ const Be = { class: "k-view-aside" }, De = {
     "node-collapse"
   ],
   setup(ee, { expose: oe, emit: le }) {
-    const { t: _ } = fe(), ae = {
+    const { t: _ } = be(), ae = {
       label: "label",
       value: "value",
       count: "count",
@@ -70,7 +67,7 @@ const Be = { class: "k-view-aside" }, De = {
       disabled: "disabled",
       custom: "custom"
     }, t = ee;
-    he(
+    ye(
       {
         scope: "k-view",
         from: "show-arrow",
@@ -79,7 +76,7 @@ const Be = { class: "k-view-aside" }, De = {
       },
       h(() => !!t.showArrow)
     );
-    const m = le, r = Z(""), L = Z(), a = h(() => Object.assign(ae, t.props ?? {})), te = h(() => {
+    const m = le, r = Y(""), S = Y(), a = h(() => Object.assign(ae, t.props ?? {})), te = h(() => {
       var e;
       return ((e = t.data) == null ? void 0 : e.filter((o) => !o[a.value.custom])) ?? [];
     }), z = h(() => {
@@ -89,13 +86,13 @@ const Be = { class: "k-view-aside" }, De = {
       const {
         emptyText: e,
         expandOnClickNode: o,
-        checkOnClickNode: n,
+        checkOnClickNode: s,
         defaultExpandedKeys: l,
         accordion: c,
         indent: E,
         lazy: V,
-        load: N,
-        icon: S,
+        load: $,
+        icon: B,
         expandIcon: T,
         collapseIcon: w,
         showArrow: pe
@@ -103,13 +100,13 @@ const Be = { class: "k-view-aside" }, De = {
       return {
         emptyText: e,
         expandOnClickNode: o,
-        checkOnClickNode: n,
+        checkOnClickNode: s,
         defaultExpandedKeys: [r.value ?? "", ...l ?? []],
         accordion: c,
         indent: E,
         lazy: V,
-        load: N,
-        icon: S,
+        load: $,
+        icon: B,
         expandIcon: T,
         collapseIcon: w,
         showArrow: pe ?? t.showArrow,
@@ -117,22 +114,22 @@ const Be = { class: "k-view-aside" }, De = {
       };
     }), {
       containerWidth: f,
-      previewPosition: se,
-      isDragging: ne,
+      previewPosition: ne,
+      isDragging: se,
       startDrag: M,
       toggleAsidePanel: O,
       showAsidePanel: ie,
       hideAsidePanel: re
-    } = ge(
+    } = Ce(
       t,
       h(() => t.collapse)
     );
-    Ve(() => {
+    he(() => {
       ue(), t.modelValue === void 0 && (r.value = t.defaultActive ?? "");
-    }), Ne(() => {
+    }), ge(() => {
       var e, o;
       (e = y.common) == null || e.destroy(), (o = y.custom) == null || o.destroy();
-    }), $e(
+    }), we(
       () => t.modelValue,
       (e) => {
         e !== r.value && (r.value = e);
@@ -165,37 +162,37 @@ const Be = { class: "k-view-aside" }, De = {
     function ue() {
       if (!t.draggable)
         return;
-      const e = q(".k-view__special-data", L.value), o = q(".k-view__custom-data", L.value);
-      e && (y.common = Y(e, {
+      const e = X(".k-view__special-data", S.value), o = X(".k-view__custom-data", S.value);
+      e && (y.common = Q(e, {
         handle: ".k-view-common",
         animation: 150,
-        onMove: (n) => {
-          d = n.related;
+        onMove: (s) => {
+          d = s.related;
         },
         onEnd: C
-      })), o && (y.custom = Y(o, {
+      })), o && (y.custom = Q(o, {
         handle: ".k-view-custom",
         animation: 150,
-        onMove: (n) => {
-          d = n.related;
+        onMove: (s) => {
+          d = s.related;
         },
         onEnd: C
       }));
     }
-    function C(e, o, n) {
+    function C(e, o, s) {
       var c, E;
       const l = {
         targetNode: e,
         lastOverNode: o,
-        position: n
+        position: s
       };
       if (!t.useTree) {
         if (!d || d === e)
           return;
-        const { item: V } = e, N = V.compareDocumentPosition(d);
-        N === 2 ? l.position = "after" : N === 4 && (l.position = "before");
-        const S = d == null ? void 0 : d.getAttribute("data-view-value");
-        l.lastOverNode = (c = t.data) == null ? void 0 : c.find((w) => w[a.value.value] === S);
+        const { item: V } = e, $ = V.compareDocumentPosition(d);
+        $ === 2 ? l.position = "after" : $ === 4 && (l.position = "before");
+        const B = d == null ? void 0 : d.getAttribute("data-view-value");
+        l.lastOverNode = (c = t.data) == null ? void 0 : c.find((w) => w[a.value.value] === B);
         const T = V.getAttribute("data-view-value");
         l.targetNode = (E = t.data) == null ? void 0 : E.find((w) => w[a.value.value] === T), d = null;
       }
@@ -220,7 +217,7 @@ const Be = { class: "k-view-aside" }, De = {
         showCustomControl: e.showCustomControl ?? t.showCustomControl ?? !1
       };
     }
-    return J(we, r), J(ke, t), oe({
+    return q(Ee, r), q(Ve, t), oe({
       expand: ie,
       collapse: re,
       toggle: O,
@@ -229,37 +226,37 @@ const Be = { class: "k-view-aside" }, De = {
       getCurrentView: ce
     }), (e, o) => (i(), u("div", {
       ref_key: "KViewRef",
-      ref: L,
+      ref: S,
       class: "k-view text-base",
-      style: D({ height: typeof e.height == "number" ? `${e.height}px` : e.height })
+      style: A({ height: typeof e.height == "number" ? `${e.height}px` : e.height })
     }, [
       p("div", {
-        class: P(["k-view-nav relative h-full flex-shrink-0 border-gray-200", {
-          "is-collapse": s(f) === 0,
+        class: K(["k-view-nav relative h-full flex-shrink-0 border-gray-200", {
+          "is-collapse": n(f) === 0,
           "is-simple": e.simple,
           "border-r": !e.simple,
           "p-2": !e.simple,
           "pr-2": e.simple,
-          "is-hide": s(f) === 0
+          "is-hide": n(f) === 0
         }]),
-        style: D({ width: `${s(f)}px` })
+        style: A({ width: `${n(f)}px` })
       }, [
         e.simple ? g("", !0) : (i(), u("div", {
           key: 0,
           class: "show-view-button flex items-center justify-center rounded-full",
           onClick: o[0] || (o[0] = () => {
-            s(O)(), m("visible-change", s(f) > 0);
+            n(O)(), m("visible-change", n(f) > 0);
           })
         }, [
-          K(s(be))
+          P(n($e))
         ])),
-        p("div", Be, [
-          e.simple ? g("", !0) : (i(), u("div", De, [
-            p("div", Le, [
+        p("div", De, [
+          e.simple ? g("", !0) : (i(), u("div", Le, [
+            p("div", Se, [
               v(e.$slots, "header", {}, () => {
-                var n;
+                var s;
                 return [
-                  Ae(x((n = s(_)) == null ? void 0 : n("view.view")), 1)
+                  ke(G((s = n(_)) == null ? void 0 : s("view.view")), 1)
                 ];
               })
             ]),
@@ -268,16 +265,16 @@ const Be = { class: "k-view-aside" }, De = {
               onClick: de
             }, [
               v(e.$slots, "refresh", {}, () => [
-                K(s(ye))
+                P(n(Ae))
               ])
             ])
           ])),
-          K(s(Ce), null, {
+          P(n(Ne), null, {
             default: k(() => {
-              var n;
+              var s;
               return [
-                p("div", Se, [
-                  e.useTree ? (i(), $(s(H), A({
+                p("div", Be, [
+                  e.useTree ? (i(), N(n(x), D({
                     key: 1,
                     ref: "KViewTree",
                     class: "k-tree-view-item",
@@ -296,7 +293,7 @@ const Be = { class: "k-view-aside" }, De = {
                     onNodeExpand: W,
                     onNodeCollapse: F,
                     onNodeDrop: C
-                  }), B({ _: 2 }, [
+                  }), L({ _: 2 }, [
                     e.$slots.label ? {
                       name: "default",
                       fn: k(({ node: l, data: c }) => [
@@ -307,13 +304,13 @@ const Be = { class: "k-view-aside" }, De = {
                       ]),
                       key: "0"
                     } : void 0
-                  ]), 1040, ["node-key", "props", "current-node-key", "data", "draggable"])) : (i(!0), u(Q, { key: 0 }, X(te.value, (l) => (i(), $(G, A({
+                  ]), 1040, ["node-key", "props", "current-node-key", "data", "draggable"])) : (i(!0), u(H, { key: 0 }, J(te.value, (l) => (i(), N(Z, D({
                     key: l[a.value.value],
                     "origin-data": l
                   }, U(l), {
                     onChange: b,
                     onRemove: I
-                  }), B({ _: 2 }, [
+                  }), L({ _: 2 }, [
                     e.$slots.label ? {
                       name: "label",
                       fn: k(() => [
@@ -323,15 +320,15 @@ const Be = { class: "k-view-aside" }, De = {
                     } : void 0
                   ]), 1040, ["origin-data"]))), 128))
                 ]),
-                (n = z.value) != null && n.length ? (i(), u("div", Te, [
+                (s = z.value) != null && s.length ? (i(), u("div", Te, [
                   v(e.$slots, "custom-header", {}, () => {
                     var l;
                     return [
-                      p("span", Ke, x((l = s(_)) == null ? void 0 : l("view.customView")), 1)
+                      p("span", Ke, G((l = n(_)) == null ? void 0 : l("view.customView")), 1)
                     ];
                   }),
                   p("div", Pe, [
-                    e.useTree ? (i(), $(s(H), A({
+                    e.useTree ? (i(), N(n(x), D({
                       key: 1,
                       ref: "KCustomViewTree",
                       class: "k-tree-view-item",
@@ -350,7 +347,7 @@ const Be = { class: "k-view-aside" }, De = {
                       onNodeExpand: W,
                       onNodeCollapse: F,
                       onNodeDrop: C
-                    }), B({ _: 2 }, [
+                    }), L({ _: 2 }, [
                       e.$slots.label ? {
                         name: "default",
                         fn: k(({ node: l, data: c }) => [
@@ -361,13 +358,13 @@ const Be = { class: "k-view-aside" }, De = {
                         ]),
                         key: "0"
                       } : void 0
-                    ]), 1040, ["node-key", "props", "current-node-key", "data", "draggable"])) : (i(!0), u(Q, { key: 0 }, X(z.value, (l) => (i(), $(G, A({
+                    ]), 1040, ["node-key", "props", "current-node-key", "data", "draggable"])) : (i(!0), u(H, { key: 0 }, J(z.value, (l) => (i(), N(Z, D({
                       key: l[a.value.value],
                       "origin-data": l
                     }, U(l), {
                       onChange: b,
                       onRemove: I
-                    }), B({ _: 2 }, [
+                    }), L({ _: 2 }, [
                       e.$slots.label ? {
                         name: "label",
                         fn: k(() => [
@@ -385,15 +382,15 @@ const Be = { class: "k-view-aside" }, De = {
         ]),
         e.simple ? g("", !0) : (i(), u("div", {
           key: 1,
-          class: P(["k-view-resizer", e.resizeLineClass]),
-          style: D(e.resizeLineStyle),
+          class: K(["k-view-resizer", e.resizeLineClass]),
+          style: A(e.resizeLineStyle),
           onMousedown: o[1] || (o[1] = //@ts-ignore
-          (...n) => s(M) && s(M)(...n))
+          (...s) => n(M) && n(M)(...s))
         }, null, 38)),
-        !e.simple && s(ne) ? (i(), u("div", {
+        !e.simple && n(se) ? (i(), u("div", {
           key: 2,
-          class: P(["k-view-preview", e.previewLineClass]),
-          style: D({ left: s(se) + "px", ...e.previewLineStyle ?? {} })
+          class: K(["k-view-preview", e.previewLineClass]),
+          style: A({ left: n(ne) + "px", ...e.previewLineStyle ?? {} })
         }, null, 6)) : g("", !0)
       ], 6),
       e.simple ? g("", !0) : (i(), u("div", _e, [
@@ -404,5 +401,5 @@ const Be = { class: "k-view-aside" }, De = {
   }
 });
 export {
-  eo as default
+  Xe as default
 };

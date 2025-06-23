@@ -1,29 +1,26 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import gt from "./column_group.mjs";
-import { KOperate as ht } from "../operate/index.mjs";
-import { KTable as mt } from "../table/index.mjs";
-import { KPagination as pt } from "../pagination/index.mjs";
-import vt from "./table_header.vue.mjs";
-import Ct from "./table_card.vue.mjs";
-import { useMethods as wt } from "./hooks/use_methods.mjs";
-import { useCheckbox as yt } from "./hooks/use_checkbox.mjs";
-import { useData as bt } from "./hooks/use_data.mjs";
-import { useConfig as St } from "./hooks/use_config.mjs";
-import { useHeaderControl as kt } from "./hooks/use_header_control.mjs";
-import { useAdvancedFilter as Tt } from "./hooks/use_advanced_filter.mjs";
-import { SIZE_KEY as Ft } from "../../hooks/use_size.mjs";
-import { useLocale as Dt } from "../../hooks/use_locale.mjs";
-import { useDeprecated as ge } from "../../hooks/use_deprecated.mjs";
-import { useInheritSlot as Bt } from "../../hooks/use_inherit_slot.mjs";
-import { getExposeProxy as Rt } from "../../utils/utils.mjs";
+import { defineComponent as gt, computed as f, ref as h, onBeforeMount as ht, watch as Y, nextTick as H, provide as P, resolveDirective as mt, createElementBlock as b, openBlock as m, normalizeStyle as pt, normalizeClass as vt, createVNode as A, createBlock as ge, createCommentVNode as he, unref as n, createSlots as O, renderList as S, withCtx as k, renderSlot as M, normalizeProps as E, guardReactiveProps as x, withDirectives as Ct, mergeProps as j, Fragment as wt } from "vue";
+import yt from "./column_group.mjs";
+import { KOperate as bt } from "../operate/index.mjs";
+import { KTable as St } from "../table/index.mjs";
+import { KPagination as kt } from "../pagination/index.mjs";
+import Tt from "./table_header.vue.mjs";
+import Ft from "./table_card.vue.mjs";
+import { useMethods as Dt } from "./hooks/use_methods.mjs";
+import { useCheckbox as Bt } from "./hooks/use_checkbox.mjs";
+import { useData as Rt } from "./hooks/use_data.mjs";
+import { useConfig as zt } from "./hooks/use_config.mjs";
+import { useHeaderControl as Ht } from "./hooks/use_header_control.mjs";
+import { useAdvancedFilter as Pt } from "./hooks/use_advanced_filter.mjs";
+import { SIZE_KEY as At } from "../../hooks/use_size.mjs";
+import { useLocale as Ot } from "../../hooks/use_locale.mjs";
+import { useDeprecated as me } from "../../hooks/use_deprecated.mjs";
+import { useInheritSlot as Mt } from "../../hooks/use_inherit_slot.mjs";
+import { getExposeProxy as Et } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { TABLE_SIZE_KEY as zt } from "./const.mjs";
-import Ht from "../../node_modules/lodash-es/cloneDeep.mjs";
-import { defineComponent as Pt, computed as f, onBeforeMount as At, watch as Y, nextTick as H, provide as P, resolveDirective as Ot, createElementBlock as b, openBlock as h, createVNode as A, createBlock as he, createCommentVNode as me, createSlots as O, renderList as S, withCtx as k, renderSlot as M, guardReactiveProps as E, withDirectives as Mt, Fragment as Et, mergeProps as j } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as m, unref as n } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeProps as x, normalizeStyle as xt, normalizeClass as It } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
+import { TABLE_SIZE_KEY as xt } from "./const.mjs";
+import It from "../../node_modules/lodash-es/cloneDeep.mjs";
 const Kt = {
   key: 0,
   ref: "RefTableBox",
@@ -35,7 +32,7 @@ const Kt = {
   key: 2,
   ref: "RefTablePagination",
   class: "pagination-box"
-}, ho = /* @__PURE__ */ Pt({
+}, fo = /* @__PURE__ */ gt({
   name: "KTreeTable",
   __name: "tree_table",
   props: {
@@ -122,7 +119,7 @@ const Kt = {
   ],
   setup(pe, { expose: ve, emit: Ce }) {
     const r = pe;
-    ge(
+    me(
       {
         scope: "k-tree-table",
         from: "isRemoteQuery",
@@ -130,7 +127,7 @@ const Kt = {
         version: "2.0.0"
       },
       f(() => !!r.isRemoteQuery)
-    ), ge(
+    ), me(
       {
         scope: "k-tree-table",
         from: "isServerPaging",
@@ -139,7 +136,7 @@ const Kt = {
       },
       f(() => !!r.isServerPaging)
     );
-    const { t: T } = Dt(), we = Bt(["default"]), s = Ce, U = m(), v = m(r.size), I = m(r.defaultMode === "card" ? "card" : "list"), C = m(), F = m([]), g = m([]), D = m(""), ye = f(() => {
+    const { t: T } = Ot(), we = Mt(["default"]), s = Ce, U = h(), v = h(r.size), I = h(r.defaultMode === "card" ? "card" : "list"), C = h(), F = h([]), g = h([]), D = h(""), ye = f(() => {
       var a, i, o;
       const e = !!((i = (a = B.value) == null ? void 0 : a.conditionList) != null && i.length), t = ((o = r.advancedFilterConfig) == null ? void 0 : o.remote) === !0;
       return e && !t ? w.value : g.value;
@@ -171,7 +168,7 @@ const Kt = {
         originData: Re.value,
         defaultHeader: ze.value
       };
-    }), G = f(() => I.value === "list"), { setTableData: Fe, handleSortAndFilter: J, dragSort: De, _methods: Be } = wt(r, c), {
+    }), G = f(() => I.value === "list"), { setTableData: Fe, handleSortAndFilter: J, dragSort: De, _methods: Be } = Dt(r, c), {
       flatColumns: K,
       selectData: W,
       originData: Re,
@@ -183,7 +180,7 @@ const Kt = {
       sortTableHeader: Oe,
       updateColVisible: Me,
       _transferMethods: Ee
-    } = kt(c, C, r, F), {
+    } = Ht(c, C, r, F), {
       newFilterData: w,
       filterColumns: xe,
       filterConditionInfo: B,
@@ -191,7 +188,7 @@ const Kt = {
       advancedFilterShow: Ke,
       advancedFilterHide: Le,
       getAdvancedCondition: qe
-    } = Tt(C, r, F), {
+    } = Pt(C, r, F), {
       showTableData: d,
       isPaging: L,
       dataLength: _,
@@ -200,7 +197,7 @@ const Kt = {
       changePageSize: Qe,
       changeCurrentPage: $e,
       handleRemoteData: oe
-    } = bt(
+    } = Rt(
       c,
       r,
       s,
@@ -210,7 +207,7 @@ const Kt = {
       D,
       B,
       V
-    ), { widgets: ne, treeConfig: re, sortConfig: Ne, rowConfig: ae, editConfig: Ve, scrollY: Ye, columnConfig: je, seqConfig: Ue } = St(r, { isPaging: L, paginationConfig: ee }), {
+    ), { widgets: ne, treeConfig: re, sortConfig: Ne, rowConfig: ae, editConfig: Ve, scrollY: Ye, columnConfig: je, seqConfig: Ue } = zt(r, { isPaging: L, paginationConfig: ee }), {
       checkboxConfig: Ze,
       batchOpConfig: le,
       closeBatchOperation: Ge,
@@ -220,8 +217,8 @@ const Kt = {
       clearCheckedData: q,
       resetCheckboxStatus: p,
       _checkboxMethods: _e
-    } = yt(c, r, g, d, te);
-    At(() => {
+    } = Bt(c, r, g, d, te);
+    ht(() => {
       ce();
     }), Y(
       [() => r.data, () => {
@@ -237,7 +234,7 @@ const Kt = {
       () => {
         F.value = r.column.map((e) => {
           const t = e.visible !== !1, a = e.field ?? `_table_column_${e.type ?? ""}`, i = e.editRender ?? (typeof e.renderEdit == "function" ? {} : void 0);
-          return { ...Ht(e), visible: t, field: a, editRender: i };
+          return { ...It(e), visible: t, field: a, editRender: i };
         }), He();
       },
       { deep: !0 }
@@ -363,9 +360,9 @@ const Kt = {
       q(), N(), ue();
     }
     P("__showTransfer", Z), P(
-      Ft,
+      At,
       f(() => v.value === "small" || v.value === "mini" ? "sm" : "base")
-    ), P(zt, v), P(
+    ), P(xt, v), P(
       "__hasSpace__",
       f(() => r.hasSpace)
     );
@@ -385,18 +382,18 @@ const Kt = {
       ..._e,
       ...Ee
     };
-    return ve(Rt(ct, c)), (e, t) => {
+    return ve(Et(ct, c)), (e, t) => {
       var i;
-      const a = Ot("ksw_drag");
-      return h(), b("div", {
-        class: It([
+      const a = mt("ksw_drag");
+      return m(), b("div", {
+        class: vt([
           "k-tree-table flex h-full flex-col",
           r.class,
           { "tree-table-use-ant-style": e.useAntStyle, "has-space-between": e.hasSpace }
         ]),
-        style: xt({ height: e.adaptive ? "fit-content" : e.height, ...e.style })
+        style: pt({ height: e.adaptive ? "fit-content" : e.height, ...e.style })
       }, [
-        A(vt, {
+        A(Tt, {
           ref_key: "headerRef",
           ref: C,
           "current-mode": I.value,
@@ -433,12 +430,12 @@ const Kt = {
           S(e.$slots, (o, l) => ({
             name: l,
             fn: k((u) => [
-              M(e.$slots, l, x(E(u)))
+              M(e.$slots, l, E(x(u)))
             ])
           }))
         ]), 1032, ["current-mode", "simple", "show-search-input", "show-description", "show-header-tools", "widgets", "data-length", "show-total", "search-config", "filter-config", "transfer-config", "onFilterShow", "onFilterHide", "onTransferChange", "onTransferShow", "onTransferDrag"]),
-        G.value ? (h(), b("div", Kt, [
-          A(n(mt), j({
+        G.value ? (m(), b("div", Kt, [
+          A(n(St), j({
             ref_key: "xTree",
             ref: U,
             border: e.useAntStyle ? "inner" : e.border,
@@ -483,7 +480,7 @@ const Kt = {
             onRowDragend: at
           }), O({
             default: k(() => [
-              (h(!0), b(Et, null, S(F.value, (o, l) => (h(), he(n(gt), {
+              (m(!0), b(wt, null, S(F.value, (o, l) => (m(), ge(n(yt), {
                 key: l,
                 column: o,
                 size: e.size,
@@ -492,7 +489,7 @@ const Kt = {
                 S(e.$slots, (u, de) => ({
                   name: de,
                   fn: k((dt) => [
-                    M(e.$slots, de, x(E(dt)))
+                    M(e.$slots, de, E(x(dt)))
                   ])
                 }))
               ]), 1032, ["column", "size", "align"]))), 128))
@@ -502,16 +499,16 @@ const Kt = {
             S(n(we)(e.$slots), (o, l) => ({
               name: l,
               fn: k((u) => [
-                M(e.$slots, l, x(E(u)))
+                M(e.$slots, l, E(x(u)))
               ])
             }))
           ]), 1040, ["border", "size", "data", "row-config", "sort-config", "filter-config", "tree-config", "seq-config", "checkbox-config", "edit-config", "column-config", "empty-text", "scroll-y", "show-overflow", "auto-resize", "show-column-menu", "align", "round", "height"]),
-          (e.batchOperateConfig || e.showBatchOperation) && n(le).total > 0 ? Mt((h(), b("div", Lt, [
-            A(n(ht), j(n(le), { onClose: n(Ge) }), null, 16, ["onClose"])
+          (e.batchOperateConfig || e.showBatchOperation) && n(le).total > 0 ? Ct((m(), b("div", Lt, [
+            A(n(bt), j(n(le), { onClose: n(Ge) }), null, 16, ["onClose"])
           ])), [
             [a]
-          ]) : me("", !0)
-        ], 512)) : (h(), he(Ct, {
+          ]) : he("", !0)
+        ], 512)) : (m(), ge(Ft, {
           key: 1,
           data: n(d),
           "key-field": n(ae).keyField,
@@ -520,12 +517,12 @@ const Kt = {
           S(e.$slots, (o, l) => ({
             name: l,
             fn: k((u) => [
-              M(e.$slots, l, x(E(u)))
+              M(e.$slots, l, E(x(u)))
             ])
           }))
         ]), 1032, ["data", "key-field", "card-attrs"])),
-        n(L) ? (h(), b("div", qt, [
-          A(n(pt), j(n(ee), {
+        n(L) ? (m(), b("div", qt, [
+          A(n(kt), j(n(ee), {
             total: n(_),
             onCurrentChange: n($e),
             onSizeChange: n(Qe),
@@ -539,11 +536,11 @@ const Kt = {
               s("next-click", o);
             })
           }), null, 16, ["total", "onCurrentChange", "onSizeChange"])
-        ], 512)) : me("", !0)
+        ], 512)) : he("", !0)
       ], 6);
     };
   }
 });
 export {
-  ho as default
+  fo as default
 };

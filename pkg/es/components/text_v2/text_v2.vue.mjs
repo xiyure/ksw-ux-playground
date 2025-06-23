@@ -1,9 +1,6 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { useLocale as H } from "../../hooks/use_locale.mjs";
-import { defineComponent as T, onMounted as B, onUpdated as R, computed as v, nextTick as V, createElementBlock as u, openBlock as p, createElementVNode as N, createCommentVNode as m, createVNode as S, withCtx as z, renderSlot as E, createTextVNode as $ } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as l, unref as b } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeClass as x, toDisplayString as g, normalizeStyle as A } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const F = /* @__PURE__ */ T({
+import { defineComponent as H, ref as l, onMounted as T, onUpdated as B, computed as v, nextTick as R, createElementBlock as c, openBlock as d, normalizeClass as x, createElementVNode as V, normalizeStyle as S, createCommentVNode as g, createVNode as z, withCtx as E, renderSlot as N, createTextVNode as $, toDisplayString as m, unref as b } from "vue";
+import { useLocale as A } from "../../hooks/use_locale.mjs";
+const M = /* @__PURE__ */ H({
   name: "KTextV2",
   __name: "text_v2",
   props: {
@@ -26,10 +23,10 @@ const F = /* @__PURE__ */ T({
       warning: "var(--k-status-warning)",
       danger: "var(--k-status-danger)",
       info: "var(--k-status-info)"
-    }, { t: d } = H(), t = h, o = l(), s = l(), a = l(!1), n = l(!1);
-    B(() => {
+    }, { t: p } = A(), t = h, o = l(), s = l(), a = l(!1), n = l(!1);
+    T(() => {
       r();
-    }), R(() => {
+    }), B(() => {
       setTimeout(() => {
         r();
       }, 50);
@@ -37,7 +34,7 @@ const F = /* @__PURE__ */ T({
     const C = v(() => ({
       "--line-height": t.lineHeight + "rem",
       "--text-color": _.value,
-      "--expand-text": `'${t.expandText || d("text.expand")}''`,
+      "--expand-text": `'${t.expandText || p("text.expand")}''`,
       "max-height": n.value ? "none" : `${t.lineHeight * t.lineClamp}rem`
     })), _ = v(() => t.color ?? (t.type && y[t.type]));
     function r() {
@@ -45,7 +42,7 @@ const F = /* @__PURE__ */ T({
         a.value = !1;
         return;
       }
-      V(() => {
+      R(() => {
         if (s.value && o.value) {
           const { height: e } = o.value.getBoundingClientRect(), { height: f } = s.value.getBoundingClientRect();
           a.value = f >= e;
@@ -56,21 +53,21 @@ const F = /* @__PURE__ */ T({
     function i() {
       n.value = !0, r();
     }
-    function c() {
+    function u() {
       n.value = !1;
     }
     function w() {
       if (n.value) {
-        c();
+        u();
         return;
       }
       i();
     }
     return k({
       expand: i,
-      collapse: c,
+      collapse: u,
       toggle: w
-    }), (e, f) => (p(), u("div", {
+    }), (e, f) => (d(), c("div", {
       class: x(
         [
           "k-text-v2",
@@ -79,41 +76,41 @@ const F = /* @__PURE__ */ T({
         ]
       )
     }, [
-      N("div", {
+      V("div", {
         ref_key: "containerRef",
         ref: o,
         class: "k-text-v2-container",
-        style: A(C.value)
+        style: S(C.value)
       }, [
-        a.value ? (p(), u("label", {
+        a.value ? (d(), c("label", {
           key: 0,
           class: x([
             "k-text-v2__expand",
             { "allow-expand": e.showHandler === !0 || e.showHandler === "expand" }
           ]),
           onClick: i
-        }, null, 2)) : m("", !0),
-        S(t.tag, {
+        }, null, 2)) : g("", !0),
+        z(t.tag, {
           ref_key: "contentRef",
           ref: s,
           class: "k-text-v2__content"
         }, {
-          default: z(() => [
-            E(e.$slots, "default", {}, () => [
-              $(g(e.content), 1)
+          default: E(() => [
+            N(e.$slots, "default", {}, () => [
+              $(m(e.content), 1)
             ])
           ]),
           _: 3
         }, 512),
-        (e.showHandler === !0 || e.showHandler === "collapse") && n.value ? (p(), u("span", {
+        (e.showHandler === !0 || e.showHandler === "collapse") && n.value ? (d(), c("span", {
           key: 1,
           class: "k-text-v2__collapse",
-          onClick: c
-        }, g(t.collapseText || b(d)("text.collapse")), 1)) : m("", !0)
+          onClick: u
+        }, m(t.collapseText || b(p)("text.collapse")), 1)) : g("", !0)
       ], 4)
     ], 2));
   }
 });
 export {
-  F as default
+  M as default
 };

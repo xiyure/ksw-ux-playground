@@ -1,19 +1,18 @@
-import "../../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
+import { computed as o } from "vue";
 import { DEFAULT_TREE_CONFIG as c, DEFAULT_SCROLL_Y as f } from "../const.mjs";
-import n from "../../../node_modules/lodash-es/cloneDeep.mjs";
-import { computed as r } from "../../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-function C(e) {
-  const t = r(() => {
+import r from "../../../node_modules/lodash-es/cloneDeep.mjs";
+function g(e) {
+  const t = o(() => {
     if (e.useTree) {
-      const o = Object.assign(n(c), e.treeConfig || {});
-      return o.indent = 0, o;
+      const n = Object.assign(r(c), e.treeConfig || {});
+      return n.indent = 0, n;
     }
-  }), i = r(() => Object.assign(n(f), e.scrollY || {}));
+  }), i = o(() => Object.assign(r(f), e.scrollY || {}));
   return {
     treeConfig: t,
     scrollY: i
   };
 }
 export {
-  C as useConfig
+  g as useConfig
 };

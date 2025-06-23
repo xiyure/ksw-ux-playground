@@ -1,7 +1,6 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { KDropdown as r, KDropdownItem as a } from "../dropdown/index.mjs";
-import { defineComponent as t, createVNode as o, Fragment as p, mergeProps as i } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-const c = /* @__PURE__ */ t({
+import { defineComponent as a, createVNode as o, Fragment as r, mergeProps as t } from "vue";
+import { KDropdown as p, KDropdownItem as s } from "../dropdown/index.mjs";
+const u = /* @__PURE__ */ a({
   name: "TabLabel",
   props: {
     tabs: {
@@ -15,13 +14,13 @@ const c = /* @__PURE__ */ t({
     attrs: m,
     emit: l
   }) {
-    return () => o(p, null, [o(r, i(m, {
+    return () => o(r, null, [o(p, t(m, {
       disabled: d.tabs.length === 0,
       onCommand: (e) => {
         l("command", e);
       }
     }), {
-      default: () => [d.tabs.map((e) => o(a, {
+      default: () => [d.tabs.map((e) => o(s, {
         key: e.index,
         disabled: e.disabled,
         command: e.index
@@ -33,5 +32,5 @@ const c = /* @__PURE__ */ t({
   }
 });
 export {
-  c as default
+  u as default
 };

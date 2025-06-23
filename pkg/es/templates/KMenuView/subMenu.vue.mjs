@@ -1,9 +1,6 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { ElIcon as _ } from "../../node_modules/element-plus/es/components/icon/index.mjs";
-import { ElSubMenu as V, ElMenuItem as A } from "../../node_modules/element-plus/es/components/menu/index.mjs";
-import { defineComponent as P, inject as w, computed as k, resolveComponent as z, createElementBlock as n, openBlock as t, Fragment as h, renderList as f, createBlock as l, withCtx as i, createVNode as D, createSlots as I, renderSlot as c, guardReactiveProps as j, createCommentVNode as y, resolveDynamicComponent as C, createElementVNode as S, mergeProps as F } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { normalizeProps as L, toDisplayString as s, normalizeClass as R } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-import { unref as r } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
+import { defineComponent as N, inject as P, computed as p, resolveComponent as V, createElementBlock as n, openBlock as t, Fragment as k, renderList as h, createBlock as l, unref as r, mergeProps as w, withCtx as i, createVNode as z, createSlots as D, renderSlot as a, normalizeProps as I, guardReactiveProps as j, createCommentVNode as f, resolveDynamicComponent as y, createElementVNode as C, toDisplayString as s, normalizeClass as F } from "vue";
+import { ElSubMenu as L, ElMenuItem as R } from "../../node_modules/element-plus/es/components/menu/index.mjs";
+import { ElIcon as S } from "../../node_modules/element-plus/es/components/icon/index.mjs";
 const q = {
   key: 0,
   class: "k-menu-item__title"
@@ -16,7 +13,7 @@ const q = {
 }, K = ["href"], O = {
   key: 1,
   class: "k-menu-item__title"
-}, u = /* @__PURE__ */ P({
+}, X = /* @__PURE__ */ N({
   name: "SubMenu",
   __name: "subMenu",
   props: {
@@ -25,74 +22,74 @@ const q = {
   },
   emits: ["click"],
   setup(v, { emit: x }) {
-    const $ = v, g = x, m = w("__activeSet__", k(() => /* @__PURE__ */ new Set())), B = k(() => (o) => {
-      const { children: E, ...a } = o;
-      return a;
-    }), d = (o) => {
+    const $ = v, g = x, d = P("__activeSet__", p(() => /* @__PURE__ */ new Set())), E = p(() => (o) => {
+      const { children: B, ...c } = o;
+      return c;
+    }), m = (o) => {
       g("click", o);
     };
-    return (o, E) => {
-      const a = z("sub-menu", !0);
-      return t(!0), n(h, null, f($.options, (e) => (t(), n(h, null, [
-        Array.isArray(e.children) && e.children.length > 0 ? (t(), l(r(V), F({
+    return (o, B) => {
+      const c = V("sub-menu", !0);
+      return t(!0), n(k, null, h($.options, (e) => (t(), n(k, null, [
+        Array.isArray(e.children) && e.children.length > 0 ? (t(), l(r(L), w({
           key: 0,
-          class: { "custom-class-name": r(m).has(e.index) },
+          class: { "custom-class-name": r(d).has(e.index) },
           index: e.index
-        }, B.value(e)), {
+        }, E.value(e)), {
           title: i(() => [
-            e.icon ? (t(), l(r(_), { key: 0 }, {
+            e.icon ? (t(), l(r(S), { key: 0 }, {
               default: i(() => [
-                (t(), l(C(e.icon)))
+                (t(), l(y(e.icon)))
               ]),
               _: 2
-            }, 1024)) : y("", !0),
-            c(o.$slots, `${e.index}-title`, { option: e }, () => [
+            }, 1024)) : f("", !0),
+            a(o.$slots, `${e.index}-title`, { option: e }, () => [
               o.link ? (t(), n("span", q, [
-                S("a", {
+                C("a", {
                   href: e.href
                 }, s(e.title), 9, G)
               ])) : (t(), n("span", H, s(e.title), 1))
             ])
           ]),
           default: i(() => [
-            D(a, {
+            z(c, {
               options: e.children,
               link: o.link,
-              onClick: d
-            }, I({ _: 2 }, [
-              f(o.$slots, (Q, p) => ({
-                name: p,
-                fn: i((N) => [
-                  c(o.$slots, p, L(j(N)))
+              onClick: m
+            }, D({ _: 2 }, [
+              h(o.$slots, (Q, _) => ({
+                name: _,
+                fn: i((A) => [
+                  a(o.$slots, _, I(j(A)))
                 ])
               }))
             ]), 1032, ["options", "link"])
           ]),
           _: 2
-        }, 1040, ["class", "index"])) : (t(), l(r(A), {
+        }, 1040, ["class", "index"])) : (t(), l(r(R), {
           key: 1,
-          class: R({ "custom-class-name": r(m).has(e.index) }),
+          class: F({ "custom-class-name": r(d).has(e.index) }),
           index: e.index,
           disabled: e.disabled,
           route: e.route,
-          onClick: d
+          onClick: m
         }, {
           title: i(() => [
-            c(o.$slots, `${e.index}-title`, { option: e }, () => [
+            a(o.$slots, `${e.index}-title`, { option: e }, () => [
               o.link ? (t(), n("span", J, [
-                S("a", {
+                C("a", {
                   href: e.href
                 }, s(e.title), 9, K)
               ])) : (t(), n("span", O, s(e.title), 1))
             ])
           ]),
           default: i(() => [
-            e.icon ? (t(), l(r(_), { key: 0 }, {
+            e.icon ? (t(), l(r(S), { key: 0 }, {
               default: i(() => [
-                (t(), l(C(e.icon)))
+                (t(), l(y(e.icon)))
               ]),
               _: 2
-            }, 1024)) : y("", !0)
+            }, 1024)) : f("", !0)
           ]),
           _: 2
         }, 1032, ["class", "index", "disabled", "route"]))
@@ -101,5 +98,5 @@ const q = {
   }
 });
 export {
-  u as default
+  X as default
 };

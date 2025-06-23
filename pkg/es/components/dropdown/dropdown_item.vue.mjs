@@ -1,28 +1,26 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { getExposeProxy as t } from "../../utils/utils.mjs";
+import { defineComponent as t, ref as n, createBlock as p, openBlock as m, unref as s, mergeProps as f, withCtx as a, renderSlot as i } from "vue";
+import { getExposeProxy as c } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { ElDropdownItem as n } from "../../node_modules/element-plus/es/components/dropdown/index.mjs";
-import { defineComponent as m, createBlock as p, openBlock as s, withCtx as f, renderSlot as i, mergeProps as a } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as c, unref as d } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-const B = /* @__PURE__ */ m({
+import { ElDropdownItem as d } from "../../node_modules/element-plus/es/components/dropdown/index.mjs";
+const h = /* @__PURE__ */ t({
   name: "KDropdownItem",
   __name: "dropdown_item",
   setup(l, { expose: r }) {
-    const o = c(null);
-    return r(t({}, o)), (e, u) => (s(), p(d(n), a({
+    const e = n(null);
+    return r(c({}, e)), (o, u) => (m(), p(s(d), f({
       ref_key: "kDropDownItemRef",
-      ref: o,
+      ref: e,
       class: "k-dropdown-item"
-    }, e.$attrs), {
-      default: f(() => [
-        i(e.$slots, "default")
+    }, o.$attrs), {
+      default: a(() => [
+        i(o.$slots, "default")
       ]),
       _: 3
     }, 16));
   }
 });
 export {
-  B as default
+  h as default
 };

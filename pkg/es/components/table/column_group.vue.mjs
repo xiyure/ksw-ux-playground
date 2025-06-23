@@ -1,20 +1,17 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
+import { defineComponent as l, createBlock as n, openBlock as p, unref as m, mergeProps as i, createSlots as u, withCtx as r, renderSlot as o, normalizeProps as d, guardReactiveProps as f } from "vue";
 import "../../node_modules/vxe-table/es/components.mjs";
-import { VxeColgroup as p } from "../../node_modules/vxe-table/es/colgroup/index.mjs";
-import { defineComponent as l, createBlock as m, openBlock as n, createSlots as i, withCtx as r, renderSlot as o, guardReactiveProps as u, mergeProps as f } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { normalizeProps as d } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-import { unref as c } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-const k = /* @__PURE__ */ l({
+import { VxeColgroup as c } from "../../node_modules/vxe-table/es/colgroup/index.mjs";
+const C = /* @__PURE__ */ l({
   name: "KColumnGroup",
   __name: "column_group",
   props: {
     resizable: { type: Boolean }
   },
-  setup(t) {
-    const a = t;
-    return (e, h) => (n(), m(c(p), f({
-      resizable: a.resizable
-    }, e.$attrs), i({
+  setup(a) {
+    const t = a;
+    return (e, h) => (p(), n(m(c), i({
+      resizable: t.resizable
+    }, e.$attrs), u({
       default: r(() => [
         o(e.$slots, "default")
       ]),
@@ -23,7 +20,7 @@ const k = /* @__PURE__ */ l({
       e.$slots.header ? {
         name: "header",
         fn: r((s) => [
-          o(e.$slots, "header", d(u(s)))
+          o(e.$slots, "header", d(f(s)))
         ]),
         key: "0"
       } : void 0
@@ -31,5 +28,5 @@ const k = /* @__PURE__ */ l({
   }
 });
 export {
-  k as default
+  C as default
 };

@@ -1,15 +1,14 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import m from "../../node_modules/element-plus/es/locale/lang/zh-cn.mjs";
-import n from "../../node_modules/element-plus/es/locale/lang/en.mjs";
-import { localeContextKey as f } from "../../hooks/use_locale.mjs";
-import { SIZE_KEY as d } from "../../hooks/use_size.mjs";
-import { setStyleTheme as u, mergeCssVar as c } from "../../utils/utils.mjs";
+import { defineComponent as m, computed as r, provide as l, createVNode as n } from "vue";
+import f from "../../node_modules/element-plus/es/locale/lang/zh-cn.mjs";
+import d from "../../node_modules/element-plus/es/locale/lang/en.mjs";
+import { localeContextKey as u } from "../../hooks/use_locale.mjs";
+import { SIZE_KEY as c } from "../../hooks/use_size.mjs";
+import { setStyleTheme as p, mergeCssVar as s } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { ElConfigProvider as p } from "../../node_modules/element-plus/es/components/config-provider/index.mjs";
-import { defineComponent as s, computed as r, provide as l, createVNode as y } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-const P = /* @__PURE__ */ s({
+import { ElConfigProvider as y } from "../../node_modules/element-plus/es/components/config-provider/index.mjs";
+const M = /* @__PURE__ */ m({
   name: "KGlobalProvider",
   props: {
     locale: {
@@ -32,17 +31,17 @@ const P = /* @__PURE__ */ s({
   setup(e, {
     slots: t
   }) {
-    const i = r(() => e.locale === "en" ? n : m), a = {
+    const a = r(() => e.locale === "en" ? d : f), i = {
       default: () => {
         var o;
         return (o = t.default) == null ? void 0 : o.call(t);
       }
     };
-    return u(e.styleModule), c(e.cssVariables), l(d, r(() => e.size)), l(f, r(() => e.locale)), () => y(p, {
-      locale: i.value
-    }, a);
+    return p(e.styleModule), s(e.cssVariables), l(c, r(() => e.size)), l(u, r(() => e.locale)), () => n(y, {
+      locale: a.value
+    }, i);
   }
 });
 export {
-  P as default
+  M as default
 };

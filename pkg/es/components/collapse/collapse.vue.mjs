@@ -1,13 +1,10 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { getExposeProxy as p } from "../../utils/utils.mjs";
+import { defineComponent as n, provide as p, computed as i, ref as u, createElementBlock as f, openBlock as c, normalizeClass as m, createVNode as d, unref as y, mergeProps as S, createSlots as k, renderList as B, withCtx as C, renderSlot as _, normalizeProps as P, guardReactiveProps as g } from "vue";
+import { getExposeProxy as v } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { ElCollapse as n } from "../../node_modules/element-plus/es/components/collapse/index.mjs";
-import { defineComponent as i, provide as f, computed as m, createElementBlock as u, openBlock as c, createVNode as d, createSlots as y, renderList as S, withCtx as k, renderSlot as B, guardReactiveProps as C, mergeProps as _ } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as P, unref as g } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeProps as v, normalizeClass as A } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const j = /* @__PURE__ */ i({
+import { ElCollapse as A } from "../../node_modules/element-plus/es/components/collapse/index.mjs";
+const L = /* @__PURE__ */ n({
   name: "KCollapse",
   __name: "collapse",
   props: {
@@ -16,28 +13,28 @@ const j = /* @__PURE__ */ i({
     useAntStyle: { type: Boolean, default: !1 },
     useStepStyle: { type: Boolean, default: !1 }
   },
-  setup(l, { expose: s }) {
-    const r = l;
-    f(
+  setup(s, { expose: t }) {
+    const r = s;
+    p(
       "__isBlock__",
-      m(() => r.block)
+      i(() => r.block)
     );
-    const o = P(null);
-    return s(p({}, o)), (e, R) => (c(), u("div", {
-      class: A([{ "k-collapse-outline": e.isOutline }])
+    const l = u(null);
+    return t(v({}, l)), (e, R) => (c(), f("div", {
+      class: m([{ "k-collapse-outline": e.isOutline }])
     }, [
-      d(g(n), _({
+      d(y(A), S({
         ref_key: "kCollapseRef",
-        ref: o,
+        ref: l,
         class: [
           "k-collapse",
           { "is-useAntStyle": e.useAntStyle, "is-useStepStyle": e.useStepStyle }
         ]
-      }, e.$attrs), y({ _: 2 }, [
-        S(e.$slots, ($, t) => ({
-          name: t,
-          fn: k((a) => [
-            B(e.$slots, t, v(C(a)))
+      }, e.$attrs), k({ _: 2 }, [
+        B(e.$slots, ($, o) => ({
+          name: o,
+          fn: C((a) => [
+            _(e.$slots, o, P(g(a)))
           ])
         }))
       ]), 1040, ["class"])
@@ -45,5 +42,5 @@ const j = /* @__PURE__ */ i({
   }
 });
 export {
-  j as default
+  L as default
 };

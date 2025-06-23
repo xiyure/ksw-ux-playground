@@ -1,17 +1,14 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import Y from "./tab_dropdown_menu.mjs";
-import { getExposeProxy as D } from "../../utils/utils.mjs";
+import { defineComponent as Y, inject as D, ref as h, onMounted as F, onBeforeUnmount as K, onUpdated as q, watch as y, nextTick as G, createBlock as x, openBlock as z, unref as H, mergeProps as J, createSlots as Q, withCtx as T, createElementVNode as L, renderSlot as B, normalizeClass as X, createCommentVNode as Z, createVNode as ee } from "vue";
+import te from "./tab_dropdown_menu.mjs";
+import { getExposeProxy as oe } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { getElement as f, getElementAll as F, isElementInContainerView as K } from "../../utils/dom.mjs";
-import q from "../../node_modules/lodash-es/throttle.mjs";
-import G from "../../node_modules/ksw-vue-icon/es/icons/base/ellipsis-horizontal.mjs";
-import { ElTabs as J } from "../../node_modules/element-plus/es/components/tabs/index.mjs";
-import { defineComponent as Q, inject as X, onMounted as Z, onBeforeUnmount as ee, onUpdated as te, watch as y, nextTick as oe, createBlock as x, openBlock as z, createSlots as ne, withCtx as B, renderSlot as H, createElementVNode as L, createCommentVNode as ae, createVNode as le, mergeProps as se } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as h, unref as T } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeClass as ie } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const ye = /* @__PURE__ */ Q({
+import { getElement as f, getElementAll as ne, isElementInContainerView as ae } from "../../utils/dom.mjs";
+import le from "../../node_modules/lodash-es/throttle.mjs";
+import { ElTabs as se } from "../../node_modules/element-plus/es/components/tabs/index.mjs";
+import ie from "../../node_modules/ksw-vue-icon/es/icons/base/ellipsis-horizontal.mjs";
+const $e = /* @__PURE__ */ Y({
   name: "KTabs",
   __name: "tabs",
   props: {
@@ -23,25 +20,25 @@ const ye = /* @__PURE__ */ Q({
     showHideList: { type: Boolean, default: !0 }
   },
   emits: ["update:modelValue"],
-  setup(N, { expose: O, emit: R }) {
-    const m = X("__elementObserver"), c = N, M = R, p = h(void 0), l = h(), $ = h(), V = h(), g = h(!1), C = h([]);
+  setup(O, { expose: R, emit: N }) {
+    const m = D("__elementObserver"), c = O, M = N, p = h(void 0), l = h(), $ = h(), C = h(), g = h(!1), S = h([]);
     let _ = 0;
-    Z(() => {
+    F(() => {
       var t;
-      window.addEventListener("resize", w), window.addEventListener("wheel", S);
+      window.addEventListener("resize", w), window.addEventListener("wheel", V);
       const e = f(".el-tabs__nav", (t = l.value) == null ? void 0 : t.$el);
-      e && (m == null || m.observe(e, q(w, 200)));
-    }), ee(() => {
+      e && (m == null || m.observe(e, le(w, 200)));
+    }), K(() => {
       var t;
-      window.removeEventListener("resize", w), window.removeEventListener("wheel", S);
+      window.removeEventListener("resize", w), window.removeEventListener("wheel", V);
       const e = f(".el-tabs__nav", (t = l.value) == null ? void 0 : t.$el);
       e && (m == null || m.unobserve(e));
-    }), te(() => {
+    }), q(() => {
       w();
     }), y(
       () => c.tabPosition,
       () => {
-        b() || oe(() => {
+        b() || G(() => {
           var o;
           const e = (o = l.value) == null ? void 0 : o.$el, t = f(".el-tabs__nav-wrap", e);
           e == null || e.style.setProperty("--dropdown-trigger-width", `${t == null ? void 0 : t.offsetWidth}px`);
@@ -60,7 +57,7 @@ const ye = /* @__PURE__ */ Q({
         c.modelValue !== void 0 && c.modelValue !== e && M("update:modelValue", e), A();
       }
     );
-    function S(e) {
+    function V(e) {
       var r;
       const t = (r = l.value) == null ? void 0 : r.$el, o = f(".el-tabs__nav", t), s = f(".el-tabs__nav-scroll", t);
       if (!o || !s || !(o != null && o.contains(e.target)))
@@ -79,15 +76,15 @@ const ye = /* @__PURE__ */ Q({
       var a;
       if (!c.showHideList)
         return;
-      const e = [], t = (a = l.value) == null ? void 0 : a.$el, o = F(".el-tabs__item", t), s = f(".el-tabs__nav-scroll", t);
+      const e = [], t = (a = l.value) == null ? void 0 : a.$el, o = ne(".el-tabs__item", t), s = f(".el-tabs__nav-scroll", t);
       if (!t || !s || !(o != null && o.length))
         return;
       const d = s.getBoundingClientRect();
       for (let n = 0; n < o.length; n++) {
         const u = o[n].getBoundingClientRect();
-        K(u, d, b() ? "horizontal" : "vertical") || e.push(n);
+        ae(u, d, b() ? "horizontal" : "vertical") || e.push(n);
       }
-      C.value = e;
+      S.value = e;
     }
     function A() {
       setTimeout(() => {
@@ -123,7 +120,7 @@ const ye = /* @__PURE__ */ Q({
       const e = (r = l.value) == null ? void 0 : r.$el, t = f(".el-tabs__nav", e), o = f(".el-tabs__nav-scroll", e);
       if (!e || !t || !o)
         return;
-      const { offsetWidth: s = 0, offsetHeight: d = 0 } = V.value ?? {}, { offsetWidth: a, offsetHeight: n } = o, { offsetWidth: u, offsetHeight: i } = t;
+      const { offsetWidth: s = 0, offsetHeight: d = 0 } = C.value ?? {}, { offsetWidth: a, offsetHeight: n } = o, { offsetWidth: u, offsetHeight: i } = t;
       if (b()) {
         const v = _ === s ? 0 : s;
         g.value = u > a - v + (g.value ? $.value.offsetWidth - s : 0), _ = s;
@@ -137,7 +134,7 @@ const ye = /* @__PURE__ */ Q({
         (E = (P = l.value) == null ? void 0 : P.$el) == null || E.style.setProperty("--extra-width", `${b() ? v : I}px`);
       });
     }
-    return O(D({}, l)), (e, t) => (z(), x(T(J), se({
+    return R(oe({}, l)), (e, t) => (z(), x(H(se), J({
       ref_key: "$tab",
       ref: l,
       modelValue: p.value,
@@ -147,40 +144,40 @@ const ye = /* @__PURE__ */ Q({
       "tab-position": e.tabPosition,
       editable: e.editable,
       addable: e.addable
-    }), ne({
-      default: B(() => [
+    }), Q({
+      default: T(() => [
         L("div", {
           ref_key: "$list",
           ref: $,
-          class: ie(["k-tabs-more", `tab-${e.tabPosition}-layout ${e.editable || e.addable ? "is-addable" : ""}`])
+          class: X(["k-tabs-more", `tab-${e.tabPosition}-layout ${e.editable || e.addable ? "is-addable" : ""}`])
         }, [
-          e.showHideList && g.value ? (z(), x(T(Y), {
+          e.showHideList && g.value ? (z(), x(H(te), {
             key: 0,
-            "tab-index-list": C.value,
+            "tab-index-list": S.value,
             "tab-slots": e.$slots,
             onCommand: U
           }, {
-            title: B(() => [
-              le(T(G), { onClick: j })
+            title: T(() => [
+              ee(H(ie), { onClick: j })
             ]),
             _: 1
-          }, 8, ["tab-index-list", "tab-slots"])) : ae("", !0),
+          }, 8, ["tab-index-list", "tab-slots"])) : Z("", !0),
           L("div", {
             ref_key: "$slotContent",
-            ref: V,
+            ref: C,
             class: "k-tabs_header-right"
           }, [
-            H(e.$slots, "extra")
+            B(e.$slots, "extra")
           ], 512)
         ], 2),
-        H(e.$slots, "default")
+        B(e.$slots, "default")
       ]),
       _: 2
     }, [
       e.$slots["add-icon"] ? {
         name: "add-icon",
-        fn: B(() => [
-          H(e.$slots, "add-icon")
+        fn: T(() => [
+          B(e.$slots, "add-icon")
         ]),
         key: "0"
       } : void 0
@@ -188,5 +185,5 @@ const ye = /* @__PURE__ */ Q({
   }
 });
 export {
-  ye as default
+  $e as default
 };

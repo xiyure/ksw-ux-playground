@@ -1,10 +1,8 @@
-import "../../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import L from "../../../node_modules/lodash-es/cloneDeep.mjs";
-import { ref as A } from "../../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { computed as y, nextTick as O } from "../../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-function H(l, v, R, w, b) {
+import { ref as A, computed as y, nextTick as L } from "vue";
+import O from "../../../node_modules/lodash-es/cloneDeep.mjs";
+function E(l, v, R, w, b) {
   const S = {}, k = A(/* @__PURE__ */ new Set()), f = A(/* @__PURE__ */ new Set()), D = y(() => k.value.size);
-  O(() => {
+  L(() => {
     const { checkRowKeys: e, checkAll: t } = C.value, c = Array.isArray(e) ? e : [], n = t ? R.value.filter((a) => a == null ? void 0 : a[s.value]) : c.map((a) => {
       var o;
       return (o = b.tableDataMap.get(a)) == null ? void 0 : o.node;
@@ -101,7 +99,7 @@ function H(l, v, R, w, b) {
     var c, n, a;
     if (!e)
       return (c = l.value) == null ? void 0 : c.getCheckboxRecords();
-    const t = L(f.value);
+    const t = O(f.value);
     if (v.value.useTree) {
       const o = /* @__PURE__ */ new Map(), u = ((n = v.value.treeConfig) == null ? void 0 : n.rowField) ?? "id", i = ((a = v.value.treeConfig) == null ? void 0 : a.parentField) ?? "pid";
       for (const r of R.value)
@@ -144,5 +142,5 @@ function H(l, v, R, w, b) {
   };
 }
 export {
-  H as useCheckbox
+  E as useCheckbox
 };

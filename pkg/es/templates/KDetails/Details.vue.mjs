@@ -1,8 +1,6 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import f from "./DetailsItem.vue.mjs";
-import { defineComponent as p, onMounted as g, onUnmounted as _, provide as a, createElementBlock as u, openBlock as n, Fragment as v, renderList as w, createBlock as x, mergeProps as h } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as d } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-const B = /* @__PURE__ */ p({
+import { defineComponent as f, ref as a, onMounted as p, onUnmounted as g, provide as u, createElementBlock as d, openBlock as n, Fragment as _, renderList as v, createBlock as w, mergeProps as x } from "vue";
+import h from "./DetailsItem.vue.mjs";
+const C = /* @__PURE__ */ f({
   name: "KDetails",
   __name: "Details",
   props: {
@@ -12,31 +10,31 @@ const B = /* @__PURE__ */ p({
     useflex: { type: Boolean, default: !1 }
   },
   setup(c) {
-    const m = c, l = d(), r = d();
-    g(() => {
-      s();
-    }), window.addEventListener("resize", s), _(() => {
-      window.removeEventListener("resize", s);
+    const m = c, o = a(), s = a();
+    p(() => {
+      r();
+    }), window.addEventListener("resize", r), g(() => {
+      window.removeEventListener("resize", r);
     });
-    function s() {
-      if (!l.value) return;
+    function r() {
+      if (!o.value) return;
       let e = 1;
-      const o = getComputedStyle(l.value).gridTemplateColumns.split(" ");
-      for (let t = 1; t < o.length; t++) {
-        if (Math.abs(parseInt(o[t]) - parseInt(o[t - 1])) > 2) {
-          r.value = e;
+      const l = getComputedStyle(o.value).gridTemplateColumns.split(" ");
+      for (let t = 1; t < l.length; t++) {
+        if (Math.abs(parseInt(l[t]) - parseInt(l[t - 1])) > 2) {
+          s.value = e;
           break;
         }
         e++;
       }
-      r.value = e;
+      s.value = e;
     }
-    return a("__maxColumn__", r), a("__parentProps__", m), (e, o) => (n(), u("div", {
+    return u("__maxColumn__", s), u("__parentProps__", m), (e, l) => (n(), d("div", {
       ref_key: "RefKDetails",
-      ref: l,
+      ref: o,
       class: "k-details w-full h-fit grid grid-cols-1 2xs:grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 base:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4"
     }, [
-      (n(!0), u(v, null, w(e.abstract, (t, i) => (n(), x(f, h({ key: i }, t, {
+      (n(!0), d(_, null, v(e.abstract, (t, i) => (n(), w(h, x({ key: i }, t, {
         "show-line": e.showLine,
         useflex: e.useflex,
         direction: e.direction
@@ -45,5 +43,5 @@ const B = /* @__PURE__ */ p({
   }
 });
 export {
-  B as default
+  C as default
 };

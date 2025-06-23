@@ -1,11 +1,11 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { KButton as K } from "../../components/button/index.mjs";
+import { defineComponent as K, ref as m, onMounted as j, resolveComponent as w, createElementBlock as u, openBlock as s, createElementVNode as i, renderSlot as r, createBlock as f, createCommentVNode as v, resolveDynamicComponent as x, toDisplayString as k, withCtx as d, withDirectives as E, createVNode as g, unref as c, vShow as H, normalizeStyle as $, normalizeClass as L, Fragment as P, renderList as D, createTextVNode as U, mergeProps as S, createSlots as q } from "vue";
+import { KButton as J } from "../../components/button/index.mjs";
 import "../../components/input/index.mjs";
 import "../../components/input_number/index.mjs";
 import "../../components/radio/index.mjs";
 import "../../components/checkbox/index.mjs";
 import "../../components/switch/index.mjs";
-import { KTabPane as j, KTabs as x } from "../../components/tab/index.mjs";
+import { KTabs as O, KTabPane as Q } from "../../components/tab/index.mjs";
 import "../../components/pagination/index.mjs";
 import "../../components/select/index.mjs";
 import "../../components/cascader/index.mjs";
@@ -46,12 +46,8 @@ import "../../components/global_provider/index.mjs";
 import "../../components/split/index.mjs";
 import "../../components/list/index.mjs";
 import "../../components/text_v2/index.mjs";
-import E from "../../node_modules/ksw-vue-icon/es/icons/base/up.mjs";
-import H from "../../node_modules/ksw-vue-icon/es/icons/base/tips.mjs";
-import { defineComponent as L, onMounted as U, resolveComponent as w, createElementBlock as u, openBlock as s, createElementVNode as i, renderSlot as a, createBlock as f, createCommentVNode as v, resolveDynamicComponent as q, withCtx as d, withDirectives as J, createVNode as g, Fragment as k, renderList as $, createTextVNode as O, mergeProps as P, createSlots as Q } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as m, unref as c } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { toDisplayString as D, normalizeStyle as S, normalizeClass as W } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-import { vShow as X } from "../../node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.mjs";
+import W from "../../node_modules/ksw-vue-icon/es/icons/base/up.mjs";
+import X from "../../node_modules/ksw-vue-icon/es/icons/base/tips.mjs";
 const Y = {
   id: "GFPageDetails",
   class: "GFPageDetails",
@@ -62,7 +58,7 @@ const Y = {
 }, le = { class: "head-toolbar" }, ie = { class: "head-abstract mb-4 flex flex-col" }, se = {
   key: 0,
   class: "!m-auto p-2"
-}, re = { class: "GFPageDetails-slot--default flex-1" }, at = /* @__PURE__ */ L({
+}, ae = { class: "GFPageDetails-slot--default flex-1" }, lt = /* @__PURE__ */ K({
   name: "GFPageDetails",
   __name: "GFPageDetails",
   props: {
@@ -76,30 +72,30 @@ const Y = {
     direction: { default: "horizontal" },
     useItemCollapse: { type: Boolean, default: !1 }
   },
-  setup(T, { expose: V }) {
+  setup(T, { expose: F }) {
     var _;
-    const h = T, n = m(!0), t = m(), F = (_ = h.tabsConfig) == null ? void 0 : _.defaultActive, y = m(F ?? h.tabs[0].name), C = m(1), N = m(1), b = m(!1);
-    U(() => {
-      B(), I();
+    const h = T, n = m(!0), t = m(), V = (_ = h.tabsConfig) == null ? void 0 : _.defaultActive, y = m(V ?? h.tabs[0].name), C = m(1), z = m(1), b = m(!1);
+    j(() => {
+      I(), B();
     });
-    function z(e) {
+    function G(e) {
       y.value = e;
     }
-    function B() {
+    function I() {
       var o;
       return (o = t.value) == null ? void 0 : o.children[0].children[0].clientHeight;
     }
-    function G() {
+    function N() {
       n.value = !n.value;
     }
-    function I() {
+    function B() {
       if (!(t != null && t.value)) return;
       let e = 1;
       const o = getComputedStyle(t == null ? void 0 : t.value).gridTemplateColumns.split(
         " "
       );
-      for (let r = 1; r < o.length; r++) {
-        if (Math.abs(parseInt(o[r]) - parseInt(o[r - 1])) > 2) {
+      for (let a = 1; a < o.length; a++) {
+        if (Math.abs(parseInt(o[a]) - parseInt(o[a - 1])) > 2) {
           C.value = e;
           break;
         }
@@ -113,39 +109,39 @@ const Y = {
       var p;
       const e = ((p = t.value) == null ? void 0 : p.clientHeight) ?? 0, o = getComputedStyle(t == null ? void 0 : t.value).gridTemplateRows.split(
         " "
-      ), r = o[0];
-      N.value = o.length, t == null || t.value.style.setProperty("--expandHeight", `${e}px`), t == null || t.value.style.setProperty("--transition-duration", "0.3s"), t == null || t.value.style.setProperty("--firstRowHeight", `${r}`);
+      ), a = o[0];
+      z.value = o.length, t == null || t.value.style.setProperty("--expandHeight", `${e}px`), t == null || t.value.style.setProperty("--transition-duration", "0.3s"), t == null || t.value.style.setProperty("--firstRowHeight", `${a}`);
     }
-    return V({ toggleActiveTab: z }), (e, o) => {
-      const r = w("k-tooltip"), p = w("k-details-item");
+    return F({ toggleActiveTab: G }), (e, o) => {
+      const a = w("k-tooltip"), p = w("k-details-item");
       return s(), u("div", Y, [
         i("div", Z, [
           i("div", A, [
-            a(e.$slots, "extra-head", {}, () => [
+            r(e.$slots, "extra-head", {}, () => [
               i("div", R, [
                 i("div", ee, [
-                  a(e.$slots, "head-title", {}, () => [
+                  r(e.$slots, "head-title", {}, () => [
                     i("div", {
                       class: "flex items-center gap-1 h-8 items-center justify-center",
                       onMouseenter: o[1] || (o[1] = () => b.value = !0)
                     }, [
-                      e.icon ? (s(), f(q(e.icon), {
+                      e.icon ? (s(), f(x(e.icon), {
                         key: 0,
                         size: "24"
                       })) : v("", !0),
-                      i("span", te, D(e.title), 1),
+                      i("span", te, k(e.title), 1),
                       e.descriptions ? (s(), u("div", oe, [
-                        e.descriptions ? (s(), f(r, {
+                        e.descriptions ? (s(), f(a, {
                           key: 0,
                           content: e.descriptions,
                           onHide: o[0] || (o[0] = () => b.value = !1)
                         }, {
                           default: d(() => [
-                            J(g(c(H), {
+                            E(g(c(X), {
                               color: "#4193f2",
                               size: "24"
                             }, null, 512), [
-                              [X, b.value]
+                              [H, b.value]
                             ])
                           ]),
                           _: 1
@@ -155,41 +151,41 @@ const Y = {
                   ])
                 ]),
                 i("div", le, [
-                  a(e.$slots, "head-toolbar")
+                  r(e.$slots, "head-toolbar")
                 ])
               ])
             ])
           ]),
           i("div", ie, [
-            a(e.$slots, "head-abstract", {}, () => [
+            r(e.$slots, "head-abstract", {}, () => [
               i("div", {
                 ref_key: "RefHeadAbstract",
                 ref: t,
-                class: W(["RefHeadAbstract grid gap-4", {
+                class: L(["RefHeadAbstract grid gap-4", {
                   "is-collapse": !n.value && e.useItemCollapse,
                   "use-collapse": e.useItemCollapse && n.value
                 }]),
-                style: S(`grid-template-columns:repeat(${e.columns},minmax(0, 1fr))`)
+                style: $(`grid-template-columns:repeat(${e.columns},minmax(0, 1fr))`)
               }, [
-                (s(!0), u(k, null, $(h.abstract, (l) => (s(), f(p, {
+                (s(!0), u(P, null, D(h.abstract, (l) => (s(), f(p, {
                   key: l.label,
                   label: l.label,
                   value: l.value,
                   render: l.render,
-                  style: S(`grid-column: span ${l.column}`),
+                  style: $(`grid-column: span ${l.column}`),
                   direction: e.direction
                 }, null, 8, ["label", "value", "render", "style", "direction"]))), 128))
               ], 6),
               e.useItemCollapse ? (s(), u("div", se, [
-                g(c(K), {
+                g(c(J), {
                   text: "",
-                  onClick: G
+                  onClick: N
                 }, {
                   default: d(() => [
-                    g(c(E), {
+                    g(c(W), {
                       rotate: n.value ? 180 : 0
                     }, null, 8, ["rotate"]),
-                    O(" " + D(n.value ? "展开详情" : "收起详情"), 1)
+                    U(" " + k(n.value ? "展开详情" : "收起详情"), 1)
                   ]),
                   _: 1
                 })
@@ -197,25 +193,25 @@ const Y = {
             ])
           ])
         ]),
-        i("div", re, [
-          a(e.$slots, "detail", {}, () => [
-            g(c(x), P({
+        i("div", ae, [
+          r(e.$slots, "detail", {}, () => [
+            g(c(O), S({
               modelValue: y.value,
               "onUpdate:modelValue": o[2] || (o[2] = (l) => y.value = l)
             }, e.tabsConfig), {
               default: d(() => [
-                (s(!0), u(k, null, $(e.tabs, (l) => (s(), f(c(j), P({
+                (s(!0), u(P, null, D(e.tabs, (l) => (s(), f(c(Q), S({
                   key: l.name
-                }, l), Q({
+                }, l), q({
                   default: d(() => [
-                    a(e.$slots, l.name)
+                    r(e.$slots, l.name)
                   ]),
                   _: 2
                 }, [
                   e.$slots[`${l.name}-label`] ? {
                     name: "label",
                     fn: d(() => [
-                      a(e.$slots, `${l.name}-label`)
+                      r(e.$slots, `${l.name}-label`)
                     ]),
                     key: "0"
                   } : void 0
@@ -230,5 +226,5 @@ const Y = {
   }
 });
 export {
-  at as default
+  lt as default
 };

@@ -1,19 +1,18 @@
-import "../../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import { DEFAULT_WIDGETS as L, DEFAULT_TREE_CONFIG as b, DEFAULT_SORT_CONFIG as f, DEFAULT_ROW_CONFIG as m, DEFAULT_EDIT_CONFIG as D, DEFAULT_SCROLL_Y as j, DEFAULT_COLUMN_CONFIG as A } from "../const.mjs";
+import { computed as i } from "vue";
+import { DEFAULT_WIDGETS as L, DEFAULT_TREE_CONFIG as b, DEFAULT_SORT_CONFIG as f, DEFAULT_ROW_CONFIG as D, DEFAULT_EDIT_CONFIG as j, DEFAULT_SCROLL_Y as m, DEFAULT_COLUMN_CONFIG as A } from "../const.mjs";
 import s from "../../../node_modules/lodash-es/cloneDeep.mjs";
-import { computed as e } from "../../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-function N(t, l) {
+function G(t, l) {
   const { isPaging: r, paginationConfig: c } = l, g = {
     seqMethod: ({ rowIndex: n }) => {
       var o;
-      const i = ((o = t.seqConfig) == null ? void 0 : o.startIndex) ?? 1;
+      const e = ((o = t.seqConfig) == null ? void 0 : o.startIndex) ?? 1;
       if (r.value) {
         const { pageSize: w, currentPage: E } = c.value;
-        return (E - 1) * w + n + i;
+        return (E - 1) * w + n + e;
       }
-      return n + i;
+      return n + e;
     }
-  }, u = e(() => {
+  }, u = i(() => {
     const n = [];
     if (!Array.isArray(t.widgets))
       return t.showSearchInput && n.push({
@@ -32,20 +31,20 @@ function N(t, l) {
         id: "transfer",
         slot: null
       }), n;
-    for (const i of t.widgets) {
-      if (!i)
+    for (const e of t.widgets) {
+      if (!e)
         continue;
-      const o = typeof i;
-      o === "string" ? L.get(i) ? n.push({ id: i, slot: null }) : n.push({ id: i, slot: i }) : (o === "object" || o === "function") && n.push(i);
+      const o = typeof e;
+      o === "string" ? L.get(e) ? n.push({ id: e, slot: null }) : n.push({ id: e, slot: e }) : (o === "object" || o === "function") && n.push(e);
     }
     return n;
-  }), a = e(() => {
+  }), a = i(() => {
     if (t.useTree)
       return Object.assign(s(b), t.treeConfig || {});
-  }), C = e(() => Object.assign(s(f), t.sortConfig || {})), d = e(() => Object.assign(s(f), t.filterConfig || {})), h = e(() => Object.assign(s(m), t.rowConfig)), O = e(() => Object.assign(s(D), t.editConfig || {})), F = e(() => {
-    const n = Object.assign(s(j), t.scrollY || {});
+  }), C = i(() => Object.assign(s(f), t.sortConfig || {})), d = i(() => Object.assign(s(f), t.filterConfig || {})), h = i(() => Object.assign(s(D), t.rowConfig)), O = i(() => Object.assign(s(j), t.editConfig || {})), F = i(() => {
+    const n = Object.assign(s(m), t.scrollY || {});
     return t.adaptive && (n.enabled = !1), n;
-  }), T = e(() => Object.assign(s(A), t.columnConfig || {})), _ = e(() => Object.assign(s(g), t.seqConfig || {}));
+  }), T = i(() => Object.assign(s(A), t.columnConfig || {})), _ = i(() => Object.assign(s(g), t.seqConfig || {}));
   return {
     widgets: u,
     treeConfig: a,
@@ -59,5 +58,5 @@ function N(t, l) {
   };
 }
 export {
-  N as useConfig
+  G as useConfig
 };

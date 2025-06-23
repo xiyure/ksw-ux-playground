@@ -1,12 +1,10 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import n from "../KDetails/DetailsItem.vue.mjs";
-import { defineComponent as c, createElementBlock as l, openBlock as o, createElementVNode as t, renderSlot as s, createBlock as i, createCommentVNode as u, resolveDynamicComponent as f, Fragment as h, renderList as p, mergeProps as m } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { toDisplayString as g } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
+import { defineComponent as n, createElementBlock as a, openBlock as o, createElementVNode as t, renderSlot as s, createBlock as i, createCommentVNode as c, resolveDynamicComponent as u, toDisplayString as f, Fragment as h, renderList as p, mergeProps as m } from "vue";
+import g from "../KDetails/DetailsItem.vue.mjs";
 const v = {
   id: "KPageDetails",
   class: "KPageDetails h-full flex-1",
   style: { "min-width": "0" }
-}, _ = { class: "KPageDetailsHead-content w-full flex flex-col bg-white rounded overflow-hidden mb-2 shadow-sm" }, b = { class: "extra-head px-6 py-2 border-b border-gray-200" }, w = { class: "w-full flex justify-between items-center" }, y = { class: "head-title" }, D = { class: "flex items-center gap-1 h-8" }, x = { class: "head-toolbar" }, B = { class: "extra-head-body px-6 py-3" }, P = { class: "w-full relative overflow-auto scrollbar-hide flex gap-4" }, k = { class: "shadow-sm flex-1" }, N = /* @__PURE__ */ c({
+}, _ = { class: "KPageDetailsHead-content w-full flex flex-col bg-white rounded overflow-hidden mb-2 shadow-sm" }, b = { class: "extra-head px-6 py-2 border-b border-gray-200" }, w = { class: "w-full flex justify-between items-center" }, y = { class: "head-title" }, D = { class: "flex items-center gap-1 h-8" }, x = { class: "head-toolbar" }, P = { class: "extra-head-body px-6 py-3" }, k = { class: "w-full relative overflow-auto scrollbar-hide flex gap-4" }, B = { class: "shadow-sm flex-1" }, C = /* @__PURE__ */ n({
   name: "KPageDetails",
   __name: "PageDetails",
   props: {
@@ -18,9 +16,9 @@ const v = {
     direction: { default: "vertical" },
     useflex: { type: Boolean, default: !0 }
   },
-  setup(r) {
-    const d = r;
-    return (e, $) => (o(), l("div", v, [
+  setup(d) {
+    const r = d;
+    return (e, $) => (o(), a("div", v, [
       t("div", _, [
         t("div", b, [
           s(e.$slots, "extra-head", {}, () => [
@@ -28,11 +26,11 @@ const v = {
               t("div", y, [
                 s(e.$slots, "head-title", {}, () => [
                   t("div", D, [
-                    e.pageIcon ? (o(), i(f(e.pageIcon), {
+                    e.pageIcon ? (o(), i(u(e.pageIcon), {
                       key: 0,
                       size: "24"
-                    })) : u("", !0),
-                    t("span", null, g(e.pageTitle), 1)
+                    })) : c("", !0),
+                    t("span", null, f(e.pageTitle), 1)
                   ])
                 ], !0)
               ]),
@@ -42,25 +40,25 @@ const v = {
             ])
           ], !0)
         ]),
-        t("div", B, [
+        t("div", P, [
           s(e.$slots, "head-abstract", {}, () => [
-            t("div", P, [
-              (o(!0), l(h, null, p(d.abstract, (a) => (o(), i(n, m({
-                key: a.label,
+            t("div", k, [
+              (o(!0), a(h, null, p(r.abstract, (l) => (o(), i(g, m({
+                key: l.label,
                 "show-line": e.showLine,
                 direction: e.direction,
                 useflex: e.useflex
-              }, a), null, 16, ["show-line", "direction", "useflex"]))), 128))
+              }, l), null, 16, ["show-line", "direction", "useflex"]))), 128))
             ])
           ], !0)
         ])
       ]),
-      t("div", k, [
+      t("div", B, [
         s(e.$slots, "default", {}, void 0, !0)
       ])
     ]));
   }
 });
 export {
-  N as default
+  C as default
 };

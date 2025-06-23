@@ -1,49 +1,46 @@
-import "../../node_modules/vue/dist/vue.runtime.esm-bundler.mjs";
-import a from "./options.mjs";
-import { getExposeProxy as c } from "../../utils/utils.mjs";
+import { defineComponent as a, ref as c, provide as u, createBlock as d, openBlock as S, unref as t, mergeProps as z, createSlots as _, withCtx as o, createVNode as h, renderSlot as n, renderList as k, normalizeProps as E, guardReactiveProps as P } from "vue";
+import $ from "./options.mjs";
+import { getExposeProxy as g } from "../../utils/utils.mjs";
 import "../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.mjs";
 import "../../node_modules/sortablejs/modular/sortable.esm.mjs";
 import "../../node_modules/culori/src/index.mjs";
-import { useSize as u, SIZE_KEY as d } from "../../hooks/use_size.mjs";
-import { useInheritSlot as S } from "../../hooks/use_inherit_slot.mjs";
-import { ElSelect as z } from "../../node_modules/element-plus/es/components/select/index.mjs";
-import { defineComponent as _, provide as h, createBlock as k, openBlock as E, createSlots as P, renderList as $, withCtx as o, renderSlot as p, guardReactiveProps as g, createVNode as K, mergeProps as R } from "../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.mjs";
-import { ref as v, unref as t } from "../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.mjs";
-import { normalizeProps as x } from "../../node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.mjs";
-const F = /* @__PURE__ */ _({
+import { useSize as K, SIZE_KEY as R } from "../../hooks/use_size.mjs";
+import { useInheritSlot as v } from "../../hooks/use_inherit_slot.mjs";
+import { ElSelect as x } from "../../node_modules/element-plus/es/components/select/index.mjs";
+const q = /* @__PURE__ */ a({
   name: "KSelect",
   __name: "select",
   props: {
     size: {}
   },
-  setup(n, { expose: m }) {
-    const r = u(n), s = v(), l = S(["default"]);
-    return h(d, r), m(c({}, s)), (e, C) => (E(), k(t(z), R({
+  setup(p, { expose: l }) {
+    const r = K(p), s = c(), f = v(["default"]);
+    return u(R, r), l(g({}, s)), (e, C) => (S(), d(t(x), z({
       ref_key: "inputRef",
       ref: s,
       class: "k-select"
     }, e.$attrs, {
       size: t(r).elSize
-    }), P({
+    }), _({
       default: o(() => [
-        K(t(a), null, {
+        h(t($), null, {
           default: o(() => [
-            p(e.$slots, "default")
+            n(e.$slots, "default")
           ]),
           _: 3
         })
       ]),
       _: 2
     }, [
-      $(t(l)(e.$slots), (I, i) => ({
+      k(t(f)(e.$slots), (I, i) => ({
         name: i,
-        fn: o((f) => [
-          p(e.$slots, i, x(g(f)))
+        fn: o((m) => [
+          n(e.$slots, i, E(P(m)))
         ])
       }))
     ]), 1040, ["size"]));
   }
 });
 export {
-  F as default
+  q as default
 };
