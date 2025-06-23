@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});require("../node_modules/vue/dist/vue.runtime.esm-bundler.cjs");const i=require("../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.cjs");function u(r){const o=new Set(r);return i.computed(()=>t=>{const n={};for(const e in t)o.has(e)||(n[e]=t[e]);return n})}exports.useInheritSlot=u;

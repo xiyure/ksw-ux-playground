@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const s=require("../../utils/install.cjs"),t=require("./message_box.cjs"),e=s.withInstallFunction(t.default,"$messageBox");exports.KMessageBox=e;exports.default=e;

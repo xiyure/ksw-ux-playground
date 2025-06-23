@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./icon_popover.vue.cjs");;/* empty css                    */const o=require("../../utils/install.cjs"),e=o.withInstall(t.default);exports.KIconPopover=e;exports.default=e;

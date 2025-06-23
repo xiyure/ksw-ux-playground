@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const r=require("../../node_modules/sortablejs/modular/sortable.esm.cjs");function o(e,t){return new r.default(e,t)}exports.Sortable=o;

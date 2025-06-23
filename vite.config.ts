@@ -1,12 +1,15 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import vue from '@vitejs/plugin-vue'
-import replPkg from '@vue/repl/package.json' assert { type: 'json' }
+// import replPkg from '@vue/repl/package.json' with { type: 'json' }
 import Unocss from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import Inspect from 'vite-plugin-inspect'
 import Mkcert from 'vite-plugin-mkcert'
-import pkg from './package.json' assert { type: 'json' }
+// import pkg from './package.json' with { type: 'json' }
 
 const pathSrc = path.resolve(__dirname, 'src')
 
@@ -17,8 +20,8 @@ export default defineConfig({
     },
   },
   define: {
-    'import.meta.env.APP_VERSION': JSON.stringify(pkg),
-    'import.meta.env.REPL_VERSION': JSON.stringify(replPkg),
+    'import.meta.env.APP_VERSION': JSON.stringify('2.5.1'),
+    'import.meta.env.REPL_VERSION': JSON.stringify('4.5.1'),
   },
   build: {
     rollupOptions: {

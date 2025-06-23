@@ -40,7 +40,8 @@ export const genCompilerSfcLink = (version: string) => {
 }
 
 export const genImportMap = (
-  { vue }: Partial<Versions> = {}
+  { vue, elementPlus }: Partial<Versions> = {},
+  nightly: boolean,
 ): ImportMap => {
   const deps: Record<string, Dependency> = {
     vue: {
@@ -51,17 +52,45 @@ export const genImportMap = (
     '@vue/shared': {
       version: vue,
       path: '/dist/shared.esm-bundler.js',
+    },
+    'element-plus': {
+      pkg: nightly ? '@element-plus/nightly' : 'element-plus',
+      version: elementPlus,
+      path: '/dist/index.full.min.mjs',
+    },
+    'element-plus/': {
+      pkg: 'element-plus',
+      version: elementPlus,
+      path: '/',
+    },
+    '@element-plus/icons-vue': {
+      version: '2',
+      path: '/dist/index.min.js',
+    },
+    'vxe-table': {
+      pkg: 'vxe-table',
+      version: '4.10.6',
+      path: '/lib/index.umd.min.js'
+    },
+    'vxe-pc-ui': {
+      pkg: 'vxe-pc-ui',
+      version: '4.3.93',
+      path: '/lib/index.umd.min.js'
+    },
+    "xe-utils": {
+      pkg: "xe-utils",
+      version: "3.7.5",
+      path: "/dist/xe-utils.umd.min.js"
     }
   }
-  const vueDep = Object.fromEntries(
+
+  return {
+    imports: Object.fromEntries(
       Object.entries(deps).map(([key, dep]) => [
         key,
         genCdnLink(dep.pkg ?? key, dep.version, dep.path),
       ]),
-    )
-
-  return {
-    imports: Object.assign(vueDep, { '@ksware/ksw-ux': '/node_modules/@ksware/ksw-ux/es/index.mjs' }),
+    ),
   }
 }
 
@@ -93,7 +122,10 @@ export const getSupportedTSVersions = () => {
 }
 
 export const getSupportedEpVersions = (nightly: MaybeRef<boolean>) => {
-  const versions = getVersions('element-plus')
+  const pkg = computed(() =>
+    unref(nightly) ? '@element-plus/nightly' : 'element-plus',
+  )
+  const versions = getVersions(pkg)
   return computed(() => {
     if (unref(nightly)) return versions.value
     return versions.value.filter((version) => gte(version, '1.1.0-beta.18'))

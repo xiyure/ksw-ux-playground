@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=require("./transferView.vue2.cjs");;/* empty css                    */const t=require("../../_virtual/_plugin-vue_export-helper.cjs"),r=t.default(e.default,[["__scopeId","data-v-70780ac9"]]);exports.default=r;

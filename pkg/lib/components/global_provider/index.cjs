@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const l=require("./global_provider.cjs"),r=require("../../utils/install.cjs"),e=r.withInstall(l.default);exports.KGlobalProvider=e;exports.default=e;

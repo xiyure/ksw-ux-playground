@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("./drawer.vue.cjs");;/* empty css              */const t=require("../../utils/install.cjs"),e=t.withInstall(r.default);exports.KDrawer=e;exports.default=e;

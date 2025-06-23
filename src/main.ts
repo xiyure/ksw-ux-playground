@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from '@/App.vue'
-import KUI from 'element-plus'
-import '@ksware/ksw-ux/kingsware-ui/style.css'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 import '@unocss/reset/tailwind.css'
 import '@vue/repl/style.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
@@ -12,4 +12,4 @@ window.VUE_DEVTOOLS_CONFIG = {
   defaultSelectedAppId: 'repl',
 }
 
-createApp(App).use(KUI).mount('#app')
+createApp(App).use(ElementPlus).mount('#app')

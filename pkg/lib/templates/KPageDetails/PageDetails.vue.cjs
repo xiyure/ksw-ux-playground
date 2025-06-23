@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=require("./PageDetails.vue2.cjs");;/* empty css                   */const t=require("../../_virtual/_plugin-vue_export-helper.cjs"),u=t.default(e.default,[["__scopeId","data-v-56c4d482"]]);exports.default=u;

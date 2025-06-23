@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./PageTableView.vue.cjs"),l=require("../../utils/install.cjs"),e=l.withInstall(t.default);exports.KPageTableView=e;exports.default=e;

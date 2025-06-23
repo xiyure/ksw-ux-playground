@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const i=require("../directives/index.cjs");function r(t){for(const e in i)t.directive(`ksw_${e}`,i[e])}exports.useDirectives=r;

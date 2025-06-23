@@ -1,0 +1,168 @@
+import { App, Component, vShow } from 'vue';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicAttributes {
+      class?: unknown
+      style?: unknown
+    }
+  }
+}
+
+declare module '@vue/runtime-core' {
+
+  export interface GlobalComponents {
+    Component: (props: { is: Component | string }) => void
+  }
+
+  export interface ComponentCustomProperties {
+    vShow: typeof vShow
+  }
+}
+declare module 'vue' {
+  // GlobalComponents for Volar
+  export interface GlobalComponents {
+    KBadge: typeof import('./all')['KBadge']
+    KButton: typeof import('./all')['KButton']
+    KButtonContainer: typeof import('./all')['KButtonContainer']
+    KCalendar: typeof import('./all')['KCalendar']
+    KCascader: typeof import('./all')['KCascader']
+    KCheckbox: typeof import('./all')['KCheckbox']
+    KCheckboxGroup: typeof import('./all')['KCheckboxGroup']
+    KCollapse: typeof import('./all')['KCollapse']
+    KCollapseItem: typeof import('./all')['KCollapseItem']
+    KDatePicker: typeof import('./all')['KDatePicker']
+    KDialog: typeof import('./all')['KDialog']
+    KDrawer: typeof import('./all')['KDrawer']
+    KDropdown: typeof import('./all')['KDropdown']
+    KDropdownItem: typeof import('./all')['KDropdownItem']
+    KEmpty: typeof import('./all')['KEmpty']
+    KFilter: typeof import('./all')['KFilter']
+    KFilterForm: typeof import('./all')['KFilterForm']
+    KForm: typeof import('./all')['KForm']
+    KFormItem: typeof import('./all')['KFormItem']
+    KGlobalProvider: typeof import('./all')['KGlobalProvider']
+    KIconPopover: typeof import('./all')['KIconPopover']
+    KInput: typeof import('./all')['KInput']
+    KInputNumber: typeof import('./all')['KInputNumber']
+    KList: typeof import('./all')['KList']
+    KOperate: typeof import('./all')['KOperate']
+    KOption: typeof import('./all')['KOption']
+    KOptionGroup: typeof import('./all')['KOptionGroup']
+    KPagination: typeof import('./all')['KPagination']
+    KPopover: typeof import('./all')['KPopover']
+    KPopconfirm: typeof import('./all')['KPopconfirm']
+    KRadio: typeof import('./all')['KRadio']
+    KRadioGroup: typeof import('./all')['KRadioGroup']
+    KScriptInput: typeof import('./all')['KScriptInput']
+    KSelect: typeof import('./all')['KSelect']
+    KSliderButton: typeof import('./all')['KSliderButton']
+    KSplit: typeof import('./all')['KSplit']
+    KSteps: typeof import('./all')['KSteps']
+    KStep: typeof import('./all')['KStep']
+    KSwitch: typeof import('./all')['KSwitch']
+    KTabs: typeof import('./all')['KTabs']
+    KTabPane: typeof import('./all')['KTabPane']
+    KTag: typeof import('./all')['KTag']
+    KTextV2: typeof import('./all')['KTextV2']
+    KTimeline: typeof import('./all')['KTimeline']
+    KTimelineItem: typeof import('./all')['KTimelineItem']
+    KTooltip: typeof import('./all')['KTooltip']
+    KTransfer: typeof import('./all')['KTransfer']
+    KTree: typeof import('./all')['KTree']
+    KTreeTable: typeof import('./all')['KTreeTable']
+    KTreeSelect: typeof import('./all')['KTreeSelect']
+    KTreeTransfer: typeof import('./all')['KTreeTransfer']
+    KUpload: typeof import('./all')['KUpload']
+    KView: typeof import('./all')['KView']
+
+    // templates
+    GFPageDetails: typeof import('./all')['GFPageDetails']
+    KDetails: typeof import('./all')['KDetails']
+    KDetailsItem: typeof import('./all')['KDetailsItem']
+    KMenuView: typeof import('./all')['KMenuView']
+    KPageDetails: typeof import('./all')['KPageDetails']
+    KPageViewBus: typeof import('./all')['KPageViewBus']
+    KPageTableView: typeof import('./all')['KPageTableView']
+    KTransferView: typeof import('./all')['KTransferView']
+
+    // native components
+    KAffix: typeof import('./base')['KAffix']
+    KAlert: typeof import('./base')['KAlert']
+    KAnchor: typeof import('./base')['KAnchor']
+    KAnchorLink: typeof import('./base')['KAnchorLink']
+    KAside: typeof import('./base')['KAside']
+    KAutocomplete: typeof import('./base')['KAutocomplete']
+    KAutoResizer: typeof import('./base')['KAutoResizer']
+    KAvatar: typeof import('./base')['KAvatar']
+    KBacktop: typeof import('./base')['KBacktop']
+    KBreadcrumb: typeof import('./base')['KBreadcrumb']
+    KBreadcrumbItem: typeof import('./base')['KBreadcrumbItem']
+    KButtonGroup: typeof import('./base')['KButtonGroup']
+    KCard: typeof import('./base')['KCard']
+    KCarousel: typeof import('./base')['KCarousel']
+    KCarouselItem: typeof import('./base')['KCarouselItem']
+    KCascaderPanel: typeof import('./base')['KCascaderPanel']
+    KCheckTag: typeof import('./base')['KCheckTag']
+    KCol: typeof import('./base')['KCol']
+    KCollapseTransition: typeof import('./base')['KCollapseTransition']
+    KColorPicker: typeof import('./base')['KColorPicker']
+    KConfigProvider: typeof import('./base')['KConfigProvider']
+    KContainer: typeof import('./base')['KContainer']
+    KCountdown: typeof import('./base')['KCountdown']
+    KDescriptions: typeof import('./base')['KDescriptions']
+    KDescriptionsItem: typeof import('./base')['KDescriptionsItem']
+    KDivider: typeof import('./base')['KDivider']
+    KDropdownMenu: typeof import('./base')['KDropdownMenu']
+    KFooter: typeof import('./base')['KFooter']
+    KHeader: typeof import('./base')['KHeader']
+    KIcon: typeof import('./base')['KIcon']
+    KImage: typeof import('./base')['KImage']
+    KImageViewer: typeof import('./base')['KImageViewer']
+    KLink: typeof import('./base')['KLink']
+    KMain: typeof import('./base')['KMain']
+    KMention: typeof import('./base')['KMention']
+    KMenu: typeof import('./base')['KMenu']
+    KMenuItem: typeof import('./base')['KMenuItem']
+    KMenuItemGroup: typeof import('./base')['KMenuItemGroup']
+    KOverlay: typeof import('./base')['KOverlay']
+    KPageHeader: typeof import('./base')['KPageHeader']
+    KPopper: typeof import('./base')['KPopper']
+    KPopperArrow: typeof import('./base')['KPopperArrow']
+    KPopperContent: typeof import('./base')['KPopperContent']
+    KPopperTrigger: typeof import('./base')['KPopperTrigger']
+    KProgress: typeof import('./base')['KProgress']
+    KRate: typeof import('./base')['KRate']
+    KRow: typeof import('./base')['KRow']
+    KScrollbar: typeof import('./base')['KScrollbar']
+    KSelectV2: typeof import('./base')['KSelectV2']
+    KSkeleton: typeof import('./base')['KSkeleton']
+    KSkeletonItem: typeof import('./base')['KSkeletonItem']
+    KSlider: typeof import('./base')['KSlider']
+    KSpace: typeof import('./base')['KSpace']
+    KStatistic: typeof import('./base')['KStatistic']
+    KSubMenu: typeof import('./base')['KSubMenu']
+    KText: typeof import('./base')['KText']
+    KTimeSelect: typeof import('./base')['KTimeSelect']
+    KTimePicker: typeof import('./base')['KTimePicker']
+    KTour: typeof import('./base')['KTour']
+    KTourStep: typeof import('./base')['KTourStep']
+    KWatermark: typeof import('./base')['KWatermark']
+    KRadioButton: typeof import('./base')['KRadioButton']
+    KCheckboxButton: typeof import('./base')['KCheckboxButton']
+  }
+
+  // GlobalProperties for Volar
+  export interface ComponentCustomProperties {
+    $message: typeof import('./base')['KMessage']
+    $messageBox: typeof import('./base')['KMessageBox']
+    $dialog: typeof import('./base')['showDialog']
+  }
+}
+
+export * from './all';
+export * from './base';
+export * from './third_types';
+
+export declare const install: (app: App) => void;
+export default install;

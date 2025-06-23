@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("../../utils/install.cjs"),l=require("./dialog_service.cjs"),e=t.withInstallFunction(l.default,"$dialog");exports.default=e;exports.showDialog=e;

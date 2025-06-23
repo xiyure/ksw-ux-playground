@@ -1,17 +1,68 @@
 <script setup lang="ts">
+import { ref, reactive } from 'vue'
+import { languageToolsVersion } from '@vue/repl'
 import { useToggle, useDark } from '@vueuse/core'
-import { KMessage } from '@ksware/ksw-ux';
+import { ElMessage } from 'element-plus'
+import {
+  getSupportedEpVersions,
+  getSupportedTSVersions,
+  getSupportedVueVersions,
+} from '@/utils/dependency'
+import type { Store, VersionKey } from '@/composables/store'
+import type { Ref } from 'vue'
+
+const appVersion = import.meta.env.APP_VERSION
+const replVersion = import.meta.env.REPL_VERSION
 
 const emit = defineEmits<{
   (e: 'refresh'): void
 }>()
-
+const nightly = ref(false)
 const dark = useDark()
 const toggleDark = useToggle(dark)
 
+const { store } = defineProps<{
+  store: Store
+}>()
+
+interface Version {
+  text: string
+  published: Ref<string[]>
+  active: string
+}
+
+const versions = reactive<Record<VersionKey, Version>>({
+  elementPlus: {
+    text: 'Element Plus',
+    published: getSupportedEpVersions(nightly),
+    active: store.versions.elementPlus,
+  },
+  vue: {
+    text: 'Vue',
+    published: getSupportedVueVersions(),
+    active: store.versions.vue,
+  },
+  typescript: {
+    text: 'TypeScript',
+    published: getSupportedTSVersions(),
+    active: store.versions.typescript,
+  },
+})
+
+async function setVersion(key: VersionKey, v: string) {
+  versions[key].active = `loading...`
+  await store.setVersion(key, v)
+  versions[key].active = v
+}
+
+const toggleNightly = () => {
+  store.toggleNightly(nightly.value)
+  setVersion('elementPlus', 'latest')
+}
+
 async function copyLink() {
   await navigator.clipboard.writeText(location.href)
-  KMessage.success('Sharable URL has been copied to clipboard.')
+  ElMessage.success('Sharable URL has been copied to clipboard.')
 }
 
 function refreshView() {
@@ -32,11 +83,53 @@ function refreshView() {
         src="../assets/logo.svg"
       />
       <div flex="~ gap-1" items-center lt-sm-hidden>
-        <div text-xl>KswUx Playground</div>
+        <div text-xl>Element Plus Playground</div>
       </div>
     </div>
 
     <div flex="~ gap-2" items-center>
+      <div
+        v-for="(v, key) of versions"
+        :key="key"
+        flex="~ gap-2"
+        items-center
+        lt-lg-hidden
+      >
+        <span>{{ v.text }}:</span>
+        <el-select
+          :model-value="v.active"
+          filterable
+          size="small"
+          fit-input-width
+          w-36
+          @update:model-value="setVersion(key, $event)"
+        >
+          <template v-if="key === 'elementPlus'" #header>
+            <div flex="~ items-center">
+              <el-checkbox v-model="nightly" @change="toggleNightly">
+                nightly
+              </el-checkbox>
+              <el-tooltip
+                placement="top"
+                content="A release of the development branch that is published every night."
+              >
+                <div
+                  i-ri-question-line
+                  ml-1
+                  h-4
+                  w-4
+                  cursor-pointer
+                  hover:color-primary
+                />
+              </el-tooltip>
+            </div>
+          </template>
+          <el-option v-for="ver of v.published" :key="ver" :value="ver">
+            {{ ver }}
+          </el-option>
+        </el-select>
+      </div>
+
       <div flex="~ gap-4" text-lg>
         <button
           i-ri-refresh-line

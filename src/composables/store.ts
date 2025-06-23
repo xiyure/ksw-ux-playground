@@ -10,11 +10,12 @@ import {
 import { objectOmit, useToggle, useDebounceFn } from '@vueuse/core'
 import { IS_DEV } from '@/constants'
 import {
+  genCdnLink,
   genCompilerSfcLink,
   genImportMap,
 } from '@/utils/dependency'
 import { atou, utoa } from '@/utils/encode'
-import kswUxCode from '../template/ksw-ux.js?raw'
+import elementPlusCode from '../template/element-plus.js?raw'
 import mainCode from '../template/main.vue?raw'
 import tsconfigCode from '../template/tsconfig.json?raw'
 import welcomeCode from '../template/welcome.vue?raw'
@@ -23,7 +24,7 @@ export interface Initial {
   serializedState?: string
   initialized?: () => void
 }
-export type VersionKey = 'vue' | 'kswUx' | 'typescript'
+export type VersionKey = 'vue' | 'elementPlus' | 'typescript'
 export type Versions = Record<VersionKey, string>
 export interface UserOptions {
   styleSource?: string
@@ -38,7 +39,7 @@ export type SerializeState = Record<string, string> & {
 
 const MAIN_FILE = 'src/PlaygroundMain.vue'
 const APP_FILE = 'src/App.vue'
-const KSW_UX_FILE = 'src/ksw-ux.js'
+const ELEMENT_PLUS_FILE = 'src/element-plus.js'
 const LEGACY_IMPORT_MAP = 'src/import_map.json'
 export const IMPORT_MAP = 'import-map.json'
 export const TSCONFIG = 'tsconfig.json'
@@ -50,15 +51,20 @@ export const useStore = (initial: Initial) => {
 
   const versions = reactive<Versions>({
     vue: saved?._o?.vueVersion ?? 'latest',
-    kswUx: ('latest'),
+    elementPlus: (saved?._o?.epVersion ?? 'latest'),
     typescript: saved?._o?.tsVersion ?? 'latest',
   })
   const userOptions: UserOptions = {}
+  Object.assign(userOptions, {
+    vueVersion: saved?._o?.vueVersion,
+    tsVersion: saved?._o?.tsVersion,
+    epVersion: saved?._o?.epVersion,
+  })
   const hideFile = !IS_DEV
 
   const [nightly, toggleNightly] = useToggle(false)
   const builtinImportMap = computed<ImportMap>(() => {
-    let importMap = genImportMap(versions)
+    let importMap = genImportMap(versions, nightly.value)
     return importMap
   })
 
@@ -81,7 +87,7 @@ export const useStore = (initial: Initial) => {
     }),
   )
   const store = useReplStore(storeState)
-  store.files[KSW_UX_FILE].hidden = hideFile
+  store.files[ELEMENT_PLUS_FILE].hidden = hideFile
   store.files[MAIN_FILE].hidden = hideFile
   setVueVersion(versions.vue).then(() => {
     initial.initialized?.()
@@ -100,9 +106,21 @@ export const useStore = (initial: Initial) => {
     { deep: true },
   )
 
-  function generatekswUxCode() {
-    const style =  '@ksware/ksw-ux/kingware-ui/style.css'
-    return kswUxCode.replace('#STYLE#', style)
+  function generateElementPlusCode(version: string, styleSource?: string) {
+    const style = styleSource
+      ? styleSource.replace('#VERSION#', version)
+      : genCdnLink(
+        nightly.value ? '@element-plus/nightly' : 'element-plus',
+        version,
+        '/dist/index.css',
+      ) ?? ''
+    const darkStyle = style.replace(
+      '/dist/index.css',
+      '/theme-chalk/dark/css-vars.css',
+    )
+    return elementPlusCode
+      .replace('#STYLE#', style)
+      .replace('#DARKSTYLE#', darkStyle)
   }
   function init() {
     watchEffect(() => {
@@ -152,10 +170,10 @@ export const useStore = (initial: Initial) => {
     } else {
       files[APP_FILE] = new File(APP_FILE, welcomeCode)
     }
-    if (!files[KSW_UX_FILE]) {
-      files[KSW_UX_FILE] = new File(
-        KSW_UX_FILE,
-        generatekswUxCode()
+    if (!files[ELEMENT_PLUS_FILE]) {
+      files[ELEMENT_PLUS_FILE] = new File(
+        ELEMENT_PLUS_FILE,
+        generateElementPlusCode(versions.elementPlus, userOptions.styleSource),
       )
     }
     if (!files[TSCONFIG]) {
@@ -174,6 +192,10 @@ export const useStore = (initial: Initial) => {
       case 'vue':
         userOptions.vueVersion = version
         await setVueVersion(version)
+        break
+      case 'elementPlus':
+        versions.elementPlus = version
+        userOptions.epVersion = version
         break
       case 'typescript':
         store.typescriptVersion = version

@@ -1,12 +1,17 @@
+<script setup lang="ts">
+import { ElementPlus } from '@element-plus/icons-vue'
+import { version as epVersion } from 'element-plus'
+import { ref, reactive, version as vueVersion } from 'vue'
+
+const msg = ref('Hello World!')
+</script>
 
 <template>
   <h1>{{ msg }}</h1>
-  <el-input v-model="text"></el-input>
+  <el-input v-model="msg" />
+
+  <p>
+    <el-icon color="var(--el-color-primary)"><ElementPlus /></el-icon>
+    Element Plus {{ epVersion }} + Vue {{ vueVersion }}
+  </p>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const msg = ref('Hello World')
-const text = ref('')
-</script>

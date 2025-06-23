@@ -1,7 +1,6 @@
 <script setup>
-// @ts-ignore
 import App from './App.vue'
-import { setupElementPlus } from './ksw-ux.js'
+import { setupElementPlus } from './element-plus.js'
 setupElementPlus()
 </script>
 
