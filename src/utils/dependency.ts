@@ -66,11 +66,6 @@ export const genImportMap = (
     '@element-plus/icons-vue': {
       version: '2',
       path: '/dist/index.min.js',
-    },
-    '@ksware/ksw-ux': {
-      pkg: 'vxe-table',
-      version: '4.10.6',
-      path: 'https://cdn.jsdelivr.net/gh/xiyure/code-run@main/pkg/kingsware-ui/index.mjs'
     }
   }
 
@@ -81,7 +76,7 @@ export const genImportMap = (
     ]),
   )
 
-  map['@ksware/ksw-ux'] = 'https://cdn.jsdelivr.net/gh/xiyure/code-run@main/pkg/kingsware-ui/index.mjs'
+  map['@ksware/ksw-ux'] = 'https://cdn.jsdelivr.net/gh/xiyure/code-run@main/pkg/kingsware-ui/index.full.mjs'
 
   return {
     imports: map,
