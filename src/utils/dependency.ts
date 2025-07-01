@@ -60,7 +60,7 @@ export const genImportMap = (
         key,
         genCdnLink(dep.pkg ?? key, dep.version, dep.path),
       ]),
-    ), { '@ksware/ksw-ux': 'https://cdn.jsdelivr.net/gh/xiyure/ksw-ux-run@main/releases/index.full.min.mjs' }),
+    ), { '@ksware/ksw-ux': 'https://cdn.jsdelivr.net/gh/xiyure/ksw-ux-playground@main/releases/index.full.min.mjs' }),
   }
 }
 

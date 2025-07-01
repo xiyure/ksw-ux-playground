@@ -1,8 +1,8 @@
-import KUI from '@ksware/ksw-ux'
 import { getCurrentInstance } from 'vue'
+import KUI from '@ksware/ksw-ux'
 
 let installed = false
-await loadStyle()
+loadStyle()
 
 export function loadDependency() {
   if (installed) return
@@ -15,6 +15,6 @@ export function loadStyle() {
   const link = document.createElement('link')
   link.rel = 'stylesheet'
   link.href =
-    'https://cdn.jsdelivr.net/gh/xiyure/ksw-ux-run@main/releases/style.css'
+    'https://cdn.jsdelivr.net/gh/xiyure/ksw-ux-playground@main/releases/style.css'
   document.body.append(link)
 }
