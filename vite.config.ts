@@ -19,6 +19,7 @@ export default defineConfig({
       external: ['typescript'],
     },
   },
+  base: './',
   server: {
     host: true,
   },

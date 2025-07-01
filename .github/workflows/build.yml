@@ -1,0 +1,42 @@
+name: Deploy Icon Library
+on:
+  push:
+    branches:
+      - main
+    # 只有指定文件变化才运行
+    # paths:
+    #   - package.json
+  # 允许你从 Actions 选项卡手动运行此工作流程
+  workflow_dispatch:
+
+# 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
+permissions:
+  contents: write
+
+jobs:
+  # 构建工作
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+      - name: Install dependencies and build
+        run: |
+          npm i
+          npm run build
+
+      # 部署 GitHub Pages
+      - name: Deploy GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          git-config-name: GitHubActions
+          git-config-email: GitHubActions@github.com
+        continue-on-error: true

@@ -25,7 +25,7 @@
     "format": "prettier --write --cache ."
   },
   "dependencies": {
-    "@ksware/ksw-ux": "^1.2.2-beta11",
+    "@ksware/ksw-ux": "file:releases/ksw-ux.tgz",
     "@unocss/reset": "^65.4.3",
     "@vue/repl": "^4.5.0",
     "@vueuse/core": "^12.5.0",
