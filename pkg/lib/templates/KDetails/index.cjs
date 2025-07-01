@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const s=require("./Details.vue.cjs"),e=require("./DetailsItem.vue.cjs"),t=require("../../utils/install.cjs"),l=t.withInstall(s.default,{DetailsItem:e.default}),a=t.withNoopInstall(e.default);exports.KDetails=l;exports.KDetailsItem=a;exports.default=l;

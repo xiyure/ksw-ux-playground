@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("./tree_transfer.vue.cjs");;/* empty css                     */const t=require("../../utils/install.cjs"),e=t.withInstall(r.default);exports.KTreeTransfer=e;exports.default=e;

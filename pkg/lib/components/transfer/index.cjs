@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./transfer.vue.cjs");;/* empty css                */const r=require("../../utils/install.cjs"),e=r.withInstall(t.default);exports.KTransfer=e;exports.default=e;

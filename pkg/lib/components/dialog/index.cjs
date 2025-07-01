@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./dialog.vue.cjs");;/* empty css              */const l=require("../../utils/install.cjs"),e=l.withInstall(t.default);exports.KDialog=e;exports.default=e;

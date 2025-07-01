@@ -1,17 +1,14 @@
 import { createApp } from 'vue'
 import App from '@/App.vue'
-import ElementPlus from 'element-plus'
-import KUI from '@ksware/ksw-ux';
-import '@ksware/ksw-ux/kingsware-ui/style.css';
-import 'element-plus/dist/index.css'
 import '@unocss/reset/tailwind.css'
 import '@vue/repl/style.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import 'uno.css'
+import ElementPlus from 'element-plus'
 
 // @ts-expect-error Custom window property
 window.VUE_DEVTOOLS_CONFIG = {
   defaultSelectedAppId: 'repl',
 }
 
-createApp(App).use(ElementPlus).use(KUI).mount('#app')
+createApp(App).use(ElementPlus).mount('#app')

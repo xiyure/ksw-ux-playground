@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./pagination.vue.cjs");;/* empty css                  */const i=require("../../utils/install.cjs"),e=i.withInstall(t.default);exports.KPagination=e;exports.default=e;

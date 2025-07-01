@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const o=require("vue"),n=Symbol("localeContextKey");function a(){var l;const c=o.inject(n,o.computed(()=>"zh")),e=o.inject("$i18n"),t=(l=e==null?void 0:e.global)==null?void 0:l.t;return{locale:c,t:u=>t==null?void 0:t(u,c.value)}}exports.localeContextKey=n;exports.useLocale=a;

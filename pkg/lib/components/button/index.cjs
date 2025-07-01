@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./button.vue.cjs");;/* empty css              */const u=require("../../utils/install.cjs"),e=u.withInstall(t.default);exports.KButton=e;exports.default=e;

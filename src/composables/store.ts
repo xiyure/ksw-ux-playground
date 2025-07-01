@@ -48,23 +48,39 @@ export const useStore = (initial: Initial) => {
   const saved: SerializeState | undefined = initial.serializedState
     ? deserialize(initial.serializedState)
     : undefined
+  const pr =
+    new URLSearchParams(location.search).get('pr') ||
+    saved?._o?.styleSource?.split('-', 2)[1]
+  const prUrl = `https://preview-${pr}-element-plus.surge.sh/bundle/dist`
 
   const versions = reactive<Versions>({
     vue: saved?._o?.vueVersion ?? 'latest',
-    elementPlus: (saved?._o?.epVersion ?? 'latest'),
+    elementPlus: pr ? 'preview' : (saved?._o?.epVersion ?? 'latest'),
     typescript: saved?._o?.tsVersion ?? 'latest',
   })
-  const userOptions: UserOptions = {}
+  const userOptions: UserOptions = pr
+    ? {
+      showHidden: true,
+      styleSource: `${prUrl}/index.css`,
+    }
+    : {}
   Object.assign(userOptions, {
     vueVersion: saved?._o?.vueVersion,
     tsVersion: saved?._o?.tsVersion,
     epVersion: saved?._o?.epVersion,
   })
-  const hideFile = !IS_DEV
+  const hideFile = !IS_DEV && !userOptions.showHidden
 
   const [nightly, toggleNightly] = useToggle(false)
   const builtinImportMap = computed<ImportMap>(() => {
     let importMap = genImportMap(versions, nightly.value)
+    if (pr)
+      importMap = mergeImportMap(importMap, {
+        imports: {
+          'element-plus': `${prUrl}/index.full.min.mjs`,
+          'element-plus/': 'unsupported',
+        },
+      })
     return importMap
   })
 
@@ -94,6 +110,18 @@ export const useStore = (initial: Initial) => {
   })
 
   watch(
+    () => versions.elementPlus,
+    (version) => {
+      store.files[ELEMENT_PLUS_FILE].code = generateElementPlusCode(
+        version,
+        userOptions.styleSource,
+      ).trim()
+      compileFile(store, store.files[ELEMENT_PLUS_FILE]).then(
+        (errs) => (store.errors = errs),
+      )
+    },
+  )
+  watch(
     builtinImportMap,
     (newBuiltinImportMap) => {
       const importMap = JSON.parse(store.files[IMPORT_MAP].code)
@@ -113,7 +141,7 @@ export const useStore = (initial: Initial) => {
         nightly.value ? '@element-plus/nightly' : 'element-plus',
         version,
         '/dist/index.css',
-      ) ?? ''
+      )
     const darkStyle = style.replace(
       '/dist/index.css',
       '/theme-chalk/dark/css-vars.css',
@@ -183,7 +211,7 @@ export const useStore = (initial: Initial) => {
   }
   async function setVueVersion(version: string) {
     store.compiler = await import(
-      /* @vite-ignore */ genCompilerSfcLink(version) ?? ''
+      /* @vite-ignore */ genCompilerSfcLink(version)
     )
     versions.vue = version
   }
@@ -206,6 +234,7 @@ export const useStore = (initial: Initial) => {
 
   const utils = {
     versions,
+    pr,
     setVersion,
     toggleNightly,
     serialize,

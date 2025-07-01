@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const i=require("vue");function s(o){const r=new Set(o);return i.computed(()=>t=>{const n={};for(const e in t)r.has(e)||(n[e]=t[e]);return n})}exports.useInheritSlot=s;

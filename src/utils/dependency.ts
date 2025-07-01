@@ -69,18 +69,16 @@ export const genImportMap = (
     }
   }
 
-  const map = Object.fromEntries(
-    Object.entries(deps).map(([key, dep]) => [
-      key,
-      genCdnLink(dep.pkg ?? key, dep.version, dep.path),
-    ]),
-  )
-
-  map['@ksware/ksw-ux'] = 'https://cdn.jsdelivr.net/gh/xiyure/code-run@main/pkg/kingsware-ui/index.full.mjs'
-
-  return {
-    imports: map,
+  const a = {
+    imports: Object.fromEntries(
+      Object.entries(deps).map(([key, dep]) => [
+        key,
+        genCdnLink(dep.pkg ?? key, dep.version, dep.path),
+      ]),
+    ),
   }
+  a.imports['@ksware/ksw-ux'] = 'https://cdn.jsdelivr.net/gh/xiyure/ksw-ux-run@main/releases/index.full.min.mjs'
+  return a;
 }
 
 export const getVersions = (pkg: MaybeRef<string>) => {
