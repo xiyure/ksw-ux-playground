@@ -4,7 +4,6 @@
     "jsx": "preserve",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["element-plus/global.d.ts"],
     "declaration": true,
     "emitDeclarationOnly": true,
     "allowImportingTsExtensions": true,

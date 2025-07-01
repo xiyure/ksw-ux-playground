@@ -1,7 +1,8 @@
 <script setup>
+// @ts-ignore
 import App from './App.vue'
-import { setupElementPlus } from './element-plus.js'
-setupElementPlus()
+import { loadDependency } from './ksw-ux.js'
+loadDependency()
 </script>
 
 <template>

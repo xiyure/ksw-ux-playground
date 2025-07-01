@@ -108,7 +108,7 @@ body {
 
 .dark .vue-repl,
 .vue-repl {
-  --color-branding: var(--el-color-primary) !important;
+  --color-branding: rgb(59, 130, 246) !important;
 }
 
 .dark body {

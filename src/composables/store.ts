@@ -15,7 +15,7 @@ import {
   genImportMap,
 } from '@/utils/dependency'
 import { atou, utoa } from '@/utils/encode'
-import elementPlusCode from '../template/element-plus.js?raw'
+import kswUxCode from '../template/ksw-ux.js?raw'
 import mainCode from '../template/main.vue?raw'
 import tsconfigCode from '../template/tsconfig.json?raw'
 import welcomeCode from '../template/welcome.vue?raw'
@@ -24,7 +24,7 @@ export interface Initial {
   serializedState?: string
   initialized?: () => void
 }
-export type VersionKey = 'vue' | 'elementPlus' | 'typescript'
+export type VersionKey = 'vue' | 'typescript'
 export type Versions = Record<VersionKey, string>
 export interface UserOptions {
   styleSource?: string
@@ -39,7 +39,7 @@ export type SerializeState = Record<string, string> & {
 
 const MAIN_FILE = 'src/PlaygroundMain.vue'
 const APP_FILE = 'src/App.vue'
-const ELEMENT_PLUS_FILE = 'src/element-plus.js'
+const KSW_FILE = 'src/ksw-ux.js'
 const LEGACY_IMPORT_MAP = 'src/import_map.json'
 export const IMPORT_MAP = 'import-map.json'
 export const TSCONFIG = 'tsconfig.json'
@@ -48,22 +48,12 @@ export const useStore = (initial: Initial) => {
   const saved: SerializeState | undefined = initial.serializedState
     ? deserialize(initial.serializedState)
     : undefined
-  const pr =
-    new URLSearchParams(location.search).get('pr') ||
-    saved?._o?.styleSource?.split('-', 2)[1]
-  const prUrl = `https://preview-${pr}-element-plus.surge.sh/bundle/dist`
 
   const versions = reactive<Versions>({
     vue: saved?._o?.vueVersion ?? 'latest',
-    elementPlus: pr ? 'preview' : (saved?._o?.epVersion ?? 'latest'),
     typescript: saved?._o?.tsVersion ?? 'latest',
   })
-  const userOptions: UserOptions = pr
-    ? {
-      showHidden: true,
-      styleSource: `${prUrl}/index.css`,
-    }
-    : {}
+  const userOptions: UserOptions = {}
   Object.assign(userOptions, {
     vueVersion: saved?._o?.vueVersion,
     tsVersion: saved?._o?.tsVersion,
@@ -71,16 +61,8 @@ export const useStore = (initial: Initial) => {
   })
   const hideFile = !IS_DEV && !userOptions.showHidden
 
-  const [nightly, toggleNightly] = useToggle(false)
   const builtinImportMap = computed<ImportMap>(() => {
-    let importMap = genImportMap(versions, nightly.value)
-    if (pr)
-      importMap = mergeImportMap(importMap, {
-        imports: {
-          'element-plus': `${prUrl}/index.full.min.mjs`,
-          'element-plus/': 'unsupported',
-        },
-      })
+    let importMap = genImportMap(versions)
     return importMap
   })
 
@@ -103,24 +85,12 @@ export const useStore = (initial: Initial) => {
     }),
   )
   const store = useReplStore(storeState)
-  store.files[ELEMENT_PLUS_FILE].hidden = hideFile
+  store.files[KSW_FILE].hidden = hideFile
   store.files[MAIN_FILE].hidden = hideFile
   setVueVersion(versions.vue).then(() => {
     initial.initialized?.()
   })
 
-  watch(
-    () => versions.elementPlus,
-    (version) => {
-      store.files[ELEMENT_PLUS_FILE].code = generateElementPlusCode(
-        version,
-        userOptions.styleSource,
-      ).trim()
-      compileFile(store, store.files[ELEMENT_PLUS_FILE]).then(
-        (errs) => (store.errors = errs),
-      )
-    },
-  )
   watch(
     builtinImportMap,
     (newBuiltinImportMap) => {
@@ -134,22 +104,6 @@ export const useStore = (initial: Initial) => {
     { deep: true },
   )
 
-  function generateElementPlusCode(version: string, styleSource?: string) {
-    const style = styleSource
-      ? styleSource.replace('#VERSION#', version)
-      : genCdnLink(
-        nightly.value ? '@element-plus/nightly' : 'element-plus',
-        version,
-        '/dist/index.css',
-      )
-    const darkStyle = style.replace(
-      '/dist/index.css',
-      '/theme-chalk/dark/css-vars.css',
-    )
-    return elementPlusCode
-      .replace('#STYLE#', style)
-      .replace('#DARKSTYLE#', darkStyle)
-  }
   function init() {
     watchEffect(() => {
       compileFile(store, store.activeFile).then((errs) => (store.errors = errs))
@@ -198,11 +152,8 @@ export const useStore = (initial: Initial) => {
     } else {
       files[APP_FILE] = new File(APP_FILE, welcomeCode)
     }
-    if (!files[ELEMENT_PLUS_FILE]) {
-      files[ELEMENT_PLUS_FILE] = new File(
-        ELEMENT_PLUS_FILE,
-        generateElementPlusCode(versions.elementPlus, userOptions.styleSource),
-      )
+    if (!files[KSW_FILE]) {
+      files[KSW_FILE] = new File(KSW_FILE, kswUxCode)
     }
     if (!files[TSCONFIG]) {
       files[TSCONFIG] = new File(TSCONFIG, tsconfigCode)
@@ -221,10 +172,6 @@ export const useStore = (initial: Initial) => {
         userOptions.vueVersion = version
         await setVueVersion(version)
         break
-      case 'elementPlus':
-        versions.elementPlus = version
-        userOptions.epVersion = version
-        break
       case 'typescript':
         store.typescriptVersion = version
         userOptions.tsVersion = version
@@ -234,9 +181,7 @@ export const useStore = (initial: Initial) => {
 
   const utils = {
     versions,
-    pr,
     setVersion,
-    toggleNightly,
     serialize,
     init,
   }

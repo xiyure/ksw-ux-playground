@@ -1,2 +1,2 @@
 /// <reference types="vite/client" />
-/// <reference types="element-plus/global" />
+/// <reference types="@ksware/ksw-ux/types/global" />
