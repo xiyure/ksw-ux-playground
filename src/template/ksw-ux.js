@@ -1,5 +1,5 @@
 import { getCurrentInstance } from 'vue'
-import KUI, { KswIcon } from '@ksware/ksw-ux'
+import KUI from '@ksware/ksw-ux'
 
 let installed = false
 loadStyle()
@@ -7,8 +7,7 @@ loadStyle()
 export function loadDependency() {
   if (installed) return
   const instance = getCurrentInstance()
-  instance.appContext.app.use(KUI)
-  instance.appContext.app.use(KswIcon)
+  instance.appContext.app.use(KUI, { registerIcon: true })
   installed = true
 }
 
