@@ -1,19 +1,15 @@
 import { computed, reactive, toRefs, watch, watchEffect } from 'vue';
 import {
-  compileFile,
   File,
   mergeImportMap,
   useStore as useReplStore,
   type ImportMap,
   type StoreState,
 } from '@vue/repl'
-import { objectOmit, useToggle, useDebounceFn } from '@vueuse/core'
+import { objectOmit, useDebounceFn } from '@vueuse/core'
 import { IS_DEV } from '@/constants'
-import {
-  genCdnLink,
-  genCompilerSfcLink,
-  genImportMap,
-} from '@/utils/dependency'
+import { compileFile } from '@/utils/transform'
+import { genCompilerSfcLink, genImportMap } from '@/utils/dependency'
 import { atou, utoa } from '@/utils/encode'
 import kswUxCode from '../template/ksw-ux.js?raw'
 import mainCode from '../template/main.vue?raw'
@@ -31,7 +27,6 @@ export interface UserOptions {
   showHidden?: boolean
   vueVersion?: string
   tsVersion?: string
-  epVersion?: string
 }
 export type SerializeState = Record<string, string> & {
   _o?: UserOptions
@@ -56,8 +51,7 @@ export const useStore = (initial: Initial) => {
   const userOptions: UserOptions = {}
   Object.assign(userOptions, {
     vueVersion: saved?._o?.vueVersion,
-    tsVersion: saved?._o?.tsVersion,
-    epVersion: saved?._o?.epVersion,
+    tsVersion: saved?._o?.tsVersion
   })
   const hideFile = !IS_DEV && !userOptions.showHidden
 
@@ -166,6 +160,42 @@ export const useStore = (initial: Initial) => {
     )
     versions.vue = version
   }
+  function renameFile(oldFilename: string, newFilename: string) {
+    const file = store.files[oldFilename]
+
+    if (!file) {
+      store.errors = [`Could not rename "${oldFilename}", file not found`]
+      return
+    }
+
+    if (!newFilename || oldFilename === newFilename) {
+      store.errors = [`Cannot rename "${oldFilename}" to "${newFilename}"`]
+      return
+    }
+
+    file.filename = newFilename
+    const newFiles: Record<string, File> = {}
+
+    // Preserve iteration order for files
+    for (const [name, file] of Object.entries(store.files)) {
+      if (name === oldFilename) {
+        newFiles[newFilename] = file
+      } else {
+        newFiles[name] = file
+      }
+    }
+
+    store.files = newFiles
+
+    if (store.mainFile === oldFilename) {
+      store.mainFile = newFilename
+    }
+    if (store.activeFilename === oldFilename) {
+      store.activeFilename = newFilename
+    } else {
+      compileFile(store, file).then((errs) => (store.errors = errs))
+    }
+  }
   async function setVersion(key: VersionKey, version: string) {
     switch (key) {
       case 'vue':
@@ -184,6 +214,7 @@ export const useStore = (initial: Initial) => {
     setVersion,
     serialize,
     init,
+    renameFile
   }
   Object.assign(store, utils)
 

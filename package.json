@@ -25,12 +25,16 @@
     "format": "prettier --write --cache ."
   },
   "dependencies": {
+    "@babel/standalone": "^7.27.7",
     "@ksware/ksw-ux": "file:releases/ksw-ux.tgz",
     "@unocss/reset": "^65.4.3",
+    "@vue/babel-plugin-jsx": "^1.4.0",
     "@vue/repl": "^4.5.0",
     "@vueuse/core": "^12.5.0",
     "element-plus": "^2.9.3",
+    "hash-sum": "^2.0.0",
     "semver": "^7.7.1",
+    "sucrase": "^3.35.0",
     "vue": "^3.5.13",
     "vxe-table": "^4.10.6"
   },
@@ -38,6 +42,9 @@
     "@iconify-json/ri": "^1.2.5",
     "@sxzz/eslint-config": "^5.0.1",
     "@sxzz/prettier-config": "^2.1.1",
+    "@types/babel__standalone": "^7.1.9",
+    "@types/hash-sum": "^1.0.2",
+    "@types/less": "^3.0.8",
     "@types/node": "^22.13.1",
     "@types/semver": "^7.5.8",
     "@unocss/eslint-plugin": "^65.4.3",

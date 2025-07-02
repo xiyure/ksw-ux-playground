@@ -46,9 +46,6 @@ const store = useStore({
   },
 })
 
-// eslint-disable-next-line no-console
-console.log('Store:', store)
-
 const handleKeydown = (evt: KeyboardEvent) => {
   if ((evt.ctrlKey || evt.metaKey) && evt.code === 'KeyS') {
     evt.preventDefault()
