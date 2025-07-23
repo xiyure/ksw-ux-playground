@@ -15,6 +15,11 @@ export interface Dependency {
 export type Cdn = 'unpkg' | 'jsdelivr' | 'jsdelivr-fastly'
 export const cdn = useLocalStorage<Cdn>('setting-cdn', 'jsdelivr')
 
+// dependencies for the playground
+export const dependencies = {
+  '@ksware/ksw-ux': 'https://cdn.jsdelivr.net/gh/xiyure/ksw-ux-playground@main/releases/index.full.min.mjs'
+}
+
 export const genCdnLink = (
   pkg: string,
   version: string | undefined,
@@ -60,7 +65,7 @@ export const genImportMap = (
         key,
         genCdnLink(dep.pkg ?? key, dep.version, dep.path),
       ]),
-    ), { '@ksware/ksw-ux': 'https://cdn.jsdelivr.net/gh/xiyure/ksw-ux-playground@main/releases/index.full.min.mjs' }),
+    ), dependencies)
   }
 }
 
@@ -89,15 +94,4 @@ export const getSupportedTSVersions = () => {
       (version) => !version.includes('dev') && !version.includes('insiders'),
     ),
   )
-}
-
-export const getSupportedEpVersions = (nightly: MaybeRef<boolean>) => {
-  const pkg = computed(() =>
-    unref(nightly) ? '@element-plus/nightly' : 'element-plus',
-  )
-  const versions = getVersions(pkg)
-  return computed(() => {
-    if (unref(nightly)) return versions.value
-    return versions.value.filter((version) => gte(version, '1.1.0-beta.18'))
-  })
 }

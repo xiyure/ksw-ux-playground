@@ -1,30 +1,3 @@
-<script setup lang="ts">
-import { useToggle, useDark } from '@vueuse/core'
-import { KMessage } from '@ksware/ksw-ux'
-import type { Ref } from 'vue'
-
-const emit = defineEmits<{
-  (e: 'refresh'): void
-}>()
-const dark = useDark()
-const toggleDark = useToggle(dark)
-
-interface Version {
-  text: string
-  published: Ref<string[]>
-  active: string
-}
-
-async function copyLink() {
-  await navigator.clipboard.writeText(location.href)
-  KMessage.success('Sharable URL has been copied to clipboard.')
-}
-
-function refreshView() {
-  emit('refresh')
-}
-</script>
-
 <template>
   <nav>
     <div m-0 flex items-center font-medium>
@@ -60,7 +33,7 @@ function refreshView() {
         <k-button
           class="nav-btn"
           i-ri-sun-line
-          title="Toggle theme"
+          title="Toggle theme(to be developed)"
           dark:i-ri-moon-line
           disabled
           @click="toggleDark()"
@@ -76,6 +49,26 @@ function refreshView() {
     </div>
   </nav>
 </template>
+
+<script setup lang="ts">
+import { useToggle, useDark } from '@vueuse/core'
+import { KMessage } from '@ksware/ksw-ux'
+
+const emit = defineEmits<{
+  (e: 'refresh'): void
+}>()
+const dark = useDark()
+const toggleDark = useToggle(dark)
+
+async function copyLink() {
+  await navigator.clipboard.writeText(location.href)
+  KMessage.success('Sharable URL has been copied to clipboard.')
+}
+
+function refreshView() {
+  emit('refresh')
+}
+</script>
 
 <style lang="less">
 nav {
