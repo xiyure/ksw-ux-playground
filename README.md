@@ -1,12 +1,8 @@
-<p align="center">
-  <img width="300px" src="https://user-images.githubusercontent.com/10731096/95823103-9ce15780-0d5f-11eb-8010-1bd1b5910d4f.png">
-</p>
 
-# Element Plus Playground
 
-[![GitHub Pages](https://github.com/element-plus/element-plus-playground/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/element-plus/element-plus-playground/actions/workflows/gh-pages.yml)
+# Ksw Ux Playground
 
-You can go to [element-plus.run](https://element-plus.run/) to have a try! 😆
+为 `ksw-ux` 组件库提供一个在线的演示环境，方便开发者调试和体验组件效果，欢迎大家前往[ksw-ux.playground](https://xiyure.github.io/ksw-ux-playground/)体验😆。
 
 ## Credits
 
@@ -14,4 +10,4 @@ You can go to [element-plus.run](https://element-plus.run/) to have a try! 😆
 
 ## License
 
-[MIT](./LICENSE) License © 2021-PRESENT [三咲智子](https://github.com/sxzz)
+MIT License © 2025-PRESENT [xiyure](https://github.com/xiyure)

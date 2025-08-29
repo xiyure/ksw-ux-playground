@@ -39,7 +39,7 @@
           @click="toggleDark()"
         />
         <a
-          href="https://github.com/element-plus/element-plus-playground"
+          href="https://github.com/xiyure/ksw-ux-playground"
           target="_blank"
           flex
         >
