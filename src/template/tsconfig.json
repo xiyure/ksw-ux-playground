@@ -12,7 +12,6 @@
     "paths": {
       "@ksware/ksw-ux": ["node_modules/ksw-ux/types/global.d.ts"]
     },
-    "baseUrl": ".",
     "types": ["node_modules/ksw-ux-types/types/global.d.ts"]
   },
   "vueCompilerOptions": {
