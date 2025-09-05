@@ -14,7 +14,6 @@ export function loadDependency() {
 export function loadStyle() {
   const link = document.createElement('link')
   link.rel = 'stylesheet'
-  link.href =
-    'https://cdn.jsdelivr.net/gh/xiyure/ksw-ux-playground@main/releases/style.css'
+  link.href = 'https://cdn.jsdelivr.net/npm/ksw-ux-types@latest/style.css'
   document.body.append(link)
 }

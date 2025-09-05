@@ -8,7 +8,12 @@
     "emitDeclarationOnly": true,
     "allowImportingTsExtensions": true,
     "allowJs": true,
-    "checkJs": true
+    "checkJs": true,
+    "paths": {
+      "@ksware/ksw-ux": ["node_modules/ksw-ux/types/global.d.ts"]
+    },
+    "baseUrl": ".",
+    "types": ["node_modules/ksw-ux-types/types/global.d.ts"]
   },
   "vueCompilerOptions": {
     "target": 3.3
