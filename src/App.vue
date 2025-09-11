@@ -1,6 +1,6 @@
 <template>
   <div v-if="!loading" antialiased>
-    <Header :store="store" @refresh="refreshPreview" />
+    <Header :store="store" @refresh="refreshPreview" @toggle-theme="onToggleTheme" />
     <Repl
       ref="replRef"
       v-model="autoSave"
@@ -23,9 +23,9 @@
 import { ref, watch, watchEffect } from 'vue'
 import { Repl } from '@vue/repl'
 import Monaco from '@vue/repl/monaco-editor'
-import { useDark } from '@vueuse/core'
 import { useStore } from './composables/store'
 import Header from './components/Header.vue'
+import type { Theme } from '@ksware/ksw-ux';
 
 const loading = ref(true)
 const replRef = ref<InstanceType<typeof Repl>>()
@@ -52,7 +52,7 @@ const previewOptions = {
   `,
 }
 
-const dark = useDark()
+const dark = ref(false);
 
 const theme = new URLSearchParams(location.search).get('theme')
 if (theme === 'dark') {
@@ -71,6 +71,10 @@ const handleKeydown = (evt: KeyboardEvent) => {
     evt.preventDefault()
     return
   }
+}
+
+const onToggleTheme = (theme: Theme) => {
+  dark.value = theme === 'dark'
 }
 
 // persist state

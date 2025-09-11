@@ -18,32 +18,31 @@
 
     <div flex="~ gap-2" items-center>
       <div flex="~ gap-4" text-lg>
-        <k-button
+        <i
           class="nav-btn"
           i-ri-refresh-line
           title="Refresh sandbox"
           @click="refreshView"
         />
-        <k-button
+        <i
           class="nav-btn"
           i-ri-share-line
           title="Copy link"
           @click="copyLink"
         />
-        <k-button
+        <i
           class="nav-btn"
           i-ri-sun-line
           title="Toggle theme(to be developed)"
           dark:i-ri-moon-line
-          disabled
-          @click="toggleDark()"
+          @click="toggleTheme"
         />
         <a
           href="https://github.com/xiyure/ksw-ux-playground"
           target="_blank"
           flex
         >
-          <k-button class="nav-btn" title="View on GitHub" i-ri-github-fill />
+          <i class="nav-btn" title="View on GitHub" i-ri-github-fill />
         </a>
       </div>
     </div>
@@ -51,14 +50,18 @@
 </template>
 
 <script setup lang="ts">
-import { useToggle, useDark } from '@vueuse/core'
-import { KMessage } from '@ksware/ksw-ux'
+import { setTheme, getCurrentTheme, KMessage, type Theme } from '@ksware/ksw-ux'
 
 const emit = defineEmits<{
-  (e: 'refresh'): void
+  (e: 'refresh'): void,
+  (e: 'toggle-theme', theme: Theme): void
 }>()
-const dark = useDark()
-const toggleDark = useToggle(dark)
+
+function toggleTheme() {
+  const theme = getCurrentTheme() === 'dark'? 'light' : 'dark'
+  setTheme(theme, true);
+  emit('toggle-theme', theme);
+}
 
 async function copyLink() {
   await navigator.clipboard.writeText(location.href)
@@ -78,6 +81,8 @@ nav {
   height: 2.5rem;
 
   .nav-btn {
+    cursor: pointer;
+
     &:hover {
       background-color: rgb(59, 130, 246);
     }
