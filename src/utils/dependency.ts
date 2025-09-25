@@ -17,7 +17,8 @@ export const cdn = useLocalStorage<Cdn>('setting-cdn', 'jsdelivr')
 
 // dependencies for the playground
 export const dependencies = {
-  '@ksware/ksw-ux': 'https://cdn.jsdelivr.net/npm/ksw-ux-types@latest/index.full.min.mjs'
+  '@ksware/ksw-ux': 'https://cdn.jsdelivr.net/npm/ksw-ux-types@latest/index.full.mjs',
+  'ksw-vue-icon': 'https://cdn.jsdelivr.net/npm/ksw-ux-types@latest/ksw-icon.mjs',
 }
 
 export const genCdnLink = (
